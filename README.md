@@ -1,4 +1,14 @@
 # Manga Loader
+
+## Contributing
+I've decided to put this script on github in the hopes that maybe people can start submitting their own implementations for new sites and speed up the development. 
+
+A while back I put together a video to show off the basic procedure for creating an implementation for Manga Loader, if you're interested in adding a new site yourself, but don't know how check out [this video.](https://www.youtube.com/watch?v=zgaogJCL8xQ)
+
+I don't have too much time to work on this nowadays but at the same time I don't want the project to be left behind, so let's see how this goes!
+
+## About
+
 This scripts allows you to load entire chapters from manga sites in a long strip format (all images on one page).
 
 It is very simple, lightweight and fast and it tries to do away with the bloat that many other similar scripts have.
