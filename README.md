@@ -13,7 +13,7 @@ This scripts allows you to load entire chapters from manga sites in a long strip
 
 It is very simple, lightweight and fast and it tries to do away with the bloat that many other similar scripts have.
 
-Support the continued development of this script: <a href="https://flattr.com/submit/auto?user_id=fuzetsu&url=https%3A%2F%2Fgreasyfork.org%2Fen%2Fscripts%2F692-manga-loader" target="_blank"><img src="https://button.flattr.com/flattr-badge-large.png" alt="Flattr this" title="Flattr this" border="0"></a> or <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=N7JS2HTH36S78&lc=US&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donate_SM%2egif%3aNonHosted"><img src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif"/></a> any amount is appreciated!
+Support the continued development of this script: <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=N7JS2HTH36S78&lc=US&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donate_SM%2egif%3aNonHosted"><img src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif"/></a> any amount is appreciated!
 
 Feel free to leave feedback requesting new sites, reporting bugs or suggesting new features.
 
