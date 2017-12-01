@@ -1,5 +1,4 @@
-## About
-
+# Manga Loader
 This scripts allows you to load entire chapters from manga sites in a long strip format (all images on one page).
 
 It is very simple, lightweight and fast and it tries to do away with the bloat that many other similar scripts have.
