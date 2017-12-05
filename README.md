@@ -1,4 +1,4 @@
-# Manga Loader
+# [Manga Loader](https://greasyfork.org/en/scripts/692-manga-loader)
 
 ## Contributing
 I've decided to put this script on github in the hopes that maybe people can start submitting their own implementations for new sites and speed up the development. 
