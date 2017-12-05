@@ -40,7 +40,7 @@
 // @match *://eatmanga.com/Manga-Scan/*/*
 // @match *://www.mangacat.me/*/*/*
 // @match *://www.mangahen.com/*/*
-// @match *://www.readmanga.today/*/*
+// @match *://www.readmng.com/*/*
 // @match *://mangatraders.biz/read-online/*
 // @match *://www.mangainn.net/manga/chapter/*
 // @match *://*.kukudm.com/comiclist/*/*
@@ -107,6 +107,7 @@
 // @match *://*.helveticascans.com/reader/read/*
 // @match *://reader.thecatscans.com/read/*
 // @match *://yonkouprod.com/reader/read/*
+// @match *://reader.championscans.com/read/*
 // -- FOOLSLIDE END
 // ==/UserScript==
 
@@ -649,9 +650,9 @@ var implementations = [{
   invchap: true,
   wait: '#chapter option'
 }, {
-  name: 'readmanga.today',
-  match: "^https?://www\\.readmanga\\.today/[^/]+/.+",
-  img: '.page_chapter img',
+  name: 'readmng.com',
+  match: "^https?://www\\.readmng\\.com/[^/]+/.+",
+  img: '.page_chapter-2 img',
   next: '.list-switcher-2 > li:nth-child(3) > a, .list-switcher-2 > li:nth-child(2) > a',
   numpages: '.list-switcher-2 select[name=category_type]',
   curpage: '.list-switcher-2 select[name=category_type]',
@@ -693,6 +694,7 @@ var implementations = [{
     "helveticascans.com/reader/read/.+",
     "reader.thecatscans.com/read/.+",
     "yonkouprod.com/reader/read/.+",
+    "reader.championscans.com/read/.+",
   ].join('|') + ")",
   img: function() {
     return W.pages[W.current_page].url;
