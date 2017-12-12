@@ -108,6 +108,7 @@
 // @match *://reader.thecatscans.com/read/*
 // @match *://yonkouprod.com/reader/read/*
 // @match *://reader.championscans.com/read/*
+// @match *://reader.whiteoutscans.com/read/*
 // -- FOOLSLIDE END
 // ==/UserScript==
 
@@ -695,6 +696,7 @@ var implementations = [{
     "reader.thecatscans.com/read/.+",
     "yonkouprod.com/reader/read/.+",
     "reader.championscans.com/read/.+",
+    "reader.whiteoutscans.com/read/.+",
   ].join('|') + ")",
   img: function() {
     return W.pages[W.current_page].url;
