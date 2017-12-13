@@ -10,7 +10,9 @@
 // @grant GM_deleteValue
 // @match *://bato.to/reader*
 // @match *://mangafox.me/manga/*/*/*
+// @match *://mangafox.la/manga/*/*/*
 // @match *://readms.net/r/*/*
+// @match *://readms.net/read/*/*
 // @match *://mangastream.com/r/*/*/*/*
 // @match *://mangastream.com/read/*/*/*/*
 // @match *://www.mangareader.net/*/*
@@ -214,7 +216,7 @@ var implementations = [{
   prevchap: '#mangainfofooter > #mangainfo_bas table tr:last-child a'
 }, {
   name: 'mangafox',
-  match: "^https?://mangafox.me/manga/[^/]*/[^/]*/[^/]*",
+  match: "^https?://mangafox.(me|la)/manga/[^/]*/[^/]*/[^/]*",
   img: '.read_img img',
   next: '.read_img a',
   numpages: function() {
