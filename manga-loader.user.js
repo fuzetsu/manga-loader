@@ -1358,7 +1358,11 @@ var extractInfo = function(selector, mod, context) {
       case 'a':
         if(mod.type === 'index')
           return parseInt(elem.textContent);
-        return elem.href || elem.getAttribute('href');
+        var href = elem.href || elem.getAttribute('href');
+        if (!href.startsWith('//') && !href.startsWith('http') && !href.startsWith('#')) {
+          return window.location.href + "/../" + href;
+        }
+        return href;
       case 'ul':
         return elem.children.length;
       case 'select':
