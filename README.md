@@ -29,7 +29,7 @@ Manually reload an image that is misbehaving (loading unusually slowly, or stuck
 **Bookmarklet**: If you would like to use the script as a bookmark that you can manually run whenever you like just copy the following code and create a bookmark out of it. Make sure that the `javascript:` part of the code is still there after pasting otherwise it will not work. **This method also works for using the script on mobile devices such as phones and tablets**.
 `javascript:(function(){BM_MODE=true;document.body.appendChild(document.createElement('script')).src='https://greasyfork.org/scripts/692-manga-loader/code/Manga%20Loader.user.js';}())`
 
-###Using the script on your phone or tablet
+### Using the script on your phone or tablet
 **This video demonstrates using the script on an Android phone, but it should work on any mobile device including iPhones, iPads and other tablets/phones**
 **<a href="https://www.youtube.com/watch?v=QaQt2y5G_mE">Mobile Bookmarklet Demo Video</a>**
 
