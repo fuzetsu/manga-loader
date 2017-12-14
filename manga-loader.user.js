@@ -1362,6 +1362,9 @@ var extractInfo = function(selector, mod, context) {
         if (!href.startsWith('//') && !href.startsWith('http') && !href.startsWith('#')) {
           return window.location.href + "/../" + href;
         }
+        if (href.startsWith('//')) {
+          return window.location.protocol + href;
+        }
         return href;
       case 'ul':
         return elem.children.length;
