@@ -17,6 +17,7 @@
 // @match *://mangastream.com/read/*/*/*/*
 // @match *://www.mangareader.net/*/*
 // @match *://*.mangahere.co/manga/*/*
+// @match *://*.mangahere.cc/manga/*/*
 // @match *://www.mangapanda.com/*/*
 // @match *://mangapark.me/manga/*/*/*
 // @match *://mngcow.co/*/*
@@ -285,7 +286,7 @@ var implementations = [{
   }
 }, {
   name: 'manga-here',
-  match: "^https?://www.mangahere.co/manga/[^/]+/[^/]+",
+  match: "^https?://www.mangahere.c[oc]/manga/[^/]+/[^/]+",
   img: '#viewer img:last-child',
   next: '#viewer a',
   numpages: 'select.wid60',
@@ -304,7 +305,7 @@ var implementations = [{
   }
 }, {
   name: 'manga-here mobile',
-  match: "^https?://m.mangahere.co/manga/[^/]+/[^/]+",
+  match: "^https?://m.mangahere.c[oc]/manga/[^/]+/[^/]+",
   img: '#image',
   next: '#viewer a',
   numpages: '.mangaread-page',
