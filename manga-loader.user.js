@@ -73,6 +73,7 @@
 // @match *://*.readcomics.tv/*/chapter*
 // @match *://*.cartoomad.com/comic/*
 // @match *://*.ikanman.com/comic/*/*
+// @match *://*.manhuagui.com/comic/*/*
 // @match *://*.mangasail.com/*
 // @match *://*.mangatail.com/*
 // @match *://*.titaniascans.com/reader/*/*
@@ -1150,7 +1151,7 @@ var implementations = [{
   }
 }, {
   name: 'ikanman',
-  match: "https?://(www|tw)\.ikanman\.com/comic/[0-9]+/[0-9]+\.html",
+  match: "https?://(www|tw)\.(ikanman|manhuagui)\.com/comic/[0-9]+/[0-9]+\.html",
   img: '#mangaFile',
   next: function() {
       return W._next;
