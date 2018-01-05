@@ -71,7 +71,8 @@
 // @match *://*.otakusmash.com/*/*
 // @match *://*.mangahome.com/manga/*/*
 // @match *://*.readcomics.tv/*/chapter*
-// @match *://*.cartoomad.com/comic/*
+// @match *://*.cartoonmad.com/comic/*
+// @match *://*.comicnad.com/comic/*
 // @match *://*.ikanman.com/comic/*/*
 // @match *://*.mangasail.com/*
 // @match *://*.mangatail.com/*
@@ -1140,10 +1141,10 @@ var implementations = [{
   numchaps: 'select[name=chapter_select]',
   wait: 'select[name=page_select]'
 }, {
-  name: 'cartoomad',
-  match: "https?://(www\\.)?cartoomad\.com/comic/[0-9]+\.html",
-  img: 'tr:nth-child(5) > td > a > img',
-  next: 'tr:nth-child(5) > td > a',
+  name: 'cartoonmad',
+  match: "https?://(www\\.)?(cartoonmad|comicnad)\.com/comic/[0-9]+\.html",
+  img: 'tr:nth-child(5) > td > table > tbody > tr:nth-child(1) > td > a > img',
+  next: 'a.onpage+a',
   curpage: 'a.onpage',
   numpages: function() {
     return extractInfo('select[name=jump]') - 1;
