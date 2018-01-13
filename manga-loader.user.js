@@ -1166,7 +1166,9 @@ var implementations = [{
         url: location.href.split('/')[4].match(/^[\d]{4}/)[0] + '.html',
         onload: function(e) {
           var res = e.target.response;
-          var chapters = res.match('<td>.(<a.*)</td>')[1].split('<td>').map(i => i.match(/href=(.*?) /)[1]);
+          var chapters = res.match('<td>.(<a.*)</td>')[1].split('<td>').map(function(i) {
+            return i.match(/href=(.*?) /)[1];
+          });
           var curChap = chapters.indexOf(location.pathname);
           if (curChap !== chapters.length - 1) W._nextchap = chapters[curChap + 1];
           if (curChap !== 0) W._prevchap = chapters[curChap - 1];
