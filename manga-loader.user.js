@@ -1150,6 +1150,34 @@ var implementations = [{
   curpage: 'a.onpage',
   numpages: function() {
     return extractInfo('select[name=jump]') - 1;
+  },
+  nextchap: function() {
+      return W._nextchap;
+  },
+  prevchap: function() {
+      return W._prevchap;
+  },
+  wait: function() {
+    if (!W._ajaxdone) {
+      W._ajaxdone = -1;
+      ajax({
+        method: 'GET',
+        async: false,
+        url: location.href.split('/')[4].match(/^[\d]{4}/)[0] + '.html',
+        onload: function(e) {
+          var res = e.target.response;
+          var chapters = res.match('<td>.(<a.*)</td>')[1].split('<td>').map(function(i) {
+            return i.match(/href=(.*?) /)[1];
+          });
+          var curChap = chapters.indexOf(location.pathname);
+          if (curChap !== chapters.length - 1) W._nextchap = chapters[curChap + 1];
+          if (curChap !== 0) W._prevchap = chapters[curChap - 1];
+          W._ajaxdone = 1;
+        }
+      });
+    } else if (W._ajaxdone === 1) {
+      return true;
+    }
   }
 }, {
   name: 'ikanman',
@@ -1172,25 +1200,9 @@ var implementations = [{
     return this.nextchap(true);
   },
   wait: function() {
-    // fetch chapter IDs via ajax
-    if (!W._ajaxdone) {
-      W._ajaxdone = -1;
-      ajax({
-        method: 'GET',
-        async: false,
-        url: '/support/chapter.ashx?' + 'bid=' + W.cInfo.bid + '&cid=' + W.cInfo.cid,
-        responseType: 'json',
-        onload: function (e) {
-          var res = e.target.response;
-          console.log('res', res);
-          if (!res) return log('failed to load ikanman chapters, site has probably been updated, report on forums', 'error');
-          W._nextchap = res.n;
-          W._prevchap = res.p;
-          W._ajaxdone = 1;
-        }
-      });
-    }
-    if (W._ajaxdone == 1 && getEl('#mangaFile')) {
+    if (getEl('#mangaFile')) {
+      W._nextchap = W.cInfo.nextId;
+      W._prevchap = W.cInfo.prevId;
       var ex = extractInfo.bind(this);
       W._next = location.href.replace(/(_p[0-9]+)?\.html.*/, '_p' + (ex('curpage') + 1) + '.html');
       W._base = ex('img').replace(/[^\/]+$/, '');
