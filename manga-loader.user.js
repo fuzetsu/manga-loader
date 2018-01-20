@@ -81,6 +81,7 @@
 // @match *://*.titaniascans.com/reader/*/*
 // @match *://*.komikstation.com/*/*/*
 // @match *://*.gmanga.me/mangas/*/*/*
+// @match *://mangadex.com/chapter/*
 // -- FOOLSLIDE START
 // @match *://manga.redhawkscans.com/reader/read/*
 // @match *://reader.s2smanga.com/read/*
@@ -665,6 +666,23 @@ var implementations = [{
   nextchap: '.jump-menu[name=chapter_list]',
   prevchap: '.jump-menu[name=chapter_list]',
   invchap: true
+}, {
+  name: 'mangadex.com',
+  match: "^https?://mangadex\\.com/chapter/[^/]+",
+  img: '#current_page',
+  next: function() {
+    return this._base + ++this._page;
+  },
+  numpages: '#jump_page',
+  curpage: '#jump_page',
+  nextchap: '#jump_chapter',
+  prevchap: '#jump_chapter',
+  wait: function() {
+    var chapter = document.querySelector('#jump_chapter').selectedOptions[0].value;
+    this._base = 'https://mangadex.com/chapter/' + chapter + '/';
+    this._page = 1;
+    return true;
+  }
 }, {
   name: 'foolslide',
   match: "^https?://(" + [
