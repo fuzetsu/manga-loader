@@ -81,7 +81,7 @@
 // @match *://*.titaniascans.com/reader/*/*
 // @match *://*.komikstation.com/*/*/*
 // @match *://*.gmanga.me/mangas/*/*/*
-// @match *://merakiscans.com/*/*/*
+// @match *://merakiscans.com/*/*
 // -- FOOLSLIDE START
 // @match *://manga.redhawkscans.com/reader/read/*
 // @match *://reader.s2smanga.com/read/*
@@ -274,7 +274,7 @@ var implementations = [{
   prevchap: '#top_chapter_list',
   wait: 1000
 }, {
-  name: 'manga-cow, manga-doom, manga-indo, 3asq.info, moonbunnnycafe, merakiscans',
+  name: 'manga-cow, manga-doom, manga-indo, 3asq.info, moonbunnnycafe',
   match: "^https?://(mngcow|mangadoom|mangaindo|merakiscans|www\\.3asq|moonbunnycafe)\\.(co|id|info|com)/[^/]+/[0-9.]+",
   img: '.prw a > img',
   next: '.prw a',
