@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name       Manga Loader
 // @namespace  http://www.fuzetsu.com/MangaLoader
-// @version    1.11.13
+// @version    1.11.17
 // @description  Support for over 70 sites! Loads manga chapter into one page in a long strip format, supports switching chapters, minimal script with no dependencies, easy to implement new sites, loads quickly and works on mobile devices through bookmarklet
 // @copyright  2016+, fuzetsu
 // @noframes
@@ -10,11 +10,14 @@
 // @grant GM_deleteValue
 // @match *://bato.to/reader*
 // @match *://mangafox.me/manga/*/*/*
+// @match *://mangafox.la/manga/*/*/*
 // @match *://readms.net/r/*/*
+// @match *://readms.net/read/*/*
 // @match *://mangastream.com/r/*/*/*/*
 // @match *://mangastream.com/read/*/*/*/*
 // @match *://www.mangareader.net/*/*
 // @match *://*.mangahere.co/manga/*/*
+// @match *://*.mangahere.cc/manga/*/*
 // @match *://www.mangapanda.com/*/*
 // @match *://mangapark.me/manga/*/*/*
 // @match *://mngcow.co/*/*
@@ -69,13 +72,16 @@
 // @match *://*.otakusmash.com/*/*
 // @match *://*.mangahome.com/manga/*/*
 // @match *://*.readcomics.tv/*/chapter*
-// @match *://*.cartoomad.com/comic/*
+// @match *://*.cartoonmad.com/comic/*
+// @match *://*.comicnad.com/comic/*
 // @match *://*.ikanman.com/comic/*/*
+// @match *://*.manhuagui.com/comic/*/*
 // @match *://*.mangasail.com/*
 // @match *://*.mangatail.com/*
 // @match *://*.titaniascans.com/reader/*/*
 // @match *://*.komikstation.com/*/*/*
 // @match *://*.gmanga.me/mangas/*/*/*
+// @match *://merakiscans.com/*/*/*
 // -- FOOLSLIDE START
 // @match *://manga.redhawkscans.com/reader/read/*
 // @match *://reader.s2smanga.com/read/*
@@ -215,7 +221,7 @@ var implementations = [{
   prevchap: '#mangainfofooter > #mangainfo_bas table tr:last-child a'
 }, {
   name: 'mangafox',
-  match: "^https?://mangafox.me/manga/[^/]*/[^/]*/[^/]*",
+  match: "^https?://mangafox.(me|la)/manga/[^/]*/[^/]*/[^/]*",
   img: '.read_img img',
   next: '.read_img a',
   numpages: function() {
@@ -268,8 +274,8 @@ var implementations = [{
   prevchap: '#top_chapter_list',
   wait: 1000
 }, {
-  name: 'manga-cow, manga-doom, manga-indo, 3asq.info, moonbunnnycafe',
-  match: "^https?://(mngcow|mangadoom|mangaindo|www\\.3asq|moonbunnycafe)\\.(co|id|info|com)/[^/]+/[0-9.]+",
+  name: 'manga-cow, manga-doom, manga-indo, 3asq.info, moonbunnnycafe, merakiscans',
+  match: "^https?://(mngcow|mangadoom|mangaindo|merakiscans|www\\.3asq|moonbunnycafe)\\.(co|id|info|com)/[^/]+/[0-9.]+",
   img: '.prw a > img',
   next: '.prw a',
   numpages: 'select.cbo_wpm_pag',
@@ -283,7 +289,7 @@ var implementations = [{
   }
 }, {
   name: 'manga-here',
-  match: "^https?://www.mangahere.co/manga/[^/]+/[^/]+",
+  match: "^https?://www.mangahere.c[oc]/manga/[^/]+/[^/]+",
   img: '#viewer img:last-child',
   next: '#viewer a',
   numpages: 'select.wid60',
@@ -302,7 +308,7 @@ var implementations = [{
   }
 }, {
   name: 'manga-here mobile',
-  match: "^https?://m.mangahere.co/manga/[^/]+/[^/]+",
+  match: "^https?://m.mangahere.c[oc]/manga/[^/]+/[^/]+",
   img: '#image',
   next: '#viewer a',
   numpages: '.mangaread-page',
@@ -1138,17 +1144,45 @@ var implementations = [{
   numchaps: 'select[name=chapter_select]',
   wait: 'select[name=page_select]'
 }, {
-  name: 'cartoomad',
-  match: "https?://(www\\.)?cartoomad\.com/comic/[0-9]+\.html",
-  img: 'tr:nth-child(5) > td > a > img',
-  next: 'tr:nth-child(5) > td > a',
+  name: 'cartoonmad',
+  match: "https?://(www\\.)?(cartoonmad|comicnad)\.com/comic/[0-9]+\.html",
+  img: 'tr:nth-child(5) > td > table > tbody > tr:nth-child(1) > td > a > img',
+  next: 'a.onpage+a',
   curpage: 'a.onpage',
   numpages: function() {
     return extractInfo('select[name=jump]') - 1;
+  },
+  nextchap: function() {
+      return W._nextchap;
+  },
+  prevchap: function() {
+      return W._prevchap;
+  },
+  wait: function() {
+    if (!W._ajaxdone) {
+      W._ajaxdone = -1;
+      ajax({
+        method: 'GET',
+        async: false,
+        url: location.href.split('/')[4].match(/^[\d]{4}/)[0] + '.html',
+        onload: function(e) {
+          var res = e.target.response;
+          var chapters = res.match('<td>.(<a.*)</td>')[1].split('<td>').map(function(i) {
+            return i.match(/href=(.*?) /)[1];
+          });
+          var curChap = chapters.indexOf(location.pathname);
+          if (curChap !== chapters.length - 1) W._nextchap = chapters[curChap + 1];
+          if (curChap !== 0) W._prevchap = chapters[curChap - 1];
+          W._ajaxdone = 1;
+        }
+      });
+    } else if (W._ajaxdone === 1) {
+      return true;
+    }
   }
 }, {
   name: 'ikanman',
-  match: "https?://(www|tw)\.ikanman\.com/comic/[0-9]+/[0-9]+\.html",
+  match: "https?://(www|tw)\.(ikanman|manhuagui)\.com/comic/[0-9]+/[0-9]+\.html",
   img: '#mangaFile',
   next: function() {
       return W._next;
@@ -1167,25 +1201,9 @@ var implementations = [{
     return this.nextchap(true);
   },
   wait: function() {
-    // fetch chapter IDs via ajax
-    if (!W._ajaxdone) {
-      W._ajaxdone = -1;
-      ajax({
-        method: 'GET',
-        async: false,
-        url: '/support/chapter.ashx?' + 'bid=' + W.cInfo.bid + '&cid=' + W.cInfo.cid,
-        responseType: 'json',
-        onload: function (e) {
-          var res = e.target.response;
-          console.log('res', res);
-          if (!res) return log('failed to load ikanman chapters, site has probably been updated, report on forums', 'error');
-          W._nextchap = res.n;
-          W._prevchap = res.p;
-          W._ajaxdone = 1;
-        }
-      });
-    }
-    if (W._ajaxdone == 1 && getEl('#mangaFile')) {
+    if (getEl('#mangaFile')) {
+      W._nextchap = W.cInfo.nextId;
+      W._prevchap = W.cInfo.prevId;
       var ex = extractInfo.bind(this);
       W._next = location.href.replace(/(_p[0-9]+)?\.html.*/, '_p' + (ex('curpage') + 1) + '.html');
       W._base = ex('img').replace(/[^\/]+$/, '');
