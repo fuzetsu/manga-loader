@@ -671,15 +671,22 @@ var implementations = [{
   match: "^https?://mangadex\\.com/chapter/[^/]+",
   img: '#current_page',
   next: function() {
-    return this._base + ++this._page;
+    return this._chap + ++this._page;
   },
   numpages: '#jump_page',
   curpage: '#jump_page',
-  nextchap: '#jump_chapter',
-  prevchap: '#jump_chapter',
+  nextchap: function() {
+    var chapter = document.querySelector('#jump_chapter').selectedOptions[0].nextElementSibling;
+    return (chapter === null) ? false : (this._base + chapter.value + '/1');
+  },
+  prevchap: function() {
+    var chapter = document.querySelector('#jump_chapter').selectedOptions[0].previousElementSibling;
+    return (chapter === null) ? false : (this._base + chapter.value + '/1');
+  },
   wait: function() {
     var chapter = document.querySelector('#jump_chapter').selectedOptions[0].value;
-    this._base = 'https://mangadex.com/chapter/' + chapter + '/';
+    this._base = 'https://mangadex.com/chapter/';
+    this._chap = this._base + chapter + '/';
     this._page = 1;
     return true;
   }
