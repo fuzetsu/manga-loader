@@ -81,6 +81,8 @@
 // @match *://*.titaniascans.com/reader/*/*
 // @match *://*.komikstation.com/*/*/*
 // @match *://*.gmanga.me/mangas/*/*/*
+// @match *://merakiscans.com/*/*
+// @match *://biamamscans.com/read/*/*/*
 // -- FOOLSLIDE START
 // @match *://manga.redhawkscans.com/reader/read/*
 // @match *://reader.s2smanga.com/read/*
@@ -274,7 +276,7 @@ var implementations = [{
   wait: 1000
 }, {
   name: 'manga-cow, manga-doom, manga-indo, 3asq.info, moonbunnnycafe',
-  match: "^https?://(mngcow|mangadoom|mangaindo|www\\.3asq|moonbunnycafe)\\.(co|id|info|com)/[^/]+/[0-9.]+",
+  match: "^https?://(mngcow|mangadoom|mangaindo|merakiscans|www\\.3asq|moonbunnycafe)\\.(co|id|info|com)/[^/]+/[0-9.]+",
   img: '.prw a > img',
   next: '.prw a',
   numpages: 'select.cbo_wpm_pag',
@@ -665,6 +667,33 @@ var implementations = [{
   nextchap: '.jump-menu[name=chapter_list]',
   prevchap: '.jump-menu[name=chapter_list]',
   invchap: true
+}, {
+  name: 'mangadex.com',
+  match: "^https?://mangadex\\.com/chapter/[^/]+",
+  img: '#current_page',
+  next: function() {
+    return this._base + ++this._page;
+  },
+  numpages: '#jump_page',
+  curpage: '#jump_page',
+  nextchap: '#jump_chapter',
+  prevchap: '#jump_chapter',
+  wait: function() {
+    var chapter = document.querySelector('#jump_chapter').selectedOptions[0].value;
+    this._base = 'https://mangadex.com/chapter/' + chapter + '/';
+    this._page = 1;
+    return true;
+  }
+}, {
+  name: 'biamamscans.com',
+  match: "^https?://biamamscans\\.com/read/[^/]+/.+",
+  img: '.manga-image',
+  next: 'span.float-right:nth-child(2) > div:nth-child(2) > a:nth-child(1)',
+  numpages: '#page-select',
+  curpage: '#page-select',
+  nextchap: '#chapter-select',
+  prevchap: '#chapter-select'
+  
 }, {
   name: 'foolslide',
   match: "^https?://(" + [
