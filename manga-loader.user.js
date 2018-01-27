@@ -82,6 +82,7 @@
 // @match *://*.komikstation.com/*/*/*
 // @match *://*.gmanga.me/mangas/*/*/*
 // @match *://merakiscans.com/*/*
+// @match *://biamamscans.com/read/*/*/*
 // -- FOOLSLIDE START
 // @match *://manga.redhawkscans.com/reader/read/*
 // @match *://reader.s2smanga.com/read/*
