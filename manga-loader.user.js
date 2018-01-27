@@ -667,6 +667,33 @@ var implementations = [{
   prevchap: '.jump-menu[name=chapter_list]',
   invchap: true
 }, {
+  name: 'mangadex.com',
+  match: "^https?://mangadex\\.com/chapter/[^/]+",
+  img: '#current_page',
+  next: function() {
+    return this._base + ++this._page;
+  },
+  numpages: '#jump_page',
+  curpage: '#jump_page',
+  nextchap: '#jump_chapter',
+  prevchap: '#jump_chapter',
+  wait: function() {
+    var chapter = document.querySelector('#jump_chapter').selectedOptions[0].value;
+    this._base = 'https://mangadex.com/chapter/' + chapter + '/';
+    this._page = 1;
+    return true;
+  }
+}, {
+  name: 'biamamscans.com',
+  match: "^https?://biamamscans\\.com/read/[^/]+/.+",
+  img: '.manga-image',
+  next: 'span.float-right:nth-child(2) > div:nth-child(2) > a:nth-child(1)',
+  numpages: '#page-select',
+  curpage: '#page-select',
+  nextchap: '#chapter-select',
+  prevchap: '#chapter-select'
+  
+}, {
   name: 'foolslide',
   match: "^https?://(" + [
     "manga.redhawkscans.com/reader/read/.+",
