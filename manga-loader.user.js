@@ -110,7 +110,7 @@
 // @match *://*.gomanga.co/reader/read/*
 // @match *://reader.manga-download.org/read/*/*
 // @match *://*.manga-ar.net/manga/*/*/*
-// @match *://*.helveticascans.com/reader/read/*
+// @match *://*.helveticascans.com/r/read/*
 // @match *://reader.thecatscans.com/read/*
 // @match *://yonkouprod.com/reader/read/*
 // @match *://reader.championscans.com/read/*
@@ -722,7 +722,7 @@ var implementations = [{
     "gomanga.co/reader/read/.+",
     "reader\.manga-download\.org/read/.+",
     "(www\.)?manga-ar\.net/manga/.+/.+/.+",
-    "helveticascans.com/reader/read/.+",
+    "helveticascans.com/r/read/.+",
     "reader.thecatscans.com/read/.+",
     "yonkouprod.com/reader/read/.+",
     "reader.championscans.com/read/.+",
