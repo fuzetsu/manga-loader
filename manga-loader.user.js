@@ -11,6 +11,7 @@
 // @match *://bato.to/reader*
 // @match *://mangafox.me/manga/*/*/*
 // @match *://mangafox.la/manga/*/*/*
+// @match *://fanfox.net/manga/*/*/*
 // @match *://readms.net/r/*/*
 // @match *://readms.net/read/*/*
 // @match *://mangastream.com/r/*/*/*/*
@@ -221,7 +222,7 @@ var implementations = [{
   prevchap: '#mangainfofooter > #mangainfo_bas table tr:last-child a'
 }, {
   name: 'mangafox',
-  match: "^https?://mangafox.(me|la)/manga/[^/]*/[^/]*/[^/]*",
+  match: "^https?://(fan|manga)fox.(me|la|net)/manga/[^/]*/[^/]*/[^/]*",
   img: '.read_img img',
   next: '.read_img a',
   numpages: function() {
