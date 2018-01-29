@@ -13,10 +13,6 @@ This scripts allows you to load entire chapters from manga sites in a long strip
 
 It is very simple, lightweight and fast and it tries to do away with the bloat that many other similar scripts have.
 
-Support the continued development of this script: <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=N7JS2HTH36S78&lc=US&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donate_SM%2egif%3aNonHosted"><img src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif"/></a> any amount is appreciated!
-
-Feel free to leave feedback requesting new sites, reporting bugs or suggesting new features.
-
 When you reach a page that supports this userscript a button will appear with the text "Load Manga", click that to load the manga into the current page. You can also press `Ctrl+,` on your keyboard.
 
 If you prefer that the userscript loads automatically whenever possible then enable autoload from the settings menu.
