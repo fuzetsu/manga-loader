@@ -688,7 +688,7 @@ var implementations = [{
     var chapter = document.querySelector('#jump_chapter').selectedOptions[0].value;
     this._base = 'https://mangadex.com/chapter/';
     this._chap = this._base + chapter + '/';
-    this._page = 1;
+    this._page = document.querySelector('#jump_page').selectedOptions[0].value;
     return true;
   }
 }, {
