@@ -1190,9 +1190,12 @@ var implementations = [{
         method: 'GET',
         async: false,
         url: location.href.split('/')[4].match(/^[\d]{4}/)[0] + '.html',
+        beforeSend: function(xhr) {
+          xhr.overrideMimeType('text/html; charset=big5');
+        },
         onload: function(e) {
           var res = e.target.response;
-          var chapters = res.match('<td>.(<a.*)</td>')[1].split('<td>').map(function(i) {
+          var chapters = res.replace(/[\r\n]/g,'').match('<td width="16">(.*?)<td background="/image/content_box5.gif')[1].match(/<a href=(.*?) target=_blank>/g).map(function(i) {
             return i.match(/href=(.*?) /)[1];
           });
           var curChap = chapters.indexOf(location.pathname);
