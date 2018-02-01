@@ -1186,25 +1186,33 @@ var implementations = [{
   wait: function() {
     if (!W._ajaxdone) {
       W._ajaxdone = -1;
-      ajax({
-        method: 'GET',
-        async: false,
-        url: location.href.split('/')[4].match(/^[\d]{4}/)[0] + '.html',
-        beforeSend: function(xhr) {
-          xhr.overrideMimeType('text/html; charset=big5');
-        },
-        onload: function(e) {
-          var res = e.target.response;
-          var chapters = res.replace(/[\r\n]/g,'').match('<td width="16">(.*?)<td background="/image/content_box5.gif')[1].match(/<a href=(.*?) target=_blank>/g).map(function(i) {
-            return i.match(/href=(.*?) /)[1];
-          });
-          var curChap = chapters.indexOf(location.pathname);
-          if (curChap !== chapters.length - 1) W._nextchap = chapters[curChap + 1];
-          if (curChap !== 0) W._prevchap = chapters[curChap - 1];
-          W._ajaxdone = 1;
-        }
-      });
+      var comicId = location.href.split('/')[4].match(/^[\d]{4}/)[0];
+      if (comicId in W.sessionStorage && W.sessionStorage.getItem(comicId).match('.html')) {
+        W._ajaxdone = 1;
+      } else {
+        ajax({
+          method: 'GET',
+          async: false,
+          url: comicId + '.html',
+          beforeSend: function(xhr) {
+            xhr.overrideMimeType('text/html; charset=big5');
+          },
+          onload: function(e) {
+            var res = e.target.response;
+            var chapters = res.replace(/[\r\n]/g,'').match('<td width="16">(.*?)<td background="/image/content_box5.gif')[1].match(/<a href=(.*?) target=_blank>/g).map(function(i) {
+              return i.match(/href=(.*?) /)[1];
+            });
+            W.sessionStorage.setItem(comicId, chapters);
+            W._ajaxdone = 1;
+          }
+        });
+      }
     } else if (W._ajaxdone === 1) {
+      var comicId = location.href.split('/')[4].match(/^[\d]{4}/)[0];
+      var chapters = W.sessionStorage.getItem(comicId).split(',');
+      var curChap = chapters.indexOf(location.pathname);
+      if (curChap !== chapters.length - 1) W._nextchap = chapters[curChap + 1];
+      if (curChap !== 0) W._prevchap = chapters[curChap - 1];
       return true;
     }
   }
