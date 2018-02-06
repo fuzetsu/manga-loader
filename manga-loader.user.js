@@ -83,6 +83,9 @@
 // @match *://*.komikstation.com/*/*/*
 // @match *://*.gmanga.me/mangas/*/*/*
 // @match *://mangadex.com/chapter/*
+// @match *://merakiscans.com/*/*
+// @match *://biamamscans.com/read/*
+// @match *://read.lhtranslation.com/*.html
 // -- FOOLSLIDE START
 // @match *://manga.redhawkscans.com/reader/read/*
 // @match *://reader.s2smanga.com/read/*
@@ -116,6 +119,7 @@
 // @match *://yonkouprod.com/reader/read/*
 // @match *://reader.championscans.com/read/*
 // @match *://reader.whiteoutscans.com/read/*
+// @match *://hatigarmscans.eu/hs/read/*
 // -- FOOLSLIDE END
 // ==/UserScript==
 
@@ -276,7 +280,7 @@ var implementations = [{
   wait: 1000
 }, {
   name: 'manga-cow, manga-doom, manga-indo, 3asq.info, moonbunnnycafe',
-  match: "^https?://(mngcow|mangadoom|mangaindo|www\\.3asq|moonbunnycafe)\\.(co|id|info|com)/[^/]+/[0-9.]+",
+  match: "^https?://(mngcow|mangadoom|mangaindo|merakiscans|www\\.3asq|moonbunnycafe)\\.(co|id|info|com)/[^/]+/[0-9.]+",
   img: '.prw a > img',
   next: '.prw a',
   numpages: 'select.cbo_wpm_pag',
@@ -692,6 +696,27 @@ var implementations = [{
     return true;
   }
 }, {
+  name: 'biamamscans.com',
+  match: "^https?://biamamscans\\.com/read/.+", //nextchap and prevchap broken
+  img: '.manga-image',
+  next: 'span.float-right:nth-child(2) > div:nth-child(2) > a:nth-child(1)',
+  numpages: '#page-select',
+  curpage: '#page-select',
+  nextchap: '#chapter-select',
+  prevchap: '#chapter-select' 
+}, {
+  name: 'lhtranslation',
+  match: "^https?://read.lhtranslation\\.com/read-.+",
+  img: 'img.chapter-img',
+  next: '.chapter-content > select + a.label',
+  numpages: '.chapter-content > select',
+  curpage: '.chapter-content > select',
+  numchaps: '.form-control',
+  curchap: '.form-control',
+  nextchap: '.form-control',
+  prevchap: '.form-control',
+  invchap: true
+}, {
   name: 'foolslide',
   match: "^https?://(" + [
     "manga.redhawkscans.com/reader/read/.+",
@@ -728,6 +753,7 @@ var implementations = [{
     "yonkouprod.com/reader/read/.+",
     "reader.championscans.com/read/.+",
     "reader.whiteoutscans.com/read/.+",
+    "hatigarmscans.eu/hs/read/.+",
   ].join('|') + ")",
   img: function() {
     return W.pages[W.current_page].url;
