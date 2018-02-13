@@ -120,6 +120,8 @@
 // @match *://reader.championscans.com/read/*
 // @match *://reader.whiteoutscans.com/read/*
 // @match *://hatigarmscans.eu/hs/read/*
+// @match *://lector.kirishimafansub.com/lector/read/*
+// @match *://hotchocolatescans.com/fs/read/*
 // -- FOOLSLIDE END
 // ==/UserScript==
 
@@ -754,6 +756,8 @@ var implementations = [{
     "reader.championscans.com/read/.+",
     "reader.whiteoutscans.com/read/.+",
     "hatigarmscans.eu/hs/read/.+",
+    "lector.kirishimafansub.com/lector/read/.+",
+    "hotchocolatescans.com/fs/read/.+",
   ].join('|') + ")",
   img: function() {
     return W.pages[W.current_page].url;
