@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name       Manga Loader
 // @namespace  http://www.fuzetsu.com/MangaLoader
-// @version    1.11.19
+// @version    1.11.20
 // @description  Support for over 70 sites! Loads manga chapter into one page in a long strip format, supports switching chapters, minimal script with no dependencies, easy to implement new sites, loads quickly and works on mobile devices through bookmarklet
 // @copyright  2016+, fuzetsu
 // @noframes
@@ -377,18 +377,26 @@ var implementations = [{
   img: '#cp_image',
   next: '#cp_image',
   numpages: function () {
-    return getEls('a', getEl('.pageBar')).length;
+    var totalLength = getEls('.chapterpager a').length
+    return parseInt(getEls('.chapterpager a')[totalLength - 1].textContent);
   },
   curpage: function() {
-    return parseInt(getEl('.pageBar .active').dataset.pgt);
+    return parseInt(getEl('.chapterpager .current').textContent);
   },
   pages: function(url, num, cb, ex) {
     var cid = window.location.href.match(/m[0-9]*/g)[2].slice(1),
         xhr = new XMLHttpRequest();
-    xhr.open('get', 'chapterfun.ashx?cid=' + cid + '&page=' + num);
+    xhr.open('get', 'chapterfun.ashx?' +
+      'cid=' + DM5_CID +
+      '&page=' + num +
+      '&_cid=' + DM5_CID +
+      '&_mid=' + DM5_MID +
+      '&_dt=' + DM5_VIEWSIGN_DT +
+      '&_sign=' + DM5_VIEWSIGN
+    );
     xhr.onload = function() {
       var images = eval(xhr.responseText);
-      cb(images[0], images[0]);
+      cb(images[0], num + 1);
     };
     xhr.send();
   },
