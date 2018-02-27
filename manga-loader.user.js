@@ -116,6 +116,7 @@
 // @match *://yonkouprod.com/reader/read/*
 // @match *://reader.championscans.com/read/*
 // @match *://reader.whiteoutscans.com/read/*
+// @match *://*.slide.world-three.org/read/*
 // -- FOOLSLIDE END
 // ==/UserScript==
 
@@ -736,6 +737,7 @@ var implementations = [{
     "yonkouprod.com/reader/read/.+",
     "reader.championscans.com/read/.+",
     "reader.whiteoutscans.com/read/.+",
+    "www.slide.world-three.org/read/.+",
   ].join('|') + ")",
   img: function() {
     return W.pages[W.current_page].url;
