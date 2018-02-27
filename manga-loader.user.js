@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name       Manga Loader
 // @namespace  http://www.fuzetsu.com/MangaLoader
-// @version    1.11.19
+// @version    1.11.20
 // @description  Support for over 70 sites! Loads manga chapter into one page in a long strip format, supports switching chapters, minimal script with no dependencies, easy to implement new sites, loads quickly and works on mobile devices through bookmarklet
 // @copyright  2016+, fuzetsu
 // @noframes
@@ -122,6 +122,7 @@
 // @match *://hatigarmscans.eu/hs/read/*
 // @match *://lector.kirishimafansub.com/lector/read/*
 // @match *://hotchocolatescans.com/fs/read/*
+// @match *://*.slide.world-three.org/read/*
 // -- FOOLSLIDE END
 // ==/UserScript==
 
@@ -383,18 +384,26 @@ var implementations = [{
   img: '#cp_image',
   next: '#cp_image',
   numpages: function () {
-    return getEls('a', getEl('.pageBar')).length;
+    var totalLength = getEls('.chapterpager a').length
+    return parseInt(getEls('.chapterpager a')[totalLength - 1].textContent);
   },
   curpage: function() {
-    return parseInt(getEl('.pageBar .active').dataset.pgt);
+    return parseInt(getEl('.chapterpager .current').textContent);
   },
   pages: function(url, num, cb, ex) {
     var cid = window.location.href.match(/m[0-9]*/g)[2].slice(1),
         xhr = new XMLHttpRequest();
-    xhr.open('get', 'chapterfun.ashx?cid=' + cid + '&page=' + num);
+    xhr.open('get', 'chapterfun.ashx?' +
+      'cid=' + DM5_CID +
+      '&page=' + num +
+      '&_cid=' + DM5_CID +
+      '&_mid=' + DM5_MID +
+      '&_dt=' + DM5_VIEWSIGN_DT +
+      '&_sign=' + DM5_VIEWSIGN
+    );
     xhr.onload = function() {
       var images = eval(xhr.responseText);
-      cb(images[0], images[0]);
+      cb(images[0], num + 1);
     };
     xhr.send();
   },
@@ -758,6 +767,7 @@ var implementations = [{
     "hatigarmscans.eu/hs/read/.+",
     "lector.kirishimafansub.com/lector/read/.+",
     "hotchocolatescans.com/fs/read/.+",
+    "www.slide.world-three.org/read/.+",
   ].join('|') + ")",
   img: function() {
     return W.pages[W.current_page].url;
@@ -1216,22 +1226,33 @@ var implementations = [{
   wait: function() {
     if (!W._ajaxdone) {
       W._ajaxdone = -1;
-      ajax({
-        method: 'GET',
-        async: false,
-        url: location.href.split('/')[4].match(/^[\d]{4}/)[0] + '.html',
-        onload: function(e) {
-          var res = e.target.response;
-          var chapters = res.match('<td>.(<a.*)</td>')[1].split('<td>').map(function(i) {
-            return i.match(/href=(.*?) /)[1];
-          });
-          var curChap = chapters.indexOf(location.pathname);
-          if (curChap !== chapters.length - 1) W._nextchap = chapters[curChap + 1];
-          if (curChap !== 0) W._prevchap = chapters[curChap - 1];
-          W._ajaxdone = 1;
-        }
-      });
+      var comicId = location.href.split('/')[4].match(/^[\d]{4}/)[0];
+      if (comicId in W.sessionStorage && W.sessionStorage.getItem(comicId).match('.html')) {
+        W._ajaxdone = 1;
+      } else {
+        ajax({
+          method: 'GET',
+          async: false,
+          url: comicId + '.html',
+          beforeSend: function(xhr) {
+            xhr.overrideMimeType('text/html; charset=big5');
+          },
+          onload: function(e) {
+            var res = e.target.response;
+            var chapters = res.replace(/[\r\n]/g,'').match('<td width="16">(.*?)<td background="/image/content_box5.gif')[1].match(/<a href=(.*?) target=_blank>/g).map(function(i) {
+              return i.match(/href=(.*?) /)[1];
+            });
+            W.sessionStorage.setItem(comicId, chapters);
+            W._ajaxdone = 1;
+          }
+        });
+      }
     } else if (W._ajaxdone === 1) {
+      var comicId = location.href.split('/')[4].match(/^[\d]{4}/)[0];
+      var chapters = W.sessionStorage.getItem(comicId).split(',');
+      var curChap = chapters.indexOf(location.pathname);
+      if (curChap !== chapters.length - 1) W._nextchap = chapters[curChap + 1];
+      if (curChap !== 0) W._prevchap = chapters[curChap - 1];
       return true;
     }
   }
