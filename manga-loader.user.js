@@ -693,11 +693,11 @@ var implementations = [{
   curpage: '#jump_page',
   nextchap: function() {
     var chapter = document.querySelector('#jump_chapter').selectedOptions[0].nextElementSibling;
-    return (chapter === null) ? false : (document.location.toString().replace(/[0-9]+\/[0-9]+$/, chapter.value));
+     return (chapter === null) ? false : (this._base.replace(/[0-9]+\/$/, chapter.value));
   },
   prevchap: function() {
     var chapter = document.querySelector('#jump_chapter').selectedOptions[0].previousElementSibling;
-    return (chapter === null) ? false : (document.location.toString().replace(/[0-9]+\/[0-9]+$/, chapter.value));
+     return (chapter === null) ? false : (this._base.replace(/[0-9]+\/$/, chapter.value));
   },
   wait: function() {
     var loc = document.location.toString();
