@@ -35,14 +35,16 @@ Manually reload a misbehaving image (loading unusually slow, or stuck loading ha
 **<a href="https://www.youtube.com/watch?v=QaQt2y5G_mE">Mobile Bookmarklet Demo Video</a>**
 
 ### Default Keybindings (configurable):
-- **Z**  - previous chapter
-- **X**  - exit
-- **C**  - next chapter
-- **W**  - scroll up
-- **S**  - scroll down
-- **\+** - zoom in
-- **\-** - zoom out
-- **0**  - reset zoom
+<pre>
+Z - previous chapter
+X - exit
+C - next chapter
+W - scroll up
+S - scroll down
++ - zoom in
+- - zoom out
+0 - reset zoom
+</pre>
 
 **NEW in v1.7.x: Settings panel**  
 - Define custom CSS in the new settings panel (accessible through the gear icon at the bottom left)
