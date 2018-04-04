@@ -45,20 +45,20 @@ Manually reload a misbehaving image (loading unusually slow, or stuck loading ha
 - **0**  - reset zoom
 
 **NEW in v1.7.x: Settings panel**  
-- Define custom CSS in the new settings panel (accessible through the gear icon at the bottom left).
-- The CSS will be saved and reapplied each time the script loads.
-- Change the background color of the page, the width of the images and anything else in the settings panel.
+- Define custom CSS in the new settings panel (accessible through the gear icon at the bottom left)
+- The CSS will be saved and reapplied each time the script loads
+- Change the background color of the page, the width of the images and anything else in the settings panel
 
 **NEW in v1.8.x: Custom page loading and keybindings**  
-- The settings menu introduced in v1.7.x now contains all settings including number of pages to load and whether or not to autoload.
-- Now possible to set exactly how many pages to lazyload instead of choosing between all or 10.
-- To change the default keybindings in the settings panel, focus the corresponding textbox and press the key you would like to assign. 
+- The settings menu introduced in v1.7.x now contains all settings including number of pages to load and whether or not to autoload
+- Now possible to set exactly how many pages to lazyload instead of choosing between all or 10
+- To change the default keybindings in the settings panel, focus the corresponding textbox and press the key you would like to assign
 
 **NEW in v.1.10.x: CSS profiles**
-- Define multiple named css profiles you can switch between in the settings menu.
+- Define multiple named css profiles you can switch between in the settings menu
 
 **NEW in v1.11.x: Zooming**
--  Zoom in and out of images using the +/-/0 (plus/minus/zero) keys (configurable).
+-  Zoom in and out of images using the +/-/0 (plus/minus/zero) keys (configurable)
 
 ### How to get to the menu options for this script
 
