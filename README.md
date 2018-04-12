@@ -1,58 +1,66 @@
 # [Manga Loader](https://greasyfork.org/en/scripts/692-manga-loader)
 
 ## Contributing
-I've decided to put this script on github in the hopes that maybe people can start submitting their own implementations for new sites and speed up the development. 
+I have decided to put this script on github in the hopes people start submitting their implementations for new sites to speed up the development. 
 
-A while back I put together a video to show off the basic procedure for creating an implementation for Manga Loader, if you're interested in adding a new site yourself, but don't know how check out [this video.](https://www.youtube.com/watch?v=zgaogJCL8xQ)
+A while back I put together a video to show off the basic procedure for creating an implementation for Manga Loader, if you are interested in adding a new site yourself, but do not know how, check out [this video.](https://www.youtube.com/watch?v=zgaogJCL8xQ)
 
-I don't have too much time to work on this nowadays but at the same time I don't want the project to be left behind, so let's see how this goes!
+I do not have much time to work on this nowadays, but at the same time I do not want the project to be left behind, so let's see how this goes!
 
 ## About
 
-This scripts allows you to load entire chapters from manga sites in a long strip format (all images on one page).
+Simple. Lightweight. Fast. 
 
-It is very simple, lightweight and fast and it tries to do away with the bloat that many other similar scripts have.
+Manga Loader allows loading of entire chapters from manga sites in a longstrip format (all images on one page).
 
-When you reach a page that supports this userscript a button will appear with the text "Load Manga", click that to load the manga into the current page. You can also press `Ctrl+,` on your keyboard.
+Manga Loader tries to remove the bloat many other similar scripts have.
 
-If you prefer that the userscript loads automatically whenever possible then enable autoload from the settings menu.
+When visiting a page supporting Manga Loader, a button will appear with the text "Load Manga".  
+Click the button or press `Ctrl+,` on the keyboard to load the manga into the current page.
 
-The script loads 10 images at a time (by default) and loads more as you scroll, you can make the script load all the images in the chapter at once by changing the load num setting to the word "all" or whatever number you like.
-Loading less pages at once is useful if you're experiencing broken images or browser slowdowns, especially when loading a manga with a lot of pages in it.
+To automatically load the userscript whenever possible, enable autoload from the settings menu.
 
-Manually reload an image that is misbehaving (loading unusually slowly, or stuck loading half way) by clicking the small refresh icon in the bottom right info/toolbar and then click on the image you would like to manually reload.
+The script loads 10 images at a time (by default) and loads when scrolling.  
+To load all the images in the chapter at once, change the load num setting to the word "all".  
+To load a specific number of pages, change the load num setting to the preferred number.  
+Loading less pages at once is useful if experiencing broken images or browser slowdowns.  
 
-**Bookmarklet**: If you would like to use the script as a bookmark that you can manually run whenever you like just copy the following code and create a bookmark out of it. Make sure that the `javascript:` part of the code is still there after pasting otherwise it will not work. **This method also works for using the script on mobile devices such as phones and tablets**.
+Manually reload a misbehaving image (loading unusually slow, or stuck loading half way) by clicking the small refresh icon in the bottom right info/toolbar, then click on the image.
+
+**Bookmarklet**: To use the script as a bookmark, copy the following code and create a bookmark. Make sure the `javascript:` part of the code is still there after pasting, otherwise the bookmark function will not work. **This method also works for using the script on mobile devices such as phones and tablets**.
 `javascript:(function(){BM_MODE=true;document.body.appendChild(document.createElement('script')).src='https://greasyfork.org/scripts/692-manga-loader/code/Manga%20Loader.user.js';}())`
 
-### Using the script on your phone or tablet
-**This video demonstrates using the script on an Android phone, but it should work on any mobile device including iPhones, iPads and other tablets/phones**
+### Using the script on mobile devices
+**This video demonstrates using the script on an Android phone, but Manga Loader should work on any mobile device including iPhones, iPads and other tablets/phones**
 **<a href="https://www.youtube.com/watch?v=QaQt2y5G_mE">Mobile Bookmarklet Demo Video</a>**
 
 ### Default Keybindings (configurable):
+<pre>
 Z - previous chapter
 X - exit
 C - next chapter
 W - scroll up
 S - scroll down
-\+ - zoom in
-\- - zoom out
++ - zoom in
+- - zoom out
 0 - reset zoom
+</pre>
 
-**NEW in v1.7.x:**
-You can now define custom CSS in the new settings panel (accessible through the gear icon at the bottom left).
-The CSS will be saved and reapplied each time the script loads. You can change the background color of the page, the width of the images and pretty much anything else.
+**NEW in v1.7.x: Settings panel**  
+- Define custom CSS in the new settings panel (accessible through the gear icon at the bottom left)
+- The CSS will be saved and reapplied each time the script loads
+- Change the background color of the page, the width of the images and anything else in the settings panel
 
-**NEW in v1.8.x:**
-The settings menu introduced in v1.7.x now contains all settings including number of pages to load and whether or not to autoload. You can now set exactly how many pages to lazyload instead of choosing between all or 10.
+**NEW in v1.8.x: Custom page loading and keybindings**  
+- The settings menu introduced in v1.7.x now contains all settings including number of pages to load and whether or not to autoload
+- Now possible to set exactly how many pages to lazyload instead of choosing between all or 10
+- To change the default keybindings in the settings panel, focus the corresponding textbox and press the key you would like to assign
 
-You can also change the default keybindings in the settings panel. Just focus the corresponding textbox and press the key you'd like to assign. 
+**NEW in v.1.10.x: CSS profiles**
+- Define multiple named css profiles you can switch between in the settings menu
 
-**NEW in v.1.10.x:**
-CSS Profiles. Define multiple named css profiles you can switch between in the settings menu.
-
-**NEW in v1.11.x:**
-Zooming. You can now zoom in and out of images using the +/-/0 (plus/minus/zero) keys (configurable).
+**NEW in v1.11.x: Zooming**
+-  Zoom in and out of images using the +/-/0 (plus/minus/zero) keys (configurable)
 
 ### How to get to the menu options for this script
 
