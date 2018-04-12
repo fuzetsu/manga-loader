@@ -692,13 +692,14 @@ var implementations = [{
   numpages: '#jump_page',
   curpage: '#jump_page',
   nextchap: function() {
-    var chapter = document.querySelector('#jump_chapter').selectedOptions[0].nextElementSibling;
-     return (chapter === null) ? false : (this._base.replace(/[0-9]+\/$/, chapter.value));
-  },
-  prevchap: function() {
     var chapter = document.querySelector('#jump_chapter').selectedOptions[0].previousElementSibling;
      return (chapter === null) ? false : (this._base.replace(/[0-9]+\/$/, chapter.value));
   },
+  prevchap: function() {
+    var chapter = document.querySelector('#jump_chapter').selectedOptions[0].nextElementSibling;
+     return (chapter === null) ? false : (this._base.replace(/[0-9]+\/$/, chapter.value));
+  },
+
   wait: function() {
     var loc = document.location.toString();
     var num = loc.match(/[0-9]+$/);
