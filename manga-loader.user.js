@@ -146,9 +146,6 @@ var reuse = {
   }
 };
 
-// string used to solve the issue Mangafox is having when the URL is missing zeros
-var mangafoxFix = '0000000000';
-
 /**
 Sample Implementation:
 {
@@ -234,8 +231,21 @@ var implementations = [{
   name: 'mangafox',
   match: "^https?://(fan|manga)fox.(me|la|net)/manga/[^/]*/[^/]*/[^/]*",
   img: '.read_img img',
-  next: '.read_img a',
+  next: function() {
+    _fix = '0000000000';
+    url = extractInfo('.read_img a');
+    if (url != null) {
+      this._page = parseInt(url.substring(url.lastIndexOf('/') + 1, url.lastIndexOf('.')));
+      this._base = url.substring(0, url.lastIndexOf(this._page));
+    }
+    return this._base + _fix + this._page++ + '.html';
+  },
   numpages: function() {
+    _fix = '0000000000';
+    // This block is used to add zeros to the URL of the first page to load
+    if (!location.href.match('\/' + _fix + '[^\/]*$')) {
+      location.href = location.href.replace(/\/([^\/]*)$/,'\/' + _fix + '$1');
+    }
     return extractInfo('select.m') - 1;
   },
   curpage: 'select.m',
@@ -2117,10 +2127,6 @@ var loadManga = function(imp) {
         }
       },
       loadNextPage = function(url) {
-        // Fix used to solve the issue Mangafox is having when the URL is missing zeros
-        if (imp.name == 'mangafox') {
-          url = url.replace(/\/([^\/]*)$/,'\/' + mangafoxFix + '$1');
-        }
         if (mLoadNum !== 'all' && count % mLoadNum === 0) {
           if (resumeUrl) {
             resumeUrl = null;
@@ -2224,10 +2230,6 @@ var waitAndLoad = function(imp) {
 var MLoaderLoadImps = function(imps) {
   var success = imps.some(function(imp) {
     if (imp.match && (new RegExp(imp.match, 'i')).test(pageUrl)) {
-      // Fix used to solve the issue Mangafox is having when the URL is missing zeros
-      if (imp.name == 'mangafox' && !location.href.match('\/' + mangafoxFix + '[^\/]*$')) {
-        location.href = location.href.replace(/\/([^\/]*)$/,'\/' + mangafoxFix + '$1');
-      }    
       currentImpName = imp.name;
       if (W.BM_MODE || (autoload !== 'no' && (mAutoload || autoload))) {
         log('autoloading...');
