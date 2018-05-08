@@ -146,6 +146,9 @@ var reuse = {
   }
 };
 
+// string used to solve the issue Mangafox is having when the URL is missing zeros
+var mangafoxFix = '0000000000';
+
 /**
 Sample Implementation:
 {
@@ -2114,6 +2117,10 @@ var loadManga = function(imp) {
         }
       },
       loadNextPage = function(url) {
+        // Fix used to solve the issue Mangafox is having when the URL is missing zeros
+        if (imp.name == 'mangafox') {
+          url = url.replace(/\/([^\/]*)$/,'\/' + mangafoxFix + '$1');
+        }
         if (mLoadNum !== 'all' && count % mLoadNum === 0) {
           if (resumeUrl) {
             resumeUrl = null;
@@ -2217,6 +2224,10 @@ var waitAndLoad = function(imp) {
 var MLoaderLoadImps = function(imps) {
   var success = imps.some(function(imp) {
     if (imp.match && (new RegExp(imp.match, 'i')).test(pageUrl)) {
+      // Fix used to solve the issue Mangafox is having when the URL is missing zeros
+      if (imp.name == 'mangafox' && !location.href.match('\/' + mangafoxFix + '[^\/]*$')) {
+        location.href = location.href.replace(/\/([^\/]*)$/,'\/' + mangafoxFix + '$1');
+      }    
       currentImpName = imp.name;
       if (W.BM_MODE || (autoload !== 'no' && (mAutoload || autoload))) {
         log('autoloading...');
