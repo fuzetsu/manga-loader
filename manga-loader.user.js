@@ -243,7 +243,7 @@ var implementations = [{
   numpages: function() {
     _fix = '0000000000';
     // This block is used to add zeros to the URL of the first page to load if necessary
-    if (extractInfo('.read_img') == null) {
+    if (extractInfo('.read_img') == null && !location.href.includes(_fix)) {
       location.href = location.href.replace(/\/([^\/]*)$/,'\/' + _fix + '$1');
     }
     return extractInfo('select.m') - 1;
