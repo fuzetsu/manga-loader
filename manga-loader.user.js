@@ -242,9 +242,13 @@ var implementations = [{
   },
   numpages: function() {
     _fix = '0000000000';
-    // This block is used to add zeros to the URL of the first page to load if necessary
-    if (extractInfo('.read_img') == null && !location.href.includes(_fix)) {
-      location.href = location.href.replace(/\/([^\/]*)$/,'\/' + _fix + '$1');
+    // This block is used to solve issues with the URL of the first page to load if necessary
+    if (extractInfo('.read_img') == null) {
+      if (!location.href.includes('.html')) { // In case the page only shows comments
+        location.href = location.href + '1.html';
+      } else if (!location.href.includes(_fix)) { // In case the page misses zeros
+        location.href = location.href.replace(/\/([^\/]*)$/,'\/' + _fix + '$1');
+      }
     }
     return extractInfo('select.m') - 1;
   },
