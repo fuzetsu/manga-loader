@@ -86,6 +86,7 @@
 // @match *://merakiscans.com/*/*
 // @match *://biamamscans.com/read/*
 // @match *://read.lhtranslation.com/*.html
+// @match *://www.930mh.com/manhua/*/*.html*
 // -- FOOLSLIDE START
 // @match *://manga.redhawkscans.com/reader/read/*
 // @match *://reader.s2smanga.com/read/*
@@ -715,7 +716,7 @@ var implementations = [{
   numpages: '#page-select',
   curpage: '#page-select',
   nextchap: '#chapter-select',
-  prevchap: '#chapter-select' 
+  prevchap: '#chapter-select'
 }, {
   name: 'lhtranslation',
   match: "^https?://read.lhtranslation\\.com/read-.+",
@@ -1219,44 +1220,17 @@ var implementations = [{
     return extractInfo('select[name=jump]') - 1;
   },
   nextchap: function() {
-      return W._nextchap;
+    let filter = getEls('.pages').filter(function(i) {
+      return i.textContent.match('下一話');
+    });
+    return filter.length ? filter[0].href : null;
   },
   prevchap: function() {
-      return W._prevchap;
+    let filter = getEls('.pages').filter(function(i) {
+        return i.textContent.match('上一話');
+    });
+    return filter.length ? filter[0].href : null;
   },
-  wait: function() {
-    if (!W._ajaxdone) {
-      W._ajaxdone = -1;
-      var comicId = location.href.split('/')[4].match(/^[\d]{4}/)[0];
-      if (comicId in W.sessionStorage && W.sessionStorage.getItem(comicId).match('.html')) {
-        W._ajaxdone = 1;
-      } else {
-        ajax({
-          method: 'GET',
-          async: false,
-          url: comicId + '.html',
-          beforeSend: function(xhr) {
-            xhr.overrideMimeType('text/html; charset=big5');
-          },
-          onload: function(e) {
-            var res = e.target.response;
-            var chapters = res.replace(/[\r\n]/g,'').match('<td width="16">(.*?)<td background="/image/content_box5.gif')[1].match(/<a href=(.*?) target=_blank>/g).map(function(i) {
-              return i.match(/href=(.*?) /)[1];
-            });
-            W.sessionStorage.setItem(comicId, chapters);
-            W._ajaxdone = 1;
-          }
-        });
-      }
-    } else if (W._ajaxdone === 1) {
-      var comicId = location.href.split('/')[4].match(/^[\d]{4}/)[0];
-      var chapters = W.sessionStorage.getItem(comicId).split(',');
-      var curChap = chapters.indexOf(location.pathname);
-      if (curChap !== chapters.length - 1) W._nextchap = chapters[curChap + 1];
-      if (curChap !== 0) W._prevchap = chapters[curChap - 1];
-      return true;
-    }
-  }
 }, {
   name: 'ikanman',
   match: "https?://(www|tw)\.(ikanman|manhuagui)\.com/comic/[0-9]+/[0-9]+\.html",
@@ -1357,6 +1331,29 @@ var implementations = [{
     W.pages = W.release_pages && W.release_pages[1];
     return W.pages;
   }
+}, {
+  name: '930mh',
+  match: "http://www\.930mh\.com/manhua/\\d+/\\d+.html",
+  img: '#images > img',
+  next: function() {
+    return location.origin + location.pathname + '?p=' + (W.SinTheme.getPage() + 1);
+  },
+  pages: function(url, num, cb, ex) {
+    cb(new URL(W.pageImage).origin + '/' + W.chapterPath + W.chapterImages[num - 1], num - 1);
+  },
+  curpage: function() {
+    return W.SinTheme.getPage();
+  },
+  numpages: function() {
+    return W.chapterImages.length;
+  },
+  nextchap: function(){
+    return W.nextChapterData.id && W.nextChapterData.id > 0 ? W.comicUrl + W.nextChapterData.id + '.html' : null;
+  },
+  prevchap: function(){
+    return W.prevChapterData.id && W.prevChapterData.id > 0 ? W.comicUrl + W.prevChapterData.id + '.html' : null;
+  },
+  wait: '#images > img'
 }];
 // END OF IMPL
 
