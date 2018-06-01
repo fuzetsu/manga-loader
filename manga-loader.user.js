@@ -1352,7 +1352,8 @@ var implementations = [{
   },
   prevchap: function(){
     return W.prevChapterData.id && W.prevChapterData.id > 0 ? W.comicUrl + W.prevChapterData.id + '.html' : null;
-  }
+  },
+  wait: '#images > img'
 }];
 // END OF IMPL
 
