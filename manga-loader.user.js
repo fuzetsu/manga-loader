@@ -87,6 +87,8 @@
 // @match *://biamamscans.com/read/*
 // @match *://read.lhtranslation.com/*.html
 // @match *://www.930mh.com/manhua/*/*.html*
+// @match *://www.mangabox.me/reader/*/episodes/*/
+// @match *://twocomic.com/view/comic_*.html?ch=*
 // -- FOOLSLIDE START
 // @match *://manga.redhawkscans.com/reader/read/*
 // @match *://reader.s2smanga.com/read/*
@@ -382,35 +384,24 @@ var implementations = [{
 }, {
   name: 'dm5',
   match: "^https?://[^\\.]*\\.dm5\\.com/m[0-9]*",
-  img: '#cp_image',
-  next: '#cp_image',
-  numpages: function () {
-    var totalLength = getEls('.chapterpager a').length
-    return parseInt(getEls('.chapterpager a')[totalLength - 1].textContent);
+  img: function (){
+    return getEl('img.load-src').getAttribute('data-src');
   },
-  curpage: function() {
-    return parseInt(getEl('.chapterpager .current').textContent);
+  next: function(){
+    return '#';
+  },
+  numpages: function () {
+    return W.pages.length;
   },
   pages: function(url, num, cb, ex) {
-    var cid = window.location.href.match(/m[0-9]*/g)[2].slice(1),
-        xhr = new XMLHttpRequest();
-    xhr.open('get', 'chapterfun.ashx?' +
-      'cid=' + DM5_CID +
-      '&page=' + num +
-      '&_cid=' + DM5_CID +
-      '&_mid=' + DM5_MID +
-      '&_dt=' + DM5_VIEWSIGN_DT +
-      '&_sign=' + DM5_VIEWSIGN
-    );
-    xhr.onload = function() {
-      var images = eval(xhr.responseText);
-      cb(images[0], num + 1);
-    };
-    xhr.send();
+    cb(W.pages[num - 1].getAttribute('data-src'), num - 1);
   },
   nextchap: 'a.logo_2',
   prevchap: 'a.logo_1',
-  wait: '#cp_image'
+  wait: function (){
+    W.pages = getEls('img.load-src');
+    return true;
+  }
 }, {
   name: 'senmanga',
   match: "^https?://[^\\.]+\\.senmanga\\.com/[^/]*/.+",
@@ -1354,6 +1345,62 @@ var implementations = [{
     return W.prevChapterData.id && W.prevChapterData.id > 0 ? W.comicUrl + W.prevChapterData.id + '.html' : null;
   },
   wait: '#images > img'
+}, {
+  name: '漫畫王',
+  match: "https://www\.mangabox\.me/reader/\\d+/episodes/\\d+/",
+  img: 'img.jsNext',
+  next: function() {
+    return '#';
+  },
+  pages: function(url, num, cb, ex) {
+    cb(W.pages[num - 1].src, num - 1);
+  },
+  numpages: function() {
+    return W.pages.length;
+  },
+  nextchap: '.lastSlider_nextButton',
+  wait: function (){
+    W.pages = getEls('img.jsNext');
+    return true;
+  }
+}, {
+  name: '2comic.com 動漫易',
+  match: "http://twocomic.com/view/comic_\\d+.html",
+  img: '#TheImg',
+  next: function() {
+    return '#';
+  },
+  pages: function(url, num, cb, ex) {
+    W.p++;
+    var ss = W.ss;
+    var c = W.c;
+    var ti = W.ti;
+    var nn = W.nn;
+    var p = W.p;
+    var mm = W.mm;
+    var f = W.f;
+    var img = 'http://img' + ss(c, 4, 2) + '.8comic.com/' + ss(c, 6, 1) + '/' + ti + '/' + ss(c, 0, 4) + '/' + nn(p) + '_' + ss(c, mm(p) + 10, 3, f) + '.jpg';
+    cb(img, num - 1);
+  },
+  numpages: function() {
+    return W.ps * 1;
+  },
+  curpage: function() {
+    return W.p;
+  },
+  numchaps: function() {
+    return W.chs;
+  },
+  curchap: function() {
+    return W.ch;
+  },
+  nextchap: function() {
+    return W.ch < W.chs ? W.replaceurl('ch', W.ni) : false;
+  },
+  prevchap: function() {
+    return W.ch > 1 ? W.replaceurl('ch', W.pi) : false;
+  },
+  wait:'#TheImg'
 }];
 // END OF IMPL
 
