@@ -241,8 +241,7 @@ var implementations = [{
   prevchap: '.pager-list-left > a:first-child',
   imgURLs: [],
   pages: function(url, num, cb, ex) {
-    var imp = this;
-    
+    var imp = this;    
     if (this.imgURLs[num])
       cb(this.imgURLs[num], num);
     else
@@ -250,13 +249,10 @@ var implementations = [{
         url: 'chapterfun.ashx?cid=' + W.chapterid + '&page=' + num,
         onload: function(e) {
           eval(e.target.responseText);
-          for (i = 0; i < d.length; i++)
+          for (var i = 0; i < d.length; i++) {
             imp.imgURLs[num + i] = d[i];
-
+          }
           cb(d[0], num);
-        },
-        onerror: function(e) {
-          alert(e);
         }
       });
   },
