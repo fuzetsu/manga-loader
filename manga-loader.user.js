@@ -2033,7 +2033,7 @@ var getViewer = function(prevChapter, nextChapter) {
   		log(curId + " > " + nextId);
   		log("Reached the end!");
   	} else {
-  		document.getElementById(nextId.join('-')).scrollIntoView();
+  		nextPage.scrollIntoView();
   	}
   }
   // keybindings
