@@ -2028,7 +2028,7 @@ var getViewer = function(prevChapter, nextChapter) {
   			nextId[2] = parseInt(nextId[2]) - 1;
   			break;
   	}
-  	var nextPage = getEl('.' + nextId.join('-'));
+  	var nextPage = getEl('#' + nextId.join('-'));
   	if (nextPage == null) {
   		log(curId + " > " + nextId);
   		log("Reached the end!");
