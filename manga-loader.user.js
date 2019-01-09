@@ -2132,8 +2132,6 @@ var addImage = function(src, loc, imgNum, callback) {
     image.style.cursor = 'pointer';
     image.title = 'Reload "' + src + '"?';
     image.src = IMAGES.refresh_large;
-    offset.push(image.offsetTop)
-    console.log(offset)
     image.onclick = function() {
       image.onload = callback;
       image.title = '';
