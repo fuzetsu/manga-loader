@@ -1450,11 +1450,16 @@ var implementations = [{
       // Some internal React object is attached as a property of the root div,
       // named '__reactInternalInstance' with a hash at the end.
       // We can use the value of this property to get the <GalleryPost> object.
-      var elValues = Object.values(el);
-      if (elValues.length !== 1) {
-        log('imgur: unexpected number of React root values:', 'exit');
+
+      // React sometimes adds a '__reactEventHandlers' property too, so we
+      // should explicitly find the one which starts with '__reactInternalInstance'.
+      var elKeys = Object.keys(el).filter(function (key) {
+        return key.indexOf('__reactInternalInstance') === 0;
+      });
+      if (elKeys.length !== 1) {
+        log('imgur: unexpected number of __reactInternalInstance keys', 'exit');
       }
-      var reactEl = elValues[0]._nativeContainerInfo._topLevelWrapper._renderedComponent._instance;
+      var reactEl = el[elKeys[0]]._nativeContainerInfo._topLevelWrapper._renderedComponent._instance;
 
       // Finally, get the images object from the album image store.
       this._images = reactEl.props.album_image_store.getImages(reactEl.props.data.hash);
