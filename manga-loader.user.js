@@ -2017,11 +2017,31 @@ var getViewer = function(prevChapter, nextChapter) {
     newZoomPostion =(document.documentElement.scrollHeight || document.body.scrollHeight)*ratioZoom;
     window.scroll(0, newZoomPostion);
   };
+  var goToPage = function(toWhichPage) {
+  	var curId = getCurrentImage().id;
+  	var nextId = curId.split('-');
+  	switch (toWhichPage) {
+  		case 'next':
+  			nextId[2] = parseInt(nextId[2]) + 1;
+  			break;
+  		case 'previous':
+  			nextId[2] = parseInt(nextId[2]) - 1;
+  			break;
+  	}
+  	var nextPage = getEl('#' + nextId.join('-'));
+  	if (nextPage == null) {
+  		log(curId + " > " + nextId);
+  		log("Reached the end!");
+  	} else {
+  		nextPage.scrollIntoView();
+  	}
+  }
   // keybindings
   UI.keys = {
     PREV_CHAP: 90, EXIT: 88, NEXT_CHAP: 67,
     SCROLL_UP: 87, SCROLL_DOWN: 83,
-    ZOOM_IN: 187, ZOOM_OUT: 189, RESET_ZOOM: 48
+    ZOOM_IN: 187, ZOOM_OUT: 189, RESET_ZOOM: 48,
+    PREV_PAGE: 37, NEXT_PAGE: 39,
   };
   // override defaults for firefox since different keycodes
   if(typeof InstallTrigger !== 'undefined') {
@@ -2075,6 +2095,12 @@ var getViewer = function(prevChapter, nextChapter) {
       case UI.keys.RESET_ZOOM:
         changeZoom('=', UI.images);
         break;
+      case UI.keys.NEXT_PAGE:
+        goToPage('next');
+        break;
+      case UI.keys.PREV_PAGE:
+      	goToPage('previous');
+      	break;
     }
   }, true);
   return UI;
@@ -2113,6 +2139,7 @@ var addImage = function(src, loc, imgNum, callback) {
       image.src = src;
     };
   };
+  image.id = 'ml-pageid-' + imgNum;
   image.onload = callback;
   image.src = src;
   loc.appendChild(image);
