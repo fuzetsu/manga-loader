@@ -518,7 +518,7 @@ var implementations = [{
   img: '#divImage img',
   next: '#divImage img',
   numpages: function() {
-    return W.lstImages.length;
+    return W.lstOLA.length;
   },
   curpage: function() {
     if(getEls('#divImage img').length > 1) {
@@ -530,7 +530,7 @@ var implementations = [{
   nextchap: '#selectChapter, .selectChapter',
   prevchap: '#selectChapter, .selectChapter',
   pages: function(url, num, cb, ex) {
-    cb(W.lstImages[num - 1], num);
+    cb(W.lstOLA[num - 1], num);
   }
 }, {
   name: 'the-spectrum-scans',
