@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name       Manga Loader
 // @namespace  http://www.fuzetsu.com/MangaLoader
-// @version    1.11.27
+// @version    1.11.28
 // @description  Support for over 70 sites! Loads manga chapter into one page in a long strip format, supports switching chapters, minimal script with no dependencies, easy to implement new sites, loads quickly and works on mobile devices through bookmarklet
 // @copyright  2016+, fuzetsu
 // @noframes
@@ -518,7 +518,7 @@ var implementations = [{
   img: '#divImage img',
   next: '#divImage img',
   numpages: function() {
-    return W.lstOLA.length;
+    return (W.lstOLA || W.lstImages).length;
   },
   curpage: function() {
     if(getEls('#divImage img').length > 1) {
@@ -530,7 +530,7 @@ var implementations = [{
   nextchap: '#selectChapter, .selectChapter',
   prevchap: '#selectChapter, .selectChapter',
   pages: function(url, num, cb, ex) {
-    cb(W.lstOLA[num - 1], num);
+    cb((W.lstOLA || W.lstImages)[num - 1], num);
   }
 }, {
   name: 'the-spectrum-scans',
