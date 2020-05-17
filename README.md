@@ -177,4 +177,3 @@ See a summary of changes for each new version of the script <a href="https://gre
 Sites that people have requested implementations for that I haven't gotten around to adding yet and/or sites that I intend to add in the future.
 
 ### Foolslide Site Requests
-![Analytics](https://ga-beacon.appspot.com/UA-61974780-1/greasy-fork/manga-loader/README?pixel)
