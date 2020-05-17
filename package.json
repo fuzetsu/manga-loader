@@ -1,0 +1,20 @@
+{
+  "name": "manga-loader",
+  "version": "1.0.0",
+  "description": "simple media focused reddit client",
+  "main": "manga-loader.user.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fuzetsu/manga-loader.git"
+  },
+  "author": "Daniel Loomer / Allan Hsu",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fuzetsu/manga-loader/issues"
+  },
+  "homepage": "https://github.com/fuzetsu/manga-loader#readme",
+  "devDependencies": {
+    "eslint": "^7.0.0",
+    "eslint-config-prettier": "^6.11.0"
+  }
+}
