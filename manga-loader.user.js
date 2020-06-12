@@ -126,6 +126,8 @@
 // @match *://lector.kirishimafansub.com/lector/read/*
 // @match *://hotchocolatescans.com/fs/read/*
 // @match *://*.slide.world-three.org/read/*
+// @match *://e-hentai.org/s/*
+// @match *://nhentai.net/g/*
 // -- FOOLSLIDE END
 // ==/UserScript==
 
@@ -1421,6 +1423,20 @@ var implementations = [{
     return W.ch > 1 ? W.replaceurl('ch', W.pi) : false;
   },
   wait:'#TheImg'
+}, {
+  name: 'e-hentai',
+  match: "^https?://e-hentai.org/s/.*/.*",
+  img: '#i3 #img',
+  next: '#i2 #next',
+  numpages: '#i2 #prev + div > span:nth-of-type(2)',
+  curpage: '#i2 #prev + div > span:nth-of-type(1)'
+}, {
+  name: 'nhentai',
+  match: "^https?://nhentai.net/g/.*",
+  img: '#image-container img',
+  next: '.reader-pagination .next',
+  numpages: '.reader-pagination .num-pages',
+  curpage: '.reader-pagination .current'
 }];
 // END OF IMPL
 
