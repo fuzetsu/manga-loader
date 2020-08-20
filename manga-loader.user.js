@@ -60,7 +60,7 @@
 // @match *://www.sh-arab.com/manga/*
 // @match *://spinybackmanga.com/*
 // @match *://br.mangahost.com/manga/*/*
-// @match *://www.manga.ae/*/*/*
+// @match *://www.mngaar.com//*/*/*
 // @match *://mangaforall.com/manga/*/*/*
 // @match *://hellocomic.com/*/*/*
 // @match *://www.3asq.info/*/*
