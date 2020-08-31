@@ -1515,7 +1515,18 @@ var extractInfo = function(selector, mod, context) {
       case 'a':
         if(mod.type === 'index')
           return parseInt(elem.textContent);
-        return elem.href || elem.getAttribute('href');
+        var href = elem.href || elem.getAttribute('href');
+        if (!href.startsWith('/') && !href.startsWith('http') && !href.startsWith('#')) {
+          return /^[^\?\#]*\//.exec(window.location.href) + href;
+        }
+        if (href.startsWith('//')) {
+          return window.location.protocol + href;
+        }
+        if (href.startsWith('/')) {
+          // .host contains the port already
+          return window.location.protocol + '//' + window.location.host + href;
+        }
+        return href;
       case 'ul':
         return elem.children.length;
       case 'select':
