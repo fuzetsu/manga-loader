@@ -1605,6 +1605,51 @@ var createButton = function(text, action, styleStr) {
   return button;
 };
 
+var preloadProfiles = function(cssProfiles) {
+  //new Defaults
+  var Profiles = [
+    {name: "Webtoons", css:
+      toStyleStr({
+        'background-color':'white !important'
+      }, 'body') + "\n" + 
+      toStyleStr({
+        'color':'white',
+        'background-color':'rgba(0,0,0, .5)',
+        'border':'1px solid black'
+      }, '.ml-chap-nav a') + "\n" +
+      toStyleStr({
+        'color':'black',
+        'background-color':'rgba(255,255,255, 1)'
+      }, '.ml-chap-nav a:hover') + "\n" +
+      toStyleStr({
+        'position':'absolute',
+        'margin-left':'0px',
+        'border-radius':'0px 10px 10px 0px',
+        'background-color':'#444'
+      }, '.ml-counter') + "\n" +
+      toStyleStr({
+        'margin':'0px auto'
+      }, '.ml-images img')
+    }
+  ];
+
+  //Load not already inserted defaults
+  var i, j, tmp, find;
+  for (i = 0; i < Profiles.length; i++) {
+    find = false;
+    for (j = 0; j < cssProfiles.length; j++) {
+      tmp = cssProfiles[j];
+      if(tmp.name == Profiles[i].name) {
+        find = true;
+        break;
+      }
+    }
+    if(!find) {
+      cssProfiles.push(Profiles[i]);
+    }
+  }
+};
+
 var getViewer = function(prevChapter, nextChapter) {
   var viewerCss = toStyleStr({
     'background-color': 'black !important',
@@ -1635,6 +1680,10 @@ var getViewer = function(prevChapter, nextChapter) {
         'z-index': '100',
         'position': 'relative'
       }, '.ml-counter'),
+      navdivCss = toStyleStr({
+        'position': 'sticky',
+        'top': '5px'
+      }, '.ml-chap-nav'),
       navCss = toStyleStr({
         'text-decoration': 'none',
         'color': 'white',
@@ -1708,9 +1757,9 @@ var getViewer = function(prevChapter, nextChapter) {
       '<i class="fa fa-cog ml-button ml-settings-button" title="Adjust userscript settings"></i> ' +
       '<i class="fa fa-refresh ml-button ml-manual-reload" title="Manually refresh next clicked image."></i></span></div>';
   // combine ui elements
-  document.body.innerHTML = nav + '<div class="ml-images"></div>' + nav + floatingMsg + stats;
+  document.body.innerHTML = nav + '<div class="ml-images"></div>' + floatingMsg + stats;
   // add main styles
-  addStyle('main', true, viewerCss, imagesCss, imageCss, counterCss, navCss, navHoverCss, statsCss, statsCollapseCss, statsHoverCss, boxCss, floatingMsgCss, buttonCss, keySettingCss, autoloadSettingCss, floatingMsgAnchorCss);
+  addStyle('main', true, viewerCss, imagesCss, imageCss, counterCss, navdivCss, navCss, navHoverCss, statsCss, statsCollapseCss, statsHoverCss, boxCss, floatingMsgCss, buttonCss, keySettingCss, autoloadSettingCss, floatingMsgAnchorCss);
   // add user styles
   var userCss = storeGet('ml-setting-css-profiles');
   var curProf = storeGet('ml-setting-css-current') || 'Default';
@@ -1874,6 +1923,7 @@ var getViewer = function(prevChapter, nextChapter) {
       var settings = '<table><tr><td>';
       // Custom CSS
       var cssProfiles = storeGet('ml-setting-css-profiles');
+      preloadProfiles(cssProfiles);
       if(!cssProfiles || cssProfiles.length === 0) {
         cssProfiles = [{name: 'Default', css: storeGet('ml-setting-css') || ''}];
         storeSet('ml-setting-css-profiles', cssProfiles);
@@ -2332,7 +2382,6 @@ var MLoaderLoadImps = function(imps) {
       return true;
     }
   });
-
   if (!success) {
     log('no implementation for ' + pageUrl, 'error');
   }
