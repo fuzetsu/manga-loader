@@ -89,6 +89,7 @@
 // @match *://www.930mh.com/manhua/*/*.html*
 // @match *://www.mangabox.me/reader/*/episodes/*/
 // @match *://twocomic.com/view/comic_*.html?ch=*
+// @match *://imgur.com/a/*
 // -- FOOLSLIDE START
 // @match *://manga.redhawkscans.com/reader/read/*
 // @match *://reader.s2smanga.com/read/*
@@ -1421,6 +1422,69 @@ var implementations = [{
     return W.ch > 1 ? W.replaceurl('ch', W.pi) : false;
   },
   wait:'#TheImg'
+}, {
+  name: 'imgur',
+  match: '^https?://imgur\.com/a/[^/]+',
+  _images: undefined,
+  getImages: function() {
+    // Cache the images object from Imgur's album image store.
+    if (this._images === undefined) {
+      // Prevents imgur's resize / scroll handlers from firing.
+      if (W.$ !== undefined) {
+        W.$(W).unbind('resize scroll');
+      }
+
+      // Prevents Raven from sending Manga Loader errors to Imgur.
+      if (W.Raven !== undefined) {
+        W.Raven._send = function() {};
+      }
+
+      // Get the <GalleryPost> React root div.
+      var els = document.querySelectorAll('div.post-images > div[data-reactroot]');
+      if (els.length !== 1) {
+        log('imgur: unexpected number of GalleryPosts', 'exit');
+      }
+      var el = els[0];
+
+      // Gets the React object corresponding to <GalleryPost>.
+      // Some internal React object is attached as a property of the root div,
+      // named '__reactInternalInstance' with a hash at the end.
+      // We can use the value of this property to get the <GalleryPost> object.
+
+      // React sometimes adds a '__reactEventHandlers' property too, so we
+      // should explicitly find the one which starts with '__reactInternalInstance'.
+      var elKeys = Object.keys(el).filter(function (key) {
+        return key.indexOf('__reactInternalInstance') === 0;
+      });
+      if (elKeys.length !== 1) {
+        log('imgur: unexpected number of __reactInternalInstance keys', 'exit');
+      }
+      var reactEl = el[elKeys[0]]._nativeContainerInfo._topLevelWrapper._renderedComponent._instance;
+
+      // Finally, get the images object from the album image store.
+      this._images = reactEl.props.album_image_store.getImages(reactEl.props.data.hash);
+    }
+    return this._images;
+  },
+  next: function() {
+    return location.href;
+  },
+  img: function(num) {
+    // num is 0-indexed, or undefined for the current (first) page.
+    var p = this.getImages().images[num || 0];
+    var url = W.Imgur.Environment.cdnUrl + '/' + p.hash + p.ext;
+    return url;
+  },
+  curpage: function() {
+    return 1;
+  },
+  numpages: function() {
+    return this.getImages().count;
+  },
+  pages: function(url, num, cb, ex) {
+    var u = this.img(num-1);
+    cb(u, u);
+  }
 }];
 // END OF IMPL
 
