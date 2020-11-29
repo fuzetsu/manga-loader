@@ -1,3 +1,10 @@
 {
-  "cSpell.words": ["microh", "preact"]
+  "cSpell.words": [
+    "Vnode",
+    "microh",
+    "ontrigger",
+    "preact",
+    "userscript",
+    "vdom"
+  ]
 }
