@@ -1,13 +1,13 @@
 import { m, z } from '/vdom'
 import { useState } from 'preact/hooks'
 import { useGlobalEvent } from '/hooks'
-import { ComponentChildren } from 'preact'
+import { CmpChild } from '../types'
 
 interface Props {
   lower?: number
   upper?: number
-  text?: string
-  actions?: ComponentChildren
+  text?: CmpChild
+  actions?: CmpChild
 }
 
 export const ScrollHud = ({ text, lower = 1, upper = 1, actions = [] }: Props) => {

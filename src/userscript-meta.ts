@@ -7,6 +7,7 @@
 // @match       https://www.mangatown.com/manga/*/*/*
 // @match       https://bato.to/chapter/*
 // @match       https://www.mangareader.net/*/*
-// @match       http://fanfox.net/manga/*/*/*
+// @match       https://fanfox.net/manga/*/*/*
+// @match       https://manganelo.com/chapter/*/*
 // @noframes
 // ==/UserScript==
