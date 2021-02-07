@@ -8,6 +8,7 @@
 // @grant GM_getValue
 // @grant GM_setValue
 // @grant GM_deleteValue
+// @require  https://raw.githubusercontent.com/gildas-lormeau/zip.js/master/dist/zip-full.min.js
 // @match *://bato.to/reader*
 // @match *://mangafox.me/manga/*/*/*
 // @match *://mangafox.la/manga/*/*/*
@@ -1698,7 +1699,8 @@ var getViewer = function(prevChapter, nextChapter) {
   // navigation
   var nav = '<div class="ml-chap-nav">' + (prevChapter ? '<a class="ml-chap-prev" href="' + prevChapter + '">Prev Chapter</a> ' : '') +
       '<a class="ml-exit" href="' + location.href + '" data-exit="true">Exit</a> ' +
-      (nextChapter ? '<a class="ml-chap-next" href="' + nextChapter + '">Next Chapter</a>' : '') + '</div>';
+      (nextChapter ? '<a class="ml-chap-next" href="' + nextChapter + '">Next Chapter</a> ' : '') +
+      '<a class="ml-download" href="">Download</a>' + '</div>';
   // message area
   var floatingMsg = '<pre class="ml-box ml-floating-msg"></pre>';
   // stats
@@ -1730,12 +1732,54 @@ var getViewer = function(prevChapter, nextChapter) {
     btnNextChap: getEl('.ml-chap-next'),
     btnPrevChap: getEl('.ml-chap-prev'),
     btnExit: getEl('.ml-exit'),
+    btnDownload: getEl('.ml-download'),
     btnSettings: getEl('.ml-settings-button'),
     isTyping: false,
     ignore: false,
     moreStats: false,
     currentProfile: storeGet('ml-setting-css-current') || ''
   };
+
+  function saveFile(blob, filename) {
+    const a = document.createElement('a');
+    document.body.appendChild(a);
+    const url = window.URL.createObjectURL(blob);
+    a.href = url;
+    a.download = filename;
+    a.click();
+    setTimeout(() => {
+      window.URL.revokeObjectURL(url);
+      document.body.removeChild(a);
+    }, 0);
+  }
+
+  UI.btnDownload.onclick = async function(event){
+    event.preventDefault();
+
+    if(pageStats.numLoaded == 0 || pageStats.numLoaded < pageStats.numPages){
+      if(!confirm("Not all pages have loaded yet, do you want to download only the loaded ones?")) return;
+    }
+
+    const blobWriter = new zip.BlobWriter("application/zip");
+    const writer = new zip.ZipWriter(blobWriter);
+
+    const pages = UI.images.getElementsByTagName('img');
+
+    for (let i = 1; i <= pages.length; i++) {
+      UI.btnDownload.textContent = `Downloading Page ${i}/${pages.length}`;
+      const imageData = await fetch(pages[i - 1].src);
+      const imageBlob = await imageData.blob();
+      const extension = imageBlob.type.split('/')[1];
+      if(!/^[a-zA-Z0-9]{1,16}$/.test(extension)) return log('Invalid mime type for page ' + i); // mitigate problems from invalid mime types
+      await writer.add(`${i}.${extension}`, new zip.BlobReader(imageBlob));
+    }
+
+    await writer.close();
+    const blob = await blobWriter.getData();
+    saveFile(blob.slice(0, blob.size, 'application/octet-stream'), document.title + '.cbz'); // need to change mime type or browser refuses to save as cbz
+    UI.btnDownload.textContent = 'Download Chapter';
+  }
+
   // message func
   var messageId = null;
   var showFloatingMsg = function(msg, timeout, html) {
