@@ -18,7 +18,7 @@
 // @match *://mangastream.com/read/*/*/*/*
 // @match *://www.mangareader.net/*/*
 // @match *://*.mangahere.co/manga/*/*
-// @match *://*.mangahere.cc/manga/*/*
+// @match *://*.mangahere.cc/manga/*/*/*
 // @match *://www.mangapanda.com/*/*
 // @match *://mangapark.me/manga/*/*/*
 // @match *://mngcow.co/*/*
@@ -89,6 +89,7 @@
 // @match *://www.930mh.com/manhua/*/*.html*
 // @match *://www.mangabox.me/reader/*/episodes/*/
 // @match *://twocomic.com/view/comic_*.html?ch=*
+// @match *://*.mangahere.cc/manga/*/*/*
 // -- FOOLSLIDE START
 // @match *://manga.redhawkscans.com/reader/read/*
 // @match *://reader.s2smanga.com/read/*
@@ -298,7 +299,7 @@ var implementations = [{
   name: 'manga-town',
   match: "^https?://www.mangatown.com/manga/[^/]+/[^/]+",
   img: '#image',
-  next: '#viewer a',
+  next: 'body > section > div.manga_read.manga_read_footer > div.go_page.clearfix > div > a.next_page',
   numpages: '.page_select select',
   curpage: '.page_select select',
   nextchap: '#top_chapter_list',
@@ -320,22 +321,34 @@ var implementations = [{
   }
 }, {
   name: 'manga-here',
-  match: "^https?://www.mangahere.c[oc]/manga/[^/]+/[^/]+",
-  img: '#viewer img:last-child',
-  next: '#viewer a',
-  numpages: 'select.wid60',
-  curpage: 'select.wid60',
-  numchaps: '#top_chapter_list',
-  curchap: '#top_chapter_list',
-  nextchap: function(prev) {
-    var chapter = W.chapter_list[W.current_chapter_index + (prev ? -1 : 1)];
-    return chapter && chapter[1];
+  match: "^https?://www.mangahere.c[oc]/manga/[^/]*/[^/]*/[^/]*",
+  img: '.reader-main img',
+  next: '.pager-list-left > span > a:last-child',
+  numpages: function() { return W.imagecount; },
+  curpage: function () { return W.imagepage; },
+  nextchap: '.pager-list-left > a:last-child',
+  prevchap: '.pager-list-left > a:first-child',
+  imgURLs: [],
+  pages: function(url, num, cb, ex) {
+      var imp = this;
+      if (this.imgURLs[num])
+          cb(this.imgURLs[num], num);
+      else
+          ajax({
+              url: 'chapterfun.ashx?cid=' + W.chapterid + '&page=' + num,
+              onload: function(e) {
+                  eval(e.target.responseText);
+                  for (var i = 0; i < d.length; i++) {
+                      imp.imgURLs[num + i] = d[i];
+                  }
+                  cb(d[0], num);
+              }
+          });
   },
-  prevchap: function() {
-    return this.nextchap(true);
-  },
-  wait: function() {
-    return areDefined(W.current_chapter_index, W.chapter_list, getEl('#top_chapter_list'));
+  wait: function () {
+    el = getEl('.reader-main img');
+
+    return el && el.getAttribute('src') != el.getAttribute('data-loading-img');
   }
 }, {
   name: 'manga-here mobile',
