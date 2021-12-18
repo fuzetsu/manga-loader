@@ -2142,8 +2142,11 @@ var addImage = function(src, loc, imgNum, callback) {
   image.id = 'ml-pageid-' + imgNum;
   image.onload = callback;
   image.src = src;
-  loc.appendChild(image);
-  loc.appendChild(counter);
+  var imgwithcounter = document.createElement('div');
+  imgwithcounter.id = 'page-' + imgNum;
+  loc.appendChild(imgwithcounter);
+  imgwithcounter.appendChild(image);
+  imgwithcounter.appendChild(counter);
 };
 
 var loadManga = function(imp) {
