@@ -1802,7 +1802,7 @@ var getViewer = function(prevChapter, nextChapter) {
       var target = e.target;
       UI.images.removeEventListener('click', imgClick, false);
       UI.images.style.cursor = '';
-      if(target.nodeName === 'IMG' && target.parentNode.className === 'ml-images') {
+      if(target.nodeName === 'IMG') {
         showFloatingMsg('');
         if(!target.title) {
           showFloatingMsg('Reloading "' + target.src + '"', 3000);
