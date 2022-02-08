@@ -1805,9 +1805,18 @@ var getViewer = function(prevChapter, nextChapter) {
       if(target.nodeName === 'IMG') {
         showFloatingMsg('');
         if(!target.title) {
-          showFloatingMsg('Reloading "' + target.src + '"', 3000);
-          if(target.complete) target.onload = null;
-          target.src = target.src + (target.src.indexOf('?') !== -1 ? '&' : '?') + new Date().getTime();
+          var pgnum = target.id.substr(10)
+          showFloatingMsg('Fetching URL of picture of page ' + pgnum, 3000);
+          sessionStorage.setItem("RimgUrl", 'notyet');
+          window.reload = function() {
+            var pgsrc = sessionStorage.getItem("RimgUrl");
+            log('pagenum : ' + pgnum + ', pagesrc : ' + pgsrc);
+            showFloatingMsg('Reloading "' + pgsrc + '"', 3000);
+            if(target.complete) target.onload = null;
+            target.src = pgsrc + (pgsrc.indexOf('?') !== -1 ? '&' : '?') + new Date().getTime();
+          }
+          //the function reload was inserted into the function dummy_addAndLoad inside the function getUrl to make sure reload was done after URL of the picture is fetched
+           getUrl(pgnum)
         }
       } else {
         showFloatingMsg('Cancelled manual reload...', 3000);
@@ -2149,6 +2158,100 @@ var addImage = function(src, loc, imgNum, callback) {
   imgwithcounter.appendChild(counter);
 };
 
+window.UrlList = new Array();
+window.PageList = new Array();
+window.firstpage = 1
+//this function re-requests image url from page number
+var getUrl = function(pagenum) {
+  pagenum = Number(pagenum)
+  //get page url from pre-saved array
+  var arrnum = pagenum - window.firstpage
+  //sometimes the url of a page is not included in the UrlList so we need to do a lookup in the PageList ;)
+  var Rpageurl
+  if (window.PageList[arrnum] == pagenum) {
+    Rpageurl = window.UrlList[arrnum]
+  } else if (window.PageList.includes(pagenum)) {
+    log('urllist error, but found in the pagelist')
+    Rpageurl = window.UrlList[window.PageList.indexOf(pagenum)]
+    log('Found '+Rpageurl)
+  } else {
+    //in some very rare situation, the page and its url is missing, so we need to ... REDO ;)
+    log('urllist error, not found in the pagelist, re-fetching')
+    var findlast = function(num) {
+      var last
+      for (var i in window.PageList) {
+        if (i < pagenum) {
+          last = pagenum
+        } else {
+          return last
+        }
+      }
+    }
+    var lastavail = findlast(pagenum)
+    log('Last available page is ' + lastavail + ', loading from it')
+    //to be done. too complicated :(
+    log('This feature is not implemented, nothing is done, including refreshing. :(')
+  }
+  //reuse function loadNextPage and getPageInfo
+  //imp all replaced with window.imp which is defined globally in function MLoaderLoadImps
+  //import needed functions
+  var xhr = new XMLHttpRequest();
+  var ex = extractInfo.bind(window.imp)
+  var retries = 5
+  var d = document.implementation.createHTMLDocument()
+  //getPageInfo start
+  var RgetPageInfo = function() {
+    var page = d.body;
+    d.body.innerHTML = xhr.response;
+    try {
+      dummy_addAndLoad(ex('img', window.imp.imgmod, page), ex('next', null, page));
+    } catch (e) {
+      if (xhr.status == 503 && retries > 0) {
+        log('xhr status ' + xhr.status + ' retrieving ' + xhr.responseURL + ', ' + retries-- + ' retries remaining');
+        window.setTimeout(function() {
+          xhr.open('get', xhr.responseURL);
+          xhr.send();
+        }, 500);
+      } else {
+        log(e);
+        log('error getting details from page' + pagenum + '.');
+        sessionStorage.setItem("RimgUrl", 'err');
+        window.reload();
+      }
+    }
+  }
+  //getPageInfo end
+  //loadNextPage start
+  var RloadNextPage = function(url) {
+    if (window.imp.pages) {
+      window.imp.pages(url, pagenum, dummy_addAndLoad, ex, RgetPageInfo);
+    } else {
+      var colonIdx = url.indexOf(':');
+      if(colonIdx > -1) {
+        url = location.protocol + url.slice(colonIdx + 1);
+      }
+      xhr.open('get', url);
+      window.imp.beforexhr && window.imp.beforexhr(xhr);
+      xhr.onload = RgetPageInfo;
+      xhr.onerror = function() {
+        log('failed to load page, aborting', 'error');
+        sessionStorage.setItem("RimgUrl", 'err');
+        window.reload();
+      };
+      xhr.send();
+    }
+  }
+  //loadNextPage end
+  //dummy function used to collect url from imp.pages
+  //now it also does reload. not really dummy anymore. XD
+  var dummy_addAndLoad = function(img, next) {
+    if (sessionStorage.getItem("RimgUrl") != 'err') {
+      sessionStorage.setItem("RimgUrl", img);
+      window.reload();
+    }
+  }
+  RloadNextPage(Rpageurl)
+}
 var loadManga = function(imp) {
   var ex = extractInfo.bind(imp),
       imgUrl = ex('img', imp.imgmod),
@@ -2208,6 +2311,8 @@ var loadManga = function(imp) {
         }
       },
       loadNextPage = function(url) {
+        window.PageList.push(curPage+1)
+        window.UrlList.push(url)
         if (mLoadNum !== 'all' && count % mLoadNum === 0) {
           if (resumeUrl) {
             resumeUrl = null;
@@ -2248,6 +2353,15 @@ var loadManga = function(imp) {
       count = 1,
       pagesLoaded = curPage - 1,
       lastUrl, UI, resumeUrl, retries;
+  //this log shows that variable imgUrl is the URL of image, not the URL of the page
+  //and in fact this log only show up ONCE
+  log ("imgUrl : " + imgUrl + ", curPage : " + curPage)
+  //this indicates that function loadManga ONLY RUN ONCE
+  //in fact, following changes on variable curPage is done in function loadNextPage
+  //so here we can get the first page
+  window.firstpage = curPage
+  window.PageList.push(curPage)
+  window.UrlList.push(window.location.href)
   if (!imgUrl || (!nextUrl && curPage < numPages)) {
     log('failed to retrieve ' + (!imgUrl ? 'image url' : 'next page url'), 'exit');
   }
