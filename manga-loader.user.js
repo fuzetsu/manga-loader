@@ -46,7 +46,7 @@ var repo_url = '' // global init
 var default_repo_url = 'https://raw.githubusercontent.com/TsXor/manga-loader/master/impls/'
 
 // Change this variable to control if you want to load NSFW implementations.
-var repo_enabled = ["normal", "nsfw"];
+var repo_enabled = ["nsfw", "normal"];
 
 var log = function(msg, type) {
   type = type || 'log';
