@@ -42,7 +42,7 @@ var exUtil = {
   }
 };
 
-var default_repo_url = 'https://raw.githubusercontent.com/TsXor/manga-loader/master/impls/'
+var default_repo_url = 'https://raw.githubusercontent.com/fuzetsu/manga-loader/master/impls/'
 
 // Change this variable to control if you want to load NSFW implementations.
 var repo_enabled = ["nsfw", "normal"];
@@ -324,7 +324,16 @@ var getViewer = function(prevChapter, nextChapter) {
       }, '.ml-setting-key input'),
       autoloadSettingCss = toStyleStr({
         'vertical-align': 'middle'
-      }, '.ml-setting-autoload');
+      }, '.ml-setting-autoload'),
+      flexContainerCss = toStyleStr({
+        'display': 'inline-flex',
+        'align-content': 'flex-start',
+        'flex-flow': 'row wrap'
+      }, '.ml-images'),
+      flexElementCss = toStyleStr({
+        'box-sizing': 'border-box',
+        'flex': '0 0 ' + 100 / (storeGet('mColNum') || 1) + '%'
+      }, '.ml-images>div');
   // clear all styles and scripts
   var title = document.title;
   document.head.innerHTML = '<meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">';
@@ -346,7 +355,7 @@ var getViewer = function(prevChapter, nextChapter) {
   // combine ui elements
   document.body.innerHTML = nav + '<div class="ml-images"></div>' + nav + floatingMsg + stats;
   // add main styles
-  addStyle('main', true, viewerCss, imagesCss, imageCss, counterCss, navCss, navHoverCss, statsCss, statsCollapseCss, statsHoverCss, boxCss, floatingMsgCss, buttonCss, keySettingCss, autoloadSettingCss, floatingMsgAnchorCss);
+  addStyle('main', true, viewerCss, imagesCss, imageCss, counterCss, navCss, navHoverCss, statsCss, statsCollapseCss, statsHoverCss, boxCss, floatingMsgCss, buttonCss, keySettingCss, autoloadSettingCss, floatingMsgAnchorCss, flexContainerCss, flexElementCss);
   // add user styles
   var userCss = storeGet('ml-setting-css-profiles');
   var curProf = storeGet('ml-setting-css-current') || 'Default';
@@ -543,6 +552,10 @@ var getViewer = function(prevChapter, nextChapter) {
       settings += "# of pages to load:<br>" +
         'Type "all" to load all<br>default is 10<br>' +
         '<input class="ml-setting-loadnum" size="3" type="text" value="' + (storeGet('mLoadNum') || 10) + '" /><br><br>';
+      // Display pages in N columns
+      settings += "# columns of pages:<br>" +
+        'default is 1, you may set to 2 for PCs<br>' +
+        '<input class="ml-setting-colnum" size="3" type="text" value="' + (storeGet('mColNum') || 1) + '" /><br><br>';
       // start new grid
       settings += '</td></tr><tr><td>';
       // repo settings
@@ -746,6 +759,10 @@ var getViewer = function(prevChapter, nextChapter) {
         var loadnum = getEl('.ml-setting-loadnum').value;
         mLoadNum = getEl('.ml-setting-loadnum').value = loadnum.toLowerCase() === 'all' ? 'all' : (parseInt(loadnum) || 10);
         storeSet('mLoadNum', mLoadNum);
+        // colnum
+        var colnum = getEl('.ml-setting-colnum').value;
+        mColNum = getEl('.ml-setting-colnum').value = (parseInt(colnum) || 1);
+        storeSet('mColNum', mColNum);
         // repo settings
         var input_url = getEl('.ml-setting-repo_url').value;
         storeSet('repo_url', input_url);
@@ -1408,6 +1425,8 @@ var autoload = storeGet('autoload');
 var mAutoload = storeGet('mAutoload') || false;
 // should we load less pages at a time?
 var mLoadNum = storeGet('mLoadNum') || 10;
+// should we show pages in multi columns?
+var mColNum = storeGet('mColNum') || 1;
 // holder for statistics
 var pageStats = {
   numPages: null, numLoaded: null, loadLimit: null, curChap: null, numChaps: null
