@@ -753,6 +753,7 @@ var getViewer = function(prevChapter, nextChapter) {
         var editBox = getEl('.ml-setting-edited_impl', UI.floatingMsg);
         if (editBox.dataset.modified) {
             saveUserOverride(editBox.dataset.impName, editBox.value);
+            getEl('.ml-setting-edited_impl', UI.floatingMsg).dataset.modified = '';
         }
         // flash notify
         var flash = getEl('.ml-setting-save-flash');
