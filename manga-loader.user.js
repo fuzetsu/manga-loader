@@ -8,7 +8,7 @@
 // @grant GM_getValue
 // @grant GM_setValue
 // @grant GM_deleteValue
-// @grant GM_xmlhttpRequest
+// @grant GM_listValues
 // @connect *
 // @match  *://*/*
 // ==/UserScript==
@@ -42,7 +42,6 @@ var exUtil = {
   }
 };
 
-var repo_url = '' // global init
 var default_repo_url = 'https://raw.githubusercontent.com/TsXor/manga-loader/master/impls/'
 
 // Change this variable to control if you want to load NSFW implementations.
@@ -101,11 +100,24 @@ var storeSet = function(key, value) {
   return GM_setValue(key, value);
 };
 
+var storeList = function() {
+  if (typeof GM_listValues === "undefined") {
+    var klist = [];
+    for (var i = 0; i < localStorage.length; i++) {
+      klist.append(localStorage.key(i));
+    }
+    return klist;
+  }
+  //return GM_listValues();
+  // workaround
+  return GM_listValues().filter(function(v) {return GM_getValue(v) ? true : false});
+};
+
 var storeDel = function(key) {
   if (typeof GM_deleteValue === "undefined") {
-    return localStorage.removeItem(key);
+    localStorage.removeItem(key);
   }
-  return GM_deleteValue(key);
+  GM_deleteValue(key);
 };
 
 var areDefined = function() {
@@ -517,9 +529,9 @@ var getViewer = function(prevChapter, nextChapter) {
         '<select class="ml-setting-css-profile">' +
         cssProfiles.map(function(profile) { return '<option ' + (profile.name === prof.name ? 'selected' : '') + '>' + profile.name + '</option>'; }).join('') +
         '</select><button class="ml-setting-delete-profile">x</button><br>' +
-        '<textarea style="width: 300px; height: 300px;" type="text" class="ml-setting-css">' + prof.css + '</textarea><br><br>';
+        '<textarea style="width: 500px; height: 150px;" type="text" class="ml-setting-css">' + prof.css + '</textarea><br><br>';
       // start new column
-      settings += '</td><td>';
+      settings += '</td><td rowspan="2">';
       // Keybindings
       var keyTableHtml = Object.keys(UI.keys).map(function(action) {
         return '<tr><td>' + action + '</td><td><input data-ignore="true" data-key="' + action + '" type="text" value="' + UI.keys[action] + '"></td></tr>';
@@ -531,6 +543,35 @@ var getViewer = function(prevChapter, nextChapter) {
       settings += "# of pages to load:<br>" +
         'Type "all" to load all<br>default is 10<br>' +
         '<input class="ml-setting-loadnum" size="3" type="text" value="' + (storeGet('mLoadNum') || 10) + '" /><br><br>';
+      // start new grid
+      settings += '</td></tr><tr><td>';
+      // repo settings
+      var repo_version, repo_url;
+      [repo_version, repo_url] = MLoaderGetLocalRepoInfo();
+      settings += "Implementation Repository Settings<br><br>";
+      settings += 'Repo URL: (current repo version: ' + repo_version + ')<br>' +
+        '<input class="ml-setting-repo_url" size="50" type="text" value="' + repo_url + '" /><br><br>';
+      settings += 'Manual repo update: ' +
+        '<button class="ml-setting-updrepo">Fetch update from repo</button> ' +
+        '<button class="ml-setting-forceupdrepo">Force update</button><br>' +
+        'Note: Force update is for debugging. It will update local repo info without considering version and will erase version info of all implementations so that they will be reloaded.<br><br>';
+      var imp_code, override;
+      [imp_code, override] = MLoaderGetImpCode(window.impInfo[0], window.impInfo[1]);
+      settings += 'Edit Implementations: <br>' +
+        'Category: <select class="ml-setting-impl_filter">\
+          <option value="Current">Impl being used</option>\
+          <option value="RepoLocal">Impls downloaded from repo</option>\
+          <option value="RepoAll">All impls available from repo</option>\
+          <option value="UserOverride">Impls created or edited by user</option>\
+        </select><br>' +
+        'Implementation: ' + constructImplHTMLSelect(getTargetImplInfo('Current'), 'ml-setting-target_impls') +
+        ' <button class="ml-setting-del_impl">Delete Impl</button><br>' +
+        '<span class="ml-setting-impl_is_override">User Override: ' + (override ? 'YES' : 'NO') + ' </span>' +
+        '<button class="ml-setting-new_ovrd">New User Override</button> ' +
+        '<button class="ml-setting-del_ovrd">Discard User Override</button> <br>' +
+        '<textarea data-modified="" data-impName="' + window.impInfo[1] + '" style="width: 500px; height: 150px;" type="text" class="ml-setting-edited_impl">' +
+          imp_code +
+        '</textarea><br>';
       // close grid and column
       settings += '</td></tr></table>';
       // Save button
@@ -590,6 +631,100 @@ var getViewer = function(prevChapter, nextChapter) {
         UI.currentProfile = prof.name;
         addStyle('user', true, prof.css);
       };
+      // handle repo settings button
+      getEl('.ml-setting-updrepo', UI.floatingMsg).onclick = MLoaderUpdateImpls;
+      getEl('.ml-setting-forceupdrepo', UI.floatingMsg).onclick = MLoaderForceUpdateImpls;
+      // handle repo editing
+      // "Category" select
+      getEl('.ml-setting-impl_filter', UI.floatingMsg).onchange = function(e) {
+        var editBox = getEl('.ml-setting-edited_impl', UI.floatingMsg);
+        editBox.value = '';
+        var select_obj = e.target;
+        var filter_name = select_obj.options[select_obj.selectedIndex].value;
+        var impl_select_obj = getEl('.ml-setting-target_impls', UI.floatingMsg);
+        impl_select_obj.innerHTML = constructImplHTMLSelect(getTargetImplInfo(filter_name), '', true);
+        if (filter_name == 'RepoAll') {
+          impl_select_obj.selectedIndex = impl_select_obj.options.length;
+        }
+        impl_select_obj.dispatchEvent(new Event('change'))
+      };
+      // impl select
+      getEl('.ml-setting-target_impls', UI.floatingMsg).onchange = function(e) {
+        var select_obj = e.target;
+        var editBox = getEl('.ml-setting-edited_impl', UI.floatingMsg);
+        if (editBox.dataset.modified) {
+          if (confirm('This impl is modified, save?')) {
+            saveUserOverride(editBox.dataset.impName, editBox.value);
+          }
+        }
+        var isOverrideText = getEl('.ml-setting-impl_is_override', UI.floatingMsg);
+        var imp_info = select_obj.options[select_obj.selectedIndex].value.split(',');
+        var imp_code, override;
+        [imp_code, override] = MLoaderGetImpCode(imp_info[0], imp_info[1]);
+        editBox.value = imp_code;
+        editBox.dataset.impName = imp_info[1];
+        editBox.dataset.modified = '';
+        isOverrideText.innerHTML = 'User Override: ' + (override ? 'YES' : 'NO');
+      };
+      // monitor editbox change
+      getEl('.ml-setting-edited_impl', UI.floatingMsg).onchange = function(e) {e.target.dataset.modified = 'Y';};
+      // delete impl
+      getEl('.ml-setting-del_impl', UI.floatingMsg).onclick = function() {
+        var select_obj = getEl('.ml-setting-target_impls', UI.floatingMsg);
+        var selidx = select_obj.selectedIndex;
+        var imp_info = select_obj.options[select_obj.selectedIndex].value.split(',');
+        var imp_name = imp_info[1];
+        storeDel('MLoaderImp_' + imp_name);
+        storeDel('MLoaderImpVer_' + imp_name);
+        // trigger refresh
+        var filter_select_obj = getEl('.ml-setting-impl_filter', UI.floatingMsg);
+        var filter_name = filter_select_obj.options[filter_select_obj.selectedIndex].value;
+        filter_select_obj.dispatchEvent(new Event('change'));
+        if (filter_name == 'RepoAll') {
+          select_obj.selectedIndex = select_obj.options.length;
+        } else {
+          select_obj.selectedIndex = selidx;
+        }
+        select_obj.dispatchEvent(new Event('change'));
+      };
+      // discard override
+      getEl('.ml-setting-del_ovrd', UI.floatingMsg).onclick = function() {
+        var select_obj = getEl('.ml-setting-target_impls', UI.floatingMsg);
+        var selidx = select_obj.selectedIndex;
+        var imp_info = select_obj.options[select_obj.selectedIndex].value.split(',');
+        var imp_name = imp_info[1];
+        deleteUserOverride(imp_name);
+        deleteUserMatch(imp_name);
+        var editBox = getEl('.ml-setting-edited_impl', UI.floatingMsg);
+        editBox.value = '';
+        // trigger refresh
+        var filter_select_obj = getEl('.ml-setting-impl_filter', UI.floatingMsg);
+        filter_select_obj.dispatchEvent(new Event('change'));
+        select_obj.selectedIndex = selidx;
+        select_obj.dispatchEvent(new Event('change'));
+      };
+      // new override for new site
+      getEl('.ml-setting-new_ovrd', UI.floatingMsg).onclick = function() {
+        var imp_name = prompt('Name this impl: ');
+        if (!imp_name) {alert('illegal name'); return;}
+        var all_ovrd_name = getTargetImplInfo('UserOverride').map(function(i) {return i[1]});
+        if (imp_name in all_ovrd_name) {alert('name is already used'); return;}
+        var imp_regex = prompt('Give a regex that can match the target of this impl: ');
+        try {new RegExp(imp_regex);} catch (e) {alert('invalid regex'); return;}
+        saveUserOverride(imp_name, '// METADATA\n' + 
+          '// name: ' + imp_name + '\n' +
+          '// match: ' + imp_regex + '\n' +
+          '// Your code here ...\n'
+        );
+        saveUserMatch(imp_name, imp_regex);
+        // trigger refresh
+        var select_obj = getEl('.ml-setting-target_impls', UI.floatingMsg);
+        var filter_select_obj = getEl('.ml-setting-impl_filter', UI.floatingMsg);
+        filter_select_obj.selectedIndex = filter_select_obj.options.length-1;
+        filter_select_obj.dispatchEvent(new Event('change'));
+        select_obj.selectedIndex = select_obj.options.length-1;
+        select_obj.dispatchEvent(new Event('change'));
+      };
       // handle save button
       getEl('.ml-setting-save', UI.floatingMsg).onclick = function() {
         // persist css
@@ -611,6 +746,14 @@ var getViewer = function(prevChapter, nextChapter) {
         var loadnum = getEl('.ml-setting-loadnum').value;
         mLoadNum = getEl('.ml-setting-loadnum').value = loadnum.toLowerCase() === 'all' ? 'all' : (parseInt(loadnum) || 10);
         storeSet('mLoadNum', mLoadNum);
+        // repo settings
+        var input_url = getEl('.ml-setting-repo_url').value;
+        storeSet('repo_url', input_url);
+        // edited impl
+        var editBox = getEl('.ml-setting-edited_impl', UI.floatingMsg);
+        if (editBox.dataset.modified) {
+            saveUserOverride(editBox.dataset.impName, editBox.value);
+        }
         // flash notify
         var flash = getEl('.ml-setting-save-flash');
         flash.textContent = 'Saved!';
@@ -1049,18 +1192,23 @@ var waitAndLoad = function(imp) {
 var version2num = function(verstr) {
   var vernum = 0;
   var verarr = verstr.split(".").reverse();
-  var i
-  for (i = 0; i < verarr.length; i++) { 
+  for (var i = 0; i < verarr.length; i++) { 
     vernum += verarr[i] * Math.pow(100, i);
   }
   return vernum
 }
 
-var MLoaderCheckoutImpRepo = function() {
+var MLoaderGetLocalRepoInfo = function() {
   var repo_version = storeGet("repo_version");
-  repo_version = repo_version ? version2num(repo_version) : 0;
+  repo_version = repo_version ? repo_version : 0;
   repo_url = storeGet("repo_url");
   repo_url = repo_url ? repo_url : default_repo_url;
+  return [repo_version, repo_url];
+}
+
+var MLoaderCheckoutImpRepo = function(force=false) {
+  var repo_version, repo_url;
+  [repo_version, repo_url] = MLoaderGetLocalRepoInfo();
   
   var request;
   
@@ -1070,11 +1218,12 @@ var MLoaderCheckoutImpRepo = function() {
   var remote_version = request.responseText;
   remote_version = remote_version ? version2num(remote_version) : 0;
   
-  if (remote_version > repo_version || !storeGet("repo_info")) {
+  if (remote_version > repo_version || !storeGet("repo_info") || force) {
     request = new XMLHttpRequest();
     request.open("GET", repo_url+"repo.json", false);
     request.send(null);
     storeSet("repo_info", request.responseText);
+    storeSet("repo_version", remote_version);
     //console.log(request);
   }
 }
@@ -1091,22 +1240,32 @@ var MLoaderGetImpName = function() {
     subrepo = repo_info[sreponame];
     for (var key in subrepo["direct_match"]) {
       if (pageUrl.search(key) != -1) {
-        matchregex = subrepo["regex"][key];
+        matchregex = subrepo["direct_match"][key];
         if (!(new RegExp(matchregex, 'i')).test(pageUrl)) { return [null, null]; }
-        return [key, sreponame];
+        return [sreponame, key];
       }
     }
     for (var key in subrepo["regex"]) {
       matchregex = subrepo["regex"][key];
-      if ((new RegExp(matchregex, 'i')).test(pageUrl)) { return [key, sreponame]; }
+      if ((new RegExp(matchregex, 'i')).test(pageUrl)) { return [sreponame, key]; }
     }
+  }
+  var um = storeGet("user_match");
+  for (var key in um) {
+    matchregex = um[key];
+    if ((new RegExp(matchregex, 'i')).test(pageUrl)) { return ['local', key]; }
   }
   return [null, null];
 }
 
-var MLoaderGetImpObj = function(srepo_name, imp_name) {
+var MLoaderGetImpCode = function(srepo_name, imp_name) {
   var imp_code = storeGet("MLoaderImp_" + imp_name);
-  if (!imp_code) {
+  var imp_ver = storeGet("MLoaderImpVer_" + imp_name);
+  imp_ver = imp_ver ? imp_ver : 0;
+  var repo_version, repo_url;
+  [repo_version, repo_url] = MLoaderGetLocalRepoInfo();
+
+  if ((!imp_code || imp_ver < repo_version) && srepo_name != "local") {
     var request = new XMLHttpRequest();
     request.open("GET", repo_url + srepo_name + "/" + imp_name + ".js", false);
     request.send(null);
@@ -1114,9 +1273,22 @@ var MLoaderGetImpObj = function(srepo_name, imp_name) {
     imp_code = request.status == 200 ? request.responseText : '';
     //console.log(imp_code);
     storeSet("MLoaderImp_" + imp_name, imp_code);
+    storeSet("MLoaderImpVer_" + imp_name, repo_version)
   }
-  eval(imp_code);
-  return impl_src;
+  
+  var user_override = storeGet("UserOverrideImp_" + imp_name);
+  var override = false;
+  if (user_override) {
+    console.log('Using user override for '+ srepo_name + '->' + imp_name);
+    override = true;
+    imp_code = user_override;
+  }
+  return [imp_code, override];
+}
+
+var MLoaderGetImpObj = function(srepo_name, imp_name) {
+  var imp_code = MLoaderGetImpCode(srepo_name, imp_name)[0];
+  eval(imp_code); return impl_src;
 }
 
 var MLoaderLoadImps = function() {
@@ -1124,7 +1296,8 @@ var MLoaderLoadImps = function() {
   if (!currentImpName) { log('no implementation for ' + pageUrl, 'error'); return; }
 
   //make current implementation public for other use
-  window.imp = MLoaderGetImpObj(currentImpName, currentSubRepo);
+  window.impInfo = [currentSubRepo, currentImpName];
+  window.imp = MLoaderGetImpObj(currentSubRepo, currentImpName);
   if (W.BM_MODE || (autoload !== 'no' && (mAutoload || autoload))) {
     log('autoloading...');
     waitAndLoad(imp);
@@ -1145,6 +1318,75 @@ var MLoaderLoadImps = function() {
   }, btnLoadCss);
   document.body.appendChild(btnLoad);
 };
+
+var MLoaderUpdateImpls = function() {
+  MLoaderCheckoutImpRepo(false);
+}
+
+var filterStoreKeyPrefix = function(prefix) {
+  var ikeys = storeList();
+  var prefix_len = prefix.length;
+  return ikeys.filter(function(ikey) { return ikey.substr(0, prefix_len) == prefix });
+}
+
+var MLoaderForceUpdateImpls = function() {
+  MLoaderCheckoutImpRepo(true);
+  // flush version of all imps
+  var verkeys = filterStoreKeyPrefix("MLoaderImpVer_")
+  verkeys.map(function(ikey) { storeDel(ikey) });
+}
+
+var getTargetImplInfo = function(flag) {
+  switch (flag) {
+    case 'Current':
+      return [window.impInfo];
+    case 'RepoLocal':
+      return filterStoreKeyPrefix("MLoaderImp_")
+        .map(function(k) { return ["local", k.substr("MLoaderImp_".length)] });
+    case 'RepoAll':
+      var repo_info = JSON.parse(storeGet("repo_info"));
+      var srepos = Object.keys(repo_info);
+      return srepos
+        .map(function(srname) {return [srname, [].concat(Object.keys(repo_info[srname]["direct_match"]),
+                                                         Object.keys(repo_info[srname]["regex"]       ))]})
+        .map(function(srlist) {return srlist[1].map(function(implname) {return [srlist[0], implname]})})
+        .reduce(function(total, currentValue) {return total.concat(currentValue)}, []);
+    case 'UserOverride':
+      return filterStoreKeyPrefix("UserOverrideImp_")
+        .map(function(k) { return ["local", k.substr("UserOverrideImp_".length)] });
+    default:
+      return [null];
+  }
+}
+
+var constructImplHTMLSelect = function(imp_infos, classname='', inner=false) {
+  var items = imp_infos
+    .map(function(imp_info) {return '<option value ="'+imp_info+ '">'+imp_info[1]+' ('+imp_info[0]+')</option>'})
+    .reduce(function(total, currentValue) {return total + currentValue}, '');
+  return inner ? items : '<select class="' + classname + '">' + items + '</select>'
+}
+
+var saveUserOverride = function(imp_name, code) {
+  storeSet("UserOverrideImp_" + imp_name, code);
+}
+
+var deleteUserOverride = function(imp_name) {
+  storeDel("UserOverrideImp_" + imp_name);
+}
+
+var saveUserMatch = function(imp_name, regex) {
+  var um_info = storeGet("user_match");
+  um_info = um_info ? um_info : {};
+  um_info[imp_name] = regex;
+  storeSet("user_match", um_info);
+}
+
+var deleteUserMatch = function(imp_name) {
+  var um_info = storeGet("user_match");
+  um_info = um_info ? um_info : {};
+  delete um_info[imp_name];
+  storeSet("user_match", um_info);
+}
 
 var pageUrl = window.location.href,
     btnLoadCss = toStyleStr({
