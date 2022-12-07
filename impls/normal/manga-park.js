@@ -1,6 +1,6 @@
 // METADATA
 // name: manga-park
-// match: ^https?://mangapark\\.me/manga/[^/]+/[^/]+/[^/]+
+// match: ^https?://mangapark\.me/manga/[^/]+/[^/]+/[^/]+
 
 var impl_src = {
   img: '.img-link > img',
@@ -24,6 +24,5 @@ var impl_src = {
   prevchap: function() {
     return this.nextchap(true);
   },
-  wait: '#sel_book_1 option',
-  URLregex: true
+  wait: '#sel_book_1 option'
 }

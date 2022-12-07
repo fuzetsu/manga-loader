@@ -1,6 +1,6 @@
 // METADATA
 // name: lhtranslation
-// match: ^https?://read.lhtranslation\\.com/read-.+
+// match: ^https?://read.lhtranslation\.com/read-.+
 
 var impl_src = {
   img: 'img.chapter-img',
@@ -11,6 +11,5 @@ var impl_src = {
   curchap: '.form-control',
   nextchap: '.form-control',
   prevchap: '.form-control',
-  invchap: true,
-  URLregex: false
+  invchap: true
 }

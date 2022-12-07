@@ -1,6 +1,6 @@
 // METADATA
 // name: mangachapter
-// match: ^https?://www\\.mangachapter\\.me/[^/]+/[^/]+/[^/]+.html
+// match: ^https?://www\.mangachapter\.me/[^/]+/[^/]+/[^/]+.html
 
 var impl_src = {
   img: '#mangaImg, #viewer > table > tbody > tr > td:nth-child(1) > a:nth-child(2) > img',
@@ -10,6 +10,5 @@ var impl_src = {
   invchap: true,
   nextchap: '#top_chapter_list',
   prevchap: '#top_chapter_list',
-  wait: '#top_chapter_list',
-  URLregex: false
+  wait: '#top_chapter_list'
 }

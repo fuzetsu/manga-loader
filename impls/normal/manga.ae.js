@@ -7,6 +7,5 @@ var impl_src = {
   next: '#showchaptercontainer a',
   curpage: 'a.chpage',
   nextchap: '.chapter:last-child',
-  prevchap: '.chapter:first-child',
-  URLregex: false
+  prevchap: '.chapter:first-child'
 }

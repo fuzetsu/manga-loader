@@ -11,6 +11,5 @@ var impl_src = {
   prevchap: '#chapter > div:nth-child(5) > div.uk-grid.uk-grid-collapse.uk-margin-top > div.uk-width-large-1-3.uk-width-medium-1-3.uk-width-small-1-1.uk-text-right.uk-text-center-small > a',
   pages: function(url, num, cb, ex) {
     cb(W.pages[num - 1].url, num);
-  },
-  URLregex: false
+  }
 }

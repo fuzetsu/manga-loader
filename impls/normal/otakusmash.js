@@ -1,6 +1,6 @@
 // METADATA
 // name: otakusmash
-// match: https?://www\\.otakusmash\\.com/(read-comics|read-manga)/.+
+// match: https?://www\.otakusmash\.com/(read-comics|read-manga)/.+
 
 var impl_src = {
   img: 'img.picture',
@@ -16,6 +16,5 @@ var impl_src = {
   },
   numchaps: 'select[name=chapter]',
   curchap: 'select[name=chapter]',
-  invchap: true,
-  URLregex: false
+  invchap: true
 }

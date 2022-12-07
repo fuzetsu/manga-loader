@@ -10,6 +10,5 @@ var impl_src = {
   nextchap: '#e2',
   prevchap: '#e2',
   curchap: '#e2',
-  numchaps: '#e2',
-  URLregex: false
+  numchaps: '#e2'
 }

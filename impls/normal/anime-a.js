@@ -1,6 +1,6 @@
 // METADATA
 // name: anime-a
-// match: ^https?://manga\\.animea.net/.+chapter-[0-9]+(-page-[0-9]+)?.html
+// match: ^https?://manga\.animea.net/.+chapter-[0-9]+(-page-[0-9]+)?.html
 
 var impl_src = {
   _page: null,
@@ -16,6 +16,5 @@ var impl_src = {
   },
   prevchap: function() {
     return this.nextchap(true);
-  },
-  URLregex: true
+  }
 }

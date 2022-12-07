@@ -17,6 +17,5 @@ var impl_src = {
       var curPage = parseInt(url.slice(firstNum, lastDot), 10);
       url = url.slice(0, firstNum) + ('00' + (curPage + 1)).slice(-3) + url.slice(lastDot);
       cb(url, url);
-    },
-  URLregex: false
+    }
 }

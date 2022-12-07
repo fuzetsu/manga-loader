@@ -1,6 +1,6 @@
 // METADATA
 // name: biamamscans.com
-// match: ^https?://biamamscans\\.com/read/.+
+// match: ^https?://biamamscans\.com/read/.+
 
 var impl_src = {
   //nextchap and prevchap broken
@@ -9,6 +9,5 @@ var impl_src = {
   numpages: '#page-select',
   curpage: '#page-select',
   nextchap: '#chapter-select',
-  prevchap: '#chapter-select',
-  URLregex: true
+  prevchap: '#chapter-select'
 }

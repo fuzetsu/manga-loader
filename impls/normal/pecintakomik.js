@@ -1,6 +1,6 @@
 // METADATA
 // name: pecintakomik
-// match: ^https?://www\\.pecintakomik\\.com/manga/[^/]*/[^/]*
+// match: ^https?://www\.pecintakomik\.com/manga/[^/]*/[^/]*
 
 var impl_src = {
   img: '.picture',
@@ -13,6 +13,5 @@ var impl_src = {
   },
   prevchap: function() {
     return this.nextchap(true);
-  },
-  URLregex: false
+  }
 }

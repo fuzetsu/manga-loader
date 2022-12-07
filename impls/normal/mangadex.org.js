@@ -1,6 +1,6 @@
 // METADATA
 // name: mangadex.org
-// match: ^https?://mangadex\\.org/chapter/[0-9]+/[0-9]+
+// match: ^https?://mangadex\.org/chapter/[0-9]+/[0-9]+
 
 var impl_src = {
   img: '#current_page',
@@ -23,6 +23,5 @@ var impl_src = {
     this._base = loc.slice(0, -num.length);
     this._page = parseInt(num);
     return true;
-  },
-  URLregex: true
+  }
 }

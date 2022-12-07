@@ -1,6 +1,6 @@
 // METADATA
 // name: kiss-manga
-// match: ^https?://kissmanga\\.com/Manga/[^/]+/.+
+// match: ^https?://kissmanga\.com/Manga/[^/]+/.+
 
 var impl_src = {
   img: '#divImage img',
@@ -19,6 +19,5 @@ var impl_src = {
   prevchap: '#selectChapter, .selectChapter',
   pages: function(url, num, cb, ex) {
     cb((W.lstOLA || W.lstImages)[num - 1], num);
-  },
-  URLregex: true
+  }
 }

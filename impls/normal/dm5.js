@@ -1,6 +1,6 @@
 // METADATA
 // name: dm5
-// match: ^https?://[^\\.]*\\.dm5\\.com/m[0-9]*
+// match: ^https?://[^\.]*\.dm5\.com/m[0-9]*
 
 var impl_src = {
   img: function (){
@@ -20,6 +20,5 @@ var impl_src = {
   wait: function (){
     W.pages = getEls('img.load-src');
     return true;
-  },
-  URLregex: false
+  }
 }

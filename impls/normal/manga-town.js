@@ -9,6 +9,5 @@ var impl_src = {
   curpage: '.page_select select',
   nextchap: '#top_chapter_list',
   prevchap: '#top_chapter_list',
-  wait: 1000,
-  URLregex: true
+  wait: 1000
 }

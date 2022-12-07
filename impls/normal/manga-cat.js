@@ -1,6 +1,6 @@
 // METADATA
 // name: manga-cat
-// match: ^https?://www.mangacat.me/[^/]+/[^/]+/[^\\.]+.html
+// match: ^https?://www.mangacat.me/[^/]+/[^/]+/[^\.]+.html
 
 var impl_src = {
   img: '.img',
@@ -10,6 +10,5 @@ var impl_src = {
   nextchap: '#chapter',
   prevchap: '#chapter',
   invchap: true,
-  wait: '#chapter option',
-  URLregex: true
+  wait: '#chapter option'
 }

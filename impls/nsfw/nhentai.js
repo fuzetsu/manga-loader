@@ -1,6 +1,6 @@
 // METADATA
 // name: nhentai
-// match: ^https?://nhentai\\.net\\/g\\/[0-9]+/[0-9]+
+// match: ^https?://nhentai\.net\/g\/[0-9]+/[0-9]+
 
 var impl_src = {
   img: '#image-container > a img',
@@ -10,5 +10,5 @@ var impl_src = {
   imgmod: {
       altProp: 'data-cfsrc'
     },
-  URLregex: false
+  
 }

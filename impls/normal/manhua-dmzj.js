@@ -1,6 +1,6 @@
 // METADATA
 // name: manhua-dmzj
-// match: ^https?://manhua.dmzj.com/[^/]*/[0-9]+(-[0-9]+)?\\.shtml
+// match: ^https?://manhua.dmzj.com/[^/]*/[0-9]+(-[0-9]+)?\.shtml
 
 var impl_src = {
   img: '#center_box > img',
@@ -17,6 +17,5 @@ var impl_src = {
   pages: function(url, num, cb, ex) {
     cb(W.img_prefix + W.arr_pages[num - 1], num);
   },
-  wait: '#center_box > img',
-  URLregex: true
+  wait: '#center_box > img'
 }

@@ -1,6 +1,6 @@
 // METADATA
 // name: senmanga
-// match: ^https?://[^\\.]+\\.senmanga\\.com/[^/]*/.+
+// match: ^https?://[^\.]+\.senmanga\.com/[^/]*/.+
 
 var impl_src = {
   img: '#picture',
@@ -18,6 +18,5 @@ var impl_src = {
   },
   prevchap: function() {
     return this.nextchap(true);
-  },
-  URLregex: false
+  }
 }

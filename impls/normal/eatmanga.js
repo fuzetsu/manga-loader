@@ -9,6 +9,5 @@ var impl_src = {
   curpage: '#pages',
   nextchap: '#bottom_chapter_list',
   prevchap: '#bottom_chapter_list',
-  invchap: true,
-  URLregex: false
+  invchap: true
 }

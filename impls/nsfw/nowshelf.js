@@ -13,6 +13,5 @@ var impl_src = {
     },
   pages: function(url, num, cb, ex) {
       cb(page[num], num);
-    },
-  URLregex: false
+    }
 }

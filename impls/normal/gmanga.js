@@ -32,6 +32,5 @@ var impl_src = {
   wait: function() {
     W.pages = W.release_pages && W.release_pages[1];
     return W.pages;
-  },
-  URLregex: false
+  }
 }

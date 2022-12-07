@@ -1,6 +1,6 @@
 // METADATA
 // name: manga-kaka
-// match: ^https?://www\\.(mangahen|mangamap)\\.com/[^/]+/[0-9]+
+// match: ^https?://www\.(mangahen|mangamap)\.com/[^/]+/[0-9]+
 
 var impl_src = {
   img: 'img.manga-page',
@@ -13,6 +13,5 @@ var impl_src = {
   },
   prevchap: function() {
     return this.nextchap(true);
-  },
-  URLregex: true
+  }
 }

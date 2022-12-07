@@ -8,6 +8,5 @@ var impl_src = {
   numpages: '#pageMenu',
   curpage: '#pageMenu',
   nextchap: '#mangainfofooter > #mangainfo_bas table tr:first-child a',
-  prevchap: '#mangainfofooter > #mangainfo_bas table tr:last-child a',
-  URLregex: true
+  prevchap: '#mangainfofooter > #mangainfo_bas table tr:last-child a'
 }

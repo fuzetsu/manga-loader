@@ -1,6 +1,6 @@
 // METADATA
 // name: 2comic.com 動漫易
-// match: http://twocomic.com/view/comic_\\d+.html
+// match: http://twocomic.com/view/comic_\d+.html
 
 var impl_src = {
   img: '#TheImg',
@@ -37,6 +37,5 @@ var impl_src = {
   prevchap: function() {
     return W.ch > 1 ? W.replaceurl('ch', W.pi) : false;
   },
-  wait:'#TheImg',
-  URLregex: true
+  wait:'#TheImg'
 }

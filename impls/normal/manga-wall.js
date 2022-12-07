@@ -1,6 +1,6 @@
 // METADATA
 // name: manga-wall
-// match: ^https?://mangawall\\.com/manga/[^/]*/[0-9]*
+// match: ^https?://mangawall\.com/manga/[^/]*/[0-9]*
 
 var impl_src = {
   _page: null,
@@ -16,6 +16,5 @@ var impl_src = {
   },
   prevchap: function() {
     return this.nextchap(true);
-  },
-  URLregex: true
+  }
 }

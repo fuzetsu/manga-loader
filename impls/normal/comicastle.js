@@ -1,6 +1,6 @@
 // METADATA
 // name: comicastle
-// match: ^https?://comicastle\\.org/read-.+
+// match: ^https?://comicastle\.org/read-.+
 
 var impl_src = {
   img: '.chapter-img',
@@ -11,6 +11,5 @@ var impl_src = {
   curchap: '.form-control',
   nextchap: '.form-control',
   prevchap: '.form-control',
-  invchap: true,
-  URLregex: false
+  invchap: true
 }

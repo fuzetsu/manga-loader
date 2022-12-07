@@ -1,6 +1,6 @@
 // METADATA
 // name: unionmangas
-// match: https?://(www\\.)?unionmangas\\.net/leitor/.+
+// match: https?://(www\.)?unionmangas\.net/leitor/.+
 
 var impl_src = {
   img: '.slick-active img.real',
@@ -19,6 +19,5 @@ var impl_src = {
       return el.src || el.dataset.lazy;
     });
     return W.pages && W.pages.length > 0;
-  },
-  URLregex: false
+  }
 }

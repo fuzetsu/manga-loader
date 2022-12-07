@@ -1,6 +1,6 @@
 // METADATA
 // name: read-comic-online
-// match: ^https?://readcomiconline\\.to/Comic/[^/]+/.+
+// match: ^https?://readcomiconline\.to/Comic/[^/]+/.+
 
 var impl_src = {
   img: '#divImage img',
@@ -15,6 +15,5 @@ var impl_src = {
   prevchap: '#selectEpisode, .selectEpisode',
   pages: function(url, num, cb, ex) {
     cb(W.lstImages[num - 1], num);
-  },
-  URLregex: true
+  }
 }

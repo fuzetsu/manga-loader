@@ -1,6 +1,6 @@
 // METADATA
 // name: cartoonmad
-// match: https?://(www\\.)?(cartoonmad|comicnad)\.com/comic/[0-9]+\.html
+// match: https?://(www\.)?(cartoonmad|comicnad)\.com/comic/[0-9]+\.html
 
 var impl_src = {
   img: 'tr:nth-child(5) > td > table > tbody > tr:nth-child(1) > td > a > img',
@@ -21,6 +21,5 @@ var impl_src = {
     });
     return filter.length ? filter[0].href : null;
   },
-  ,
-  URLregex: false
+  
 }

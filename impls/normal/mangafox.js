@@ -30,6 +30,5 @@ var impl_src = {
     el = getEl('.reader-main img');
 
     return el && el.getAttribute('src') != el.getAttribute('data-loading-img');
-  },
-  URLregex: true
+  }
 }

@@ -1,6 +1,6 @@
 // METADATA
 // name: madokami
-// match: ^https?://manga\\.madokami\\.al/reader/.+
+// match: ^https?://manga\.madokami\.al/reader/.+
 
 var impl_src = {
   img: 'img',
@@ -18,6 +18,5 @@ var impl_src = {
     url = url.replace(/file=.+$/, 'file=' + this._pages[num - 1]);
     cb(url, url);
   },
-  wait: '#reader',
-  URLregex: false
+  wait: '#reader'
 }

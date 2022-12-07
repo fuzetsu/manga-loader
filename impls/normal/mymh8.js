@@ -1,6 +1,6 @@
 // METADATA
 // name: mymh8
-// match: ^https?://(www\\.)?mymh8\\.com/chapter/.+
+// match: ^https?://(www\.)?mymh8\.com/chapter/.+
 
 var impl_src = {
   img: '#viewimg',
@@ -21,6 +21,5 @@ var impl_src = {
   },
   wait: function() {
     return W.imageslist.length > 0;
-  },
-  URLregex: false
+  }
 }

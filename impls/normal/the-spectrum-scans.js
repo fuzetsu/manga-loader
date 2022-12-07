@@ -1,6 +1,6 @@
 // METADATA
 // name: the-spectrum-scans
-// match: ^https?://view\\.thespectrum\\.net/series/[^\\.]+\\.html
+// match: ^https?://view\.thespectrum\.net/series/[^\.]+\.html
 
 var impl_src = {
   img: '#mainimage',
@@ -32,6 +32,5 @@ var impl_src = {
     }
     this._page = ps.page[ps.page.selectedIndex].value - 1;
     return true;
-  },
-  URLregex: true
+  }
 }

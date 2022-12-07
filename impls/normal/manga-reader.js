@@ -9,6 +9,5 @@ var impl_src = {
   curpage: '#pageMenu',
   nextchap: '#chapterMenu',
   prevchap: '#chapterMenu',
-  wait: '#chapterMenu option',
-  URLregex: true
+  wait: '#chapterMenu option'
 }

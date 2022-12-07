@@ -1,6 +1,6 @@
 // METADATA
 // name: hentaifr
-// match: ^https?://hentaifr\\.net/.+\\.php\\?id=[0-9]+
+// match: ^https?://hentaifr\.net/.+\.php\?id=[0-9]+
 
 var impl_src = {
   img: function(ctx, next) {
@@ -15,6 +15,5 @@ var impl_src = {
     },
   wait: function() {
       return this.img() &&  this.next();
-    },
-  URLregex: false
+    }
 }

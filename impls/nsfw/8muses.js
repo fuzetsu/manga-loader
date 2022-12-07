@@ -9,6 +9,5 @@ var impl_src = {
     },
   next: '.photo > a',
   curpage: '#page-select-s',
-  numpages: '#page-select-s',
-  URLregex: false
+  numpages: '#page-select-s'
 }

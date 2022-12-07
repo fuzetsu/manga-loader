@@ -1,6 +1,6 @@
 // METADATA
 // name: hentai-rules
-// match: ^https?://www\\.hentairules\\.net/galleries[0-9]*/picture\\.php.+
+// match: ^https?://www\.hentairules\.net/galleries[0-9]*/picture\.php.+
 
 var impl_src = {
   img: '#theMainImage',
@@ -13,6 +13,5 @@ var impl_src = {
     },
   curpage: function() {
       return this.numpages(true);
-    },
-  URLregex: true
+    }
 }

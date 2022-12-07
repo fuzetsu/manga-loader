@@ -1,6 +1,6 @@
 // METADATA
 // name: mangalator
-// match: ^https?://mangalator.ch/show.php\\?gallery=[0-9]+
+// match: ^https?://mangalator.ch/show.php\?gallery=[0-9]+
 
 var impl_src = {
   img: '.image img',
@@ -13,6 +13,5 @@ var impl_src = {
   },
   prevchap: function() {
     return this.nextchap(true);
-  },
-  URLregex: false
+  }
 }

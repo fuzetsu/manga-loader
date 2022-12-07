@@ -19,6 +19,5 @@ var impl_src = {
   numchaps: 'select[name=chapter]',
   pages: function(url, num, cb, ex) {
     cb('/' + W.img_url[num], num);
-  },
-  URLregex: false
+  }
 }

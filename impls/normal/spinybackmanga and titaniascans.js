@@ -1,6 +1,6 @@
 // METADATA
 // name: spinybackmanga and titaniascans
-// match: ^https?://(spinybackmanga.com/\\?manga=[^&]+&chapter=.+|www\.titaniascans\.com/reader/.+/.+)
+// match: ^https?://(spinybackmanga.com/\?manga=[^&]+&chapter=.+|www\.titaniascans\.com/reader/.+/.+)
 
 var impl_src = {
   img: '#thePicLink img',
@@ -35,6 +35,5 @@ var impl_src = {
   pages: function(url, num, cb, ex) {
     var next = url.replace(/(?:(\/)2\/|[0-9]*)$/, '$1' + (num + 1));
     cb(W.imageArray[num - 1], next);
-  },
-  URLregex: true
+  }
 }

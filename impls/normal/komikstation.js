@@ -16,6 +16,5 @@ var impl_src = {
   wait: function() {
     W._base = location.href.replace(/[?#].+$/, '');
     return W.pages;
-  },
-  URLregex: false
+  }
 }

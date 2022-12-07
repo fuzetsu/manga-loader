@@ -47,6 +47,5 @@ var impl_src = {
   prevchap: function() {
     return this.nextchap(true);
   },
-  wait: '#comic_page',
-  URLregex: true
+  wait: '#comic_page'
 }

@@ -70,6 +70,12 @@ def parse_section_items(astr):
             yield astr[last_item_idx:].strip()
             continue
 
+def unescape(astr):
+    try:
+        return eval('"%s"' % astr)
+    except:
+        return astr
+
 parsed_impl = ( ( item.split(':', maxsplit=1) for item in parse_section_items(sec_text) ) for sec_text in parse_into_sections(impl_text, find_range(impl_text)) )
 
 repo_info = {
@@ -82,13 +88,13 @@ for section in parsed_impl:
     item_texts = []
     for item in section:
         if item[0] in ('name', 'match'):
-            item_info[item[0]] = item[1].strip()[1:-1]
+            item_info[item[0]] = unescape(item[1].strip()[1:-1])
         else:
             item_texts.append(':'.join(item))
     
     direct_match = item_info['name'] in item_info['match']
-    URLregex = 'false' if direct_match else 'true'
-    item_texts.append('URLregex: %s' % URLregex)
+    #URLregex = 'false' if direct_match else 'true'
+    #item_texts.append('URLregex: %s' % URLregex)
     
     if direct_match:
         repo_info['direct_match'][item_info['name']] = item_info['match']
@@ -104,4 +110,4 @@ for section in parsed_impl:
         out_fp.write('\n')
         out_fp.write(item_info['code'])
 
-print(json.dumps(repo_info).replace(r'\\\\', r'\\'))
+print(json.dumps(repo_info))

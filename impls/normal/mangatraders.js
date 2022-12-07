@@ -1,6 +1,6 @@
 // METADATA
 // name: mangatraders
-// match: ^https?://mangatraders\\.biz/read-online/.+
+// match: ^https?://mangatraders\.biz/read-online/.+
 
 var impl_src = {
   img: 'img.CurImage',
@@ -16,6 +16,5 @@ var impl_src = {
   },
   prevchap: function() {
     return this.nextchap(true);
-  },
-  URLregex: false
+  }
 }

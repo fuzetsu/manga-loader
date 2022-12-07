@@ -1,6 +1,6 @@
 // METADATA
 // name: readcomics
-// match: https?://(www\\.)?readcomics\\.tv/.+/chapter-[0-9]+(/[0-9]+|$)
+// match: https?://(www\.)?readcomics\.tv/.+/chapter-[0-9]+(/[0-9]+|$)
 
 var impl_src = {
   img: '#main_img',
@@ -11,6 +11,5 @@ var impl_src = {
   prevchap: 'select[name=chapter_select]',
   curchap: 'select[name=chapter_select]',
   numchaps: 'select[name=chapter_select]',
-  wait: 'select[name=page_select]',
-  URLregex: false
+  wait: 'select[name=page_select]'
 }

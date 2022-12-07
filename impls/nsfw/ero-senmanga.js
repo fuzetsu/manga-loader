@@ -1,6 +1,6 @@
 // METADATA
 // name: ero-senmanga
-// match: ^https?://ero\\.senmanga\\.com/[^/]*/[^/]*/[0-9]*
+// match: ^https?://ero\.senmanga\.com/[^/]*/[^/]*/[0-9]*
 
 var impl_src = {
   img: '#picture',
@@ -16,6 +16,5 @@ var impl_src = {
     },
   prevchap: function() {
       return this.nextchap(true);
-    },
-  URLregex: true
+    }
 }

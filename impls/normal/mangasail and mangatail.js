@@ -14,6 +14,5 @@ var impl_src = {
     return this.nextchap(true);
   },
   curchap: '#select_node',
-  numchaps: '#select_node',
-  URLregex: true
+  numchaps: '#select_node'
 }

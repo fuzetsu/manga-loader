@@ -6,6 +6,5 @@ var impl_src = {
   img: '.sni > a > img, #img',
   next: '.sni > a, #i3 a',
   numpages: 'div.sn > div > span:nth-child(2)',
-  curpage: 'div.sn > div > span:nth-child(1)',
-  URLregex: true
+  curpage: 'div.sn > div > span:nth-child(1)'
 }

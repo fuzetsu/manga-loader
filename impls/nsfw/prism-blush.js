@@ -4,6 +4,5 @@
 
 var impl_src = {
   img: '#comic img',
-  next: '#comic a',
-  URLregex: true
+  next: '#comic a'
 }

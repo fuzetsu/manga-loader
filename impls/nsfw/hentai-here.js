@@ -1,6 +1,6 @@
 // METADATA
 // name: hentai-here
-// match: ^https?://(www\\.)?hentaihere.com/m/[^/]+/[0-9]+/[0-9]+
+// match: ^https?://(www\.)?hentaihere.com/m/[^/]+/[0-9]+/[0-9]+
 
 var impl_src = {
   img: '#arf-reader-img',
@@ -30,6 +30,5 @@ var impl_src = {
       return curchap;
     },
   numchaps: 'ul.dropdown-menu.text-left',
-  wait: 'ul.dropdown-menu.text-left',
-  URLregex: true
+  wait: 'ul.dropdown-menu.text-left'
 }

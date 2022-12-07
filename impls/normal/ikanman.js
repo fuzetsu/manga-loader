@@ -34,6 +34,5 @@ var impl_src = {
     var nexturl =  url.replace(/(_p[0-9]+)?\.html.*/, '_p' + (num + 1) + '.html');
     var imgurl = W._base + W.cInfo.files[num - 1];
     cb(imgurl, nexturl);
-  },
-  URLregex: false
+  }
 }

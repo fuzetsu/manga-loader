@@ -14,6 +14,5 @@ var impl_src = {
   pages: function(url, num, cb, ex) {
       cb(W.images[num - 1].path, num);
     },
-  wait: '#comicImages > img',
-  URLregex: false
+  wait: '#comicImages > img'
 }

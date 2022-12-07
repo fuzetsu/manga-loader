@@ -19,6 +19,5 @@ var impl_src = {
   curpage: function() {
     return parseInt(document.body.textContent.match(/第([0-9]+)页/)[1]);
   },
-  beforexhr: reuse.encodeChinese,
-  URLregex: false
+  beforexhr: reuse.encodeChinese
 }

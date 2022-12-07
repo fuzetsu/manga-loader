@@ -22,6 +22,5 @@ var impl_src = {
   },
   pages: function(url, num, cb, ex) {
     cb(W.pages[num - 1], num);
-  },
-  URLregex: false
+  }
 }

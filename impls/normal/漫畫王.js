@@ -1,6 +1,6 @@
 // METADATA
 // name: 漫畫王
-// match: https://www\.mangabox\.me/reader/\\d+/episodes/\\d+/
+// match: https://www\.mangabox\.me/reader/\d+/episodes/\d+/
 
 var impl_src = {
   img: 'img.jsNext',
@@ -17,6 +17,5 @@ var impl_src = {
   wait: function (){
     W.pages = getEls('img.jsNext');
     return true;
-  },
-  URLregex: true
+  }
 }

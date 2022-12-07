@@ -16,6 +16,5 @@ var impl_src = {
   nextchap: function() {
     return W.qTcms_Pic_nextArr;
   },
-  wait: '#qTcms_pic',
-  URLregex: false
+  wait: '#qTcms_pic'
 }

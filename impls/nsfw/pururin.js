@@ -1,6 +1,6 @@
 // METADATA
 // name: pururin
-// match: https?://pururin\\.us/read/.+
+// match: https?://pururin\.us/read/.+
 
 var impl_src = {
   img: 'img.image-next',
@@ -11,6 +11,5 @@ var impl_src = {
   curpage: 'option:checked',
   pages: function(url, num, cb, ex) {
       cb(chapters[num].image, num);
-    },
-  URLregex: false
+    }
 }

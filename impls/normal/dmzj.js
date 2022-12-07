@@ -1,6 +1,6 @@
 // METADATA
 // name: dmzj
-// match: ^https?://www.dmzj.com/view/[^/]+/.+\\.html
+// match: ^https?://www.dmzj.com/view/[^/]+/.+\.html
 
 var impl_src = {
   img: '.comic_wraCon > img',
@@ -17,6 +17,5 @@ var impl_src = {
   pages: function(url, num, cb, ex) {
     cb(W.img_prefix + W.picArry[num - 1], num);
   },
-  wait: '.comic_wraCon > img',
-  URLregex: false
+  wait: '.comic_wraCon > img'
 }

@@ -19,6 +19,5 @@ var impl_src = {
     },
   pages: function(url, num, cb, ex) {
       cb(this._pages[num - 1], num);
-    },
-  URLregex: true
+    }
 }

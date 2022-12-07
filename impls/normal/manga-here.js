@@ -18,6 +18,5 @@ var impl_src = {
   },
   wait: function() {
     return areDefined(W.current_chapter_index, W.chapter_list, getEl('#top_chapter_list'));
-  },
-  URLregex: true
+  }
 }

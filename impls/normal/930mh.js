@@ -1,6 +1,6 @@
 // METADATA
 // name: 930mh
-// match: http://www\.930mh\.com/manhua/\\d+/\\d+.html
+// match: http://www\.930mh\.com/manhua/\d+/\d+.html
 
 var impl_src = {
   img: '#images > img',
@@ -22,6 +22,5 @@ var impl_src = {
   prevchap: function(){
     return W.prevChapterData.id && W.prevChapterData.id > 0 ? W.comicUrl + W.prevChapterData.id + '.html' : null;
   },
-  wait: '#images > img',
-  URLregex: false
+  wait: '#images > img'
 }

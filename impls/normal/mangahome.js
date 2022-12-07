@@ -1,6 +1,6 @@
 // METADATA
 // name: mangahome
-// match: https?://www\\.mangahome\\.com/manga/.+/.+
+// match: https?://www\.mangahome\.com/manga/.+/.+
 
 var impl_src = {
   img: '#image',
@@ -18,6 +18,5 @@ var impl_src = {
   prevchap: function() {
     return this.nextchap(true);
   },
-  wait: '#image',
-  URLregex: false
+  wait: '#image'
 }

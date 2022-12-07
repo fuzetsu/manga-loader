@@ -1,6 +1,6 @@
 // METADATA
 // name: readmng.com
-// match: ^https?://www\\.readmng\\.com/[^/]+/.+
+// match: ^https?://www\.readmng\.com/[^/]+/.+
 
 var impl_src = {
   img: '.page_chapter-2 img',
@@ -9,6 +9,5 @@ var impl_src = {
   curpage: '.list-switcher-2 select[name=category_type]',
   nextchap: '.jump-menu[name=chapter_list]',
   prevchap: '.jump-menu[name=chapter_list]',
-  invchap: true,
-  URLregex: true
+  invchap: true
 }

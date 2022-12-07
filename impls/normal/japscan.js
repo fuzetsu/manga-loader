@@ -1,6 +1,6 @@
 // METADATA
 // name: japscan
-// match: ^https?://www\\.japscan\\.com/lecture-en-ligne/[^/]*/[0-9]*
+// match: ^https?://www\.japscan\.com/lecture-en-ligne/[^/]*/[0-9]*
 
 var impl_src = {
   img: '#image',
@@ -8,6 +8,5 @@ var impl_src = {
   numpages: '#pages',
   curpage: '#pages',
   nextchap: '#next_chapter',
-  prevchap: '#back_chapter',
-  URLregex: false
+  prevchap: '#back_chapter'
 }

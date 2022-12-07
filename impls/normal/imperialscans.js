@@ -26,6 +26,5 @@ var impl_src = {
     return extractInfo('#chapter-select');
   },
   nextchap: '#page-control > li:nth-child(5) > a',
-  prevchap: '#page-control > li:nth-child(1) > a',
-  URLregex: false
+  prevchap: '#page-control > li:nth-child(1) > a'
 }
