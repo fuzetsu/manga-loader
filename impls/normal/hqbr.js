@@ -1,5 +1,4 @@
 // METADATA
-// name: hqbr
 // match: ^https?://hqbr.com.br/hqs/[^/]+/capitulo/[0-9]+/leitor/0
 
 var impl_src = {

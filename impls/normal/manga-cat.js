@@ -1,5 +1,4 @@
 // METADATA
-// name: manga-cat
 // match: ^https?://www.mangacat.me/[^/]+/[^/]+/[^\.]+.html
 
 var impl_src = {

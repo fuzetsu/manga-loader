@@ -1,5 +1,4 @@
 // METADATA
-// name: egscans
 // match: ^https?://read.egscans.com/.+
 
 var impl_src = {

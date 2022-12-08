@@ -1,5 +1,4 @@
 // METADATA
-// name: lonemanga
 // match: ^https?://lonemanga.com/manga/[^/]+/[^/]+
 
 var impl_src = {

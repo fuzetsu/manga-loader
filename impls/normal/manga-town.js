@@ -1,5 +1,4 @@
 // METADATA
-// name: manga-town
 // match: ^https?://www.mangatown.com/manga/[^/]+/[^/]+
 
 var impl_src = {

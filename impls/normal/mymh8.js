@@ -1,5 +1,4 @@
 // METADATA
-// name: mymh8
 // match: ^https?://(www\.)?mymh8\.com/chapter/.+
 
 var impl_src = {

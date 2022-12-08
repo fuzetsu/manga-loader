@@ -1,5 +1,4 @@
 // METADATA
-// name: hentai-here
 // match: ^https?://(www\.)?hentaihere.com/m/[^/]+/[0-9]+/[0-9]+
 
 var impl_src = {

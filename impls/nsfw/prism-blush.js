@@ -1,5 +1,4 @@
 // METADATA
-// name: prism-blush
 // match: ^https?://prismblush.com/comic/.+
 
 var impl_src = {

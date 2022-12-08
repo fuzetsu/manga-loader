@@ -1,5 +1,4 @@
 // METADATA
-// name: otakusmash
 // match: https?://www\.otakusmash\.com/(read-comics|read-manga)/.+
 
 var impl_src = {

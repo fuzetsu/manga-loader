@@ -1,5 +1,4 @@
 // METADATA
-// name: mangatraders
 // match: ^https?://mangatraders\.biz/read-online/.+
 
 var impl_src = {

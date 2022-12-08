@@ -1,5 +1,4 @@
 // METADATA
-// name: chuixue
 // match: ^https?://www.chuixue.com/manhua/[0-9]+/[0-9]+.html
 
 var impl_src = {

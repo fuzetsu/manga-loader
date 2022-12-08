@@ -1,5 +1,4 @@
 // METADATA
-// name: kiss-manga
 // match: ^https?://kissmanga\.com/Manga/[^/]+/.+
 
 var impl_src = {

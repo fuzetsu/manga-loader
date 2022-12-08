@@ -1,5 +1,4 @@
 // METADATA
-// name: mangaeden
 // match: ^https?://(www\.)?mangaeden\.com/(en|it)/(en|it)-manga/.+
 
 var impl_src = {

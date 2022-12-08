@@ -1,5 +1,4 @@
 // METADATA
-// name: mangachapter
 // match: ^https?://www\.mangachapter\.me/[^/]+/[^/]+/[^/]+.html
 
 var impl_src = {

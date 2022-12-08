@@ -1,5 +1,4 @@
 // METADATA
-// name: sh-arab
 // match: ^https?://www.sh-arab.com/manga/.+
 
 var impl_src = {

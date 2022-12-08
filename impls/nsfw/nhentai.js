@@ -1,5 +1,4 @@
 // METADATA
-// name: nhentai
 // match: ^https?://nhentai\.net\/g\/[0-9]+/[0-9]+
 
 var impl_src = {

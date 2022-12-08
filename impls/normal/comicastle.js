@@ -1,5 +1,4 @@
 // METADATA
-// name: comicastle
 // match: ^https?://comicastle\.org/read-.+
 
 var impl_src = {

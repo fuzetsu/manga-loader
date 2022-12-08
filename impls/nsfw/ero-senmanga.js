@@ -1,5 +1,4 @@
 // METADATA
-// name: ero-senmanga
 // match: ^https?://ero\.senmanga\.com/[^/]*/[^/]*/[0-9]*
 
 var impl_src = {

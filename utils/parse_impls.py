@@ -105,7 +105,7 @@ for section in parsed_impl:
     out_name = '%s.js' % item_info['name']
     with open(out_dir/out_name, 'w', encoding='utf-8') as out_fp:
         out_fp.write('// METADATA\n')
-        out_fp.write('// name: %s\n' % item_info['name'])
+        #out_fp.write('// name: %s\n' % item_info['name'])
         out_fp.write('// match: %s\n' % item_info['match'])
         out_fp.write('\n')
         out_fp.write(item_info['code'])

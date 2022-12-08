@@ -1,5 +1,4 @@
 // METADATA
-// name: 930mh
 // match: http://www\.930mh\.com/manhua/\d+/\d+.html
 
 var impl_src = {

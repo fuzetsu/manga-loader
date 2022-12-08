@@ -1,5 +1,4 @@
 // METADATA
-// name: readmng.com
 // match: ^https?://www\.readmng\.com/[^/]+/.+
 
 var impl_src = {

@@ -1,5 +1,4 @@
 // METADATA
-// name: japscan
 // match: ^https?://www\.japscan\.com/lecture-en-ligne/[^/]*/[0-9]*
 
 var impl_src = {

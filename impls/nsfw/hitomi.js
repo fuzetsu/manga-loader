@@ -1,5 +1,4 @@
 // METADATA
-// name: hitomi
 // match: ^http(s)?://hitomi.la/reader/[0-9]+.html
 
 var impl_src = {

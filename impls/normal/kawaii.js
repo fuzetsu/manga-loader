@@ -1,5 +1,4 @@
 // METADATA
-// name: kawaii
 // match: ^https://kawaii.ca/reader/.+
 
 var impl_src = {

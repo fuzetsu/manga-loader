@@ -1,5 +1,4 @@
 // METADATA
-// name: hentaifr
 // match: ^https?://hentaifr\.net/.+\.php\?id=[0-9]+
 
 var impl_src = {

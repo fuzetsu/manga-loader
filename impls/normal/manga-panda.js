@@ -1,5 +1,4 @@
 // METADATA
-// name: manga-panda
 // match: ^https?://www.mangapanda.com/.*/[0-9]*
 
 var impl_src = {

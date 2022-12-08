@@ -1,5 +1,4 @@
 // METADATA
-// name: dmzj
 // match: ^https?://www.dmzj.com/view/[^/]+/.+\.html
 
 var impl_src = {

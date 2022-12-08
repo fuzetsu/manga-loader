@@ -1,5 +1,4 @@
 // METADATA
-// name: manga-kaka
 // match: ^https?://www\.(mangahen|mangamap)\.com/[^/]+/[0-9]+
 
 var impl_src = {

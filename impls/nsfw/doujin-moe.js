@@ -1,5 +1,4 @@
 // METADATA
-// name: doujin-moe
 // match: ^https?://doujins\.com/.+
 
 var impl_src = {

@@ -1,5 +1,4 @@
 // METADATA
-// name: 8muses
 // match: ^http(s)?://www.8muses.com/comix/picture/[^/]+/[^/]+/[^/]+/.+
 
 var impl_src = {

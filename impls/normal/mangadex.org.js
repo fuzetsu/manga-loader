@@ -1,5 +1,4 @@
 // METADATA
-// name: mangadex.org
 // match: ^https?://mangadex\.org/chapter/[0-9]+/[0-9]+
 
 var impl_src = {

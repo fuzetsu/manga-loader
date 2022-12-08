@@ -1,5 +1,4 @@
 // METADATA
-// name: senmanga
 // match: ^https?://[^\.]+\.senmanga\.com/[^/]*/.+
 
 var impl_src = {

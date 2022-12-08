@@ -1,5 +1,4 @@
 // METADATA
-// name: manga-stream
 // match: ^https?://(readms|mangastream).(net|com)/(r|read)/[^/]*/[^/]*
 
 var impl_src = {

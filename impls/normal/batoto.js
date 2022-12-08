@@ -1,5 +1,4 @@
 // METADATA
-// name: batoto
 // match: ^https?://bato.to/reader.*
 
 var impl_src = {

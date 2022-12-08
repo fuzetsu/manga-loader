@@ -1,5 +1,4 @@
 // METADATA
-// name: 2comic.com 動漫易
 // match: http://twocomic.com/view/comic_\d+.html
 
 var impl_src = {

@@ -1,5 +1,4 @@
 // METADATA
-// name: fakku
 // match: ^http(s)?://www.fakku.net/.*/.*/read
 
 var impl_src = {

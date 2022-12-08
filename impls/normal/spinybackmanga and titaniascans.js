@@ -1,5 +1,4 @@
 // METADATA
-// name: spinybackmanga and titaniascans
 // match: ^https?://(spinybackmanga.com/\?manga=[^&]+&chapter=.+|www\.titaniascans\.com/reader/.+/.+)
 
 var impl_src = {

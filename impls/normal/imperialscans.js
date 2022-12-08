@@ -1,5 +1,4 @@
 // METADATA
-// name: imperialscans
 // match: ^https?://imperialscans.com/read/.+
 
 var impl_src = {

@@ -1,6 +1,5 @@
 // METADATA
-// name: mangasail and mangatail
-// match: https?://www\.manga(sail|tail)\.com/[^/]+
+// match: https?://www\.mangasail\.com/[^/]+
 
 var impl_src = {
   img: '#images img',

@@ -1,5 +1,4 @@
 // METADATA
-// name: unionmangas
 // match: https?://(www\.)?unionmangas\.net/leitor/.+
 
 var impl_src = {

@@ -1,5 +1,4 @@
 // METADATA
-// name: manhua-dmzj
 // match: ^https?://manhua.dmzj.com/[^/]*/[0-9]+(-[0-9]+)?\.shtml
 
 var impl_src = {

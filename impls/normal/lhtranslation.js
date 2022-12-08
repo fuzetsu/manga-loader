@@ -1,5 +1,4 @@
 // METADATA
-// name: lhtranslation
 // match: ^https?://read.lhtranslation\.com/read-.+
 
 var impl_src = {

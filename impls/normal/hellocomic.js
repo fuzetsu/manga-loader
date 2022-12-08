@@ -1,5 +1,4 @@
 // METADATA
-// name: hellocomic
 // match: https?://hellocomic.com/[^/]+/[^/]+/p[0-9]+
 
 var impl_src = {

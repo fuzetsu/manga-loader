@@ -1,5 +1,4 @@
 // METADATA
-// name: mangainn
 // match: ^https?://www.mangainn.net/manga/chapter/.+
 
 var impl_src = {

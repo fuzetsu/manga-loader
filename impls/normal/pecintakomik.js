@@ -1,5 +1,4 @@
 // METADATA
-// name: pecintakomik
 // match: ^https?://www\.pecintakomik\.com/manga/[^/]*/[^/]*
 
 var impl_src = {

@@ -1,5 +1,4 @@
 // METADATA
-// name: manga-wall
 // match: ^https?://mangawall\.com/manga/[^/]*/[0-9]*
 
 var impl_src = {

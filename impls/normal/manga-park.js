@@ -1,5 +1,4 @@
 // METADATA
-// name: manga-park
 // match: ^https?://mangapark\.me/manga/[^/]+/[^/]+/[^/]+
 
 var impl_src = {

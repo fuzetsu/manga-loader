@@ -1,5 +1,4 @@
 // METADATA
-// name: the-spectrum-scans
 // match: ^https?://view\.thespectrum\.net/series/[^\.]+\.html
 
 var impl_src = {

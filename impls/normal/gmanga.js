@@ -1,5 +1,4 @@
 // METADATA
-// name: gmanga
 // match: ^https?://gmanga.me/mangas/
 
 var impl_src = {

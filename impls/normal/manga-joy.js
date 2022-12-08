@@ -1,5 +1,4 @@
 // METADATA
-// name: manga-joy
 // match: ^https?://manga-joy.com/[^/]*/[0-9]*
 
 var impl_src = {

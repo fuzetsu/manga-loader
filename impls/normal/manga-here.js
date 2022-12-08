@@ -1,5 +1,4 @@
 // METADATA
-// name: manga-here
 // match: ^https?://www.mangahere.c[oc]/manga/[^/]+/[^/]+
 
 var impl_src = {

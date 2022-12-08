@@ -1,5 +1,4 @@
 // METADATA
-// name: ikanman
 // match: https?://(www|tw)\.(ikanman|manhuagui)\.com/comic/[0-9]+/[0-9]+\.html
 
 var impl_src = {

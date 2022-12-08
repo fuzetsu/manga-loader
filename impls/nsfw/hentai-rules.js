@@ -1,5 +1,4 @@
 // METADATA
-// name: hentai-rules
 // match: ^https?://www\.hentairules\.net/galleries[0-9]*/picture\.php.+
 
 var impl_src = {

@@ -1,6 +1,5 @@
 // METADATA
-// name: manga-cow, manga-doom, manga-indo, 3asq.info, moonbunnnycafe
-// match: ^https?://(mngcow|mangadoom|mangaindo|merakiscans|www\.3asq|moonbunnycafe)\.(co|id|info|com)/[^/]+/[0-9.]+
+// match: ^https?://(manga|mng)cow\.(co|id|info|com)/[^/]+/[0-9.]+
 
 var impl_src = {
   img: '.prw a > img',
@@ -13,5 +12,6 @@ var impl_src = {
   },
   prevchap: function() {
     return this.nextchap(true);
-  }
+  },
+  URLregex: true
 }

@@ -1,5 +1,4 @@
 // METADATA
-// name: manga-reader
 // match: ^https?://www.mangareader.net/.*/.*
 
 var impl_src = {

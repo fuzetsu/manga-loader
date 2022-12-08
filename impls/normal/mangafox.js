@@ -1,5 +1,4 @@
 // METADATA
-// name: mangafox
 // match: ^https?://(fan|manga)fox.(me|la|net)/manga/[^/]*/[^/]*/[^/]*
 
 var impl_src = {

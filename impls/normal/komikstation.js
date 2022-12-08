@@ -1,5 +1,4 @@
 // METADATA
-// name: komikstation
 // match: ^https?://www\.komikstation\.com/.+/.+/.+
 
 var impl_src = {

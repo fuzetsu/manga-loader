@@ -1,5 +1,4 @@
 // METADATA
-// name: kukudm
 // match: ^https?://(www|comic|comic2|comic3).kukudm.com/comiclist/[0-9]+/[0-9]+/[0-9]+.htm
 
 var impl_src = {

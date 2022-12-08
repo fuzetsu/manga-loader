@@ -1,5 +1,4 @@
 // METADATA
-// name: pururin
 // match: https?://pururin\.us/read/.+
 
 var impl_src = {

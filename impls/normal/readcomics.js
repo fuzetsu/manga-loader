@@ -1,5 +1,4 @@
 // METADATA
-// name: readcomics
 // match: https?://(www\.)?readcomics\.tv/.+/chapter-[0-9]+(/[0-9]+|$)
 
 var impl_src = {

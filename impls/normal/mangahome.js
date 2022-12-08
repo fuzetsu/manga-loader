@@ -1,5 +1,4 @@
 // METADATA
-// name: mangahome
 // match: https?://www\.mangahome\.com/manga/.+/.+
 
 var impl_src = {

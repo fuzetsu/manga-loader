@@ -1,5 +1,4 @@
 // METADATA
-// name: central-de-mangas
 // match: ^https?://(centraldemangas\.org|[^\.]+\.com\.br/leitura)/online/[^/]*/[0-9]*
 
 var impl_src = {

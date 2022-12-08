@@ -1,5 +1,4 @@
 // METADATA
-// name: mangaforall
 // match: https?://mangaforall.com/manga/[^/]+/[^/]+/
 
 var impl_src = {

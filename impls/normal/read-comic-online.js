@@ -1,5 +1,4 @@
 // METADATA
-// name: read-comic-online
 // match: ^https?://readcomiconline\.to/Comic/[^/]+/.+
 
 var impl_src = {

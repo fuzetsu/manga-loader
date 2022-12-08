@@ -1249,13 +1249,13 @@ var MLoaderCheckoutImpRepo = function(force=false) {
 var MLoaderGetImpName = function() {
   MLoaderCheckoutImpRepo()
   //console.log(storeGet("repo_info"));
-  var repo_info = JSON.parse(storeGet("repo_info"));
+  window.repo_info = JSON.parse(storeGet("repo_info"));
   var sreponame; var subrepo; var matchregex;
 
   var i; var j;
   for (i = 0; i < repo_enabled.length; i++) {
     sreponame = repo_enabled[i];
-    subrepo = repo_info[sreponame];
+    subrepo = window.repo_info[sreponame];
     for (var key in subrepo["direct_match"]) {
       if (pageUrl.search(key) != -1) {
         matchregex = subrepo["direct_match"][key];
@@ -1265,6 +1265,7 @@ var MLoaderGetImpName = function() {
     }
     for (var key in subrepo["regex"]) {
       matchregex = subrepo["regex"][key];
+      if (matchregex == 'META') { continue; }
       if ((new RegExp(matchregex, 'i')).test(pageUrl)) { return [sreponame, key]; }
     }
   }
@@ -1276,13 +1277,40 @@ var MLoaderGetImpName = function() {
   return [null, null];
 }
 
+var MLoaderMapImpName = function(srepo_name, imp_name) {
+  var imp_name_map = window.repo_info[srepo_name]['mapto'][imp_name];
+  if (imp_name_map) {
+    imp_name = imp_name_map;
+  } else {
+    console.log('no mapping for ' + srepo_name + '->' + imp_name);
+  }
+  return [srepo_name, imp_name];
+}
+
 var MLoaderGetImpCode = function(srepo_name, imp_name) {
-  var imp_code = storeGet("MLoaderImp_" + imp_name);
+  var imp_code;
+
+  // seek in User Override
+  var user_override = storeGet("UserOverrideImp_" + imp_name);
+  var override = false;
+  if (user_override) {
+    console.log('Using user override for '+ srepo_name + '->' + imp_name);
+    override = true;
+    imp_code = user_override;
+    return [imp_code, override];
+  }
+
+  // handle name mapping
+  [srepo_name, imp_name] = MLoaderMapImpName(srepo_name, imp_name);
+
+  // seek in local storage
+  imp_code = storeGet("MLoaderImp_" + imp_name);
   var imp_ver = storeGet("MLoaderImpVer_" + imp_name);
   imp_ver = imp_ver ? imp_ver : 0;
   var repo_version, repo_url;
   [repo_version, repo_url] = MLoaderGetLocalRepoInfo();
 
+  // seek online (disabled if subrepo name is "local")
   if ((!imp_code || imp_ver < repo_version) && srepo_name != "local") {
     var request = new XMLHttpRequest();
     request.open("GET", repo_url + srepo_name + "/" + imp_name + ".js", false);
@@ -1294,13 +1322,6 @@ var MLoaderGetImpCode = function(srepo_name, imp_name) {
     storeSet("MLoaderImpVer_" + imp_name, repo_version)
   }
   
-  var user_override = storeGet("UserOverrideImp_" + imp_name);
-  var override = false;
-  if (user_override) {
-    console.log('Using user override for '+ srepo_name + '->' + imp_name);
-    override = true;
-    imp_code = user_override;
-  }
   return [imp_code, override];
 }
 

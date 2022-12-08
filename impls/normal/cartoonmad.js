@@ -1,5 +1,4 @@
 // METADATA
-// name: cartoonmad
 // match: https?://(www\.)?(cartoonmad|comicnad)\.com/comic/[0-9]+\.html
 
 var impl_src = {

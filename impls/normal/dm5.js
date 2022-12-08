@@ -1,5 +1,4 @@
 // METADATA
-// name: dm5
 // match: ^https?://[^\.]*\.dm5\.com/m[0-9]*
 
 var impl_src = {

@@ -1,5 +1,4 @@
 // METADATA
-// name: geh-and-exh
 // match: ^https?://(e-hentai|exhentai).org/s/.*/.*
 
 var impl_src = {

@@ -1,5 +1,4 @@
 // METADATA
-// name: biamamscans.com
 // match: ^https?://biamamscans\.com/read/.+
 
 var impl_src = {

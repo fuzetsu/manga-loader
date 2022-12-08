@@ -1,5 +1,4 @@
 // METADATA
-// name: madokami
 // match: ^https?://manga\.madokami\.al/reader/.+
 
 var impl_src = {

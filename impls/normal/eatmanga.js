@@ -1,5 +1,4 @@
 // METADATA
-// name: eatmanga
 // match: ^https?://eatmanga.com/Manga-Scan/[^/]+/.+
 
 var impl_src = {

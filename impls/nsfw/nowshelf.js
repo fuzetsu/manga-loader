@@ -1,5 +1,4 @@
 // METADATA
-// name: nowshelf
 // match: ^https?://nowshelf.com/watch/[0-9]*
 
 var impl_src = {

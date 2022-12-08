@@ -1,5 +1,4 @@
 // METADATA
-// name: mangago
 // match: ^https?://(www.)?mangago.me/read-manga/[^/]+/[^/]+/[^/]+
 
 var impl_src = {

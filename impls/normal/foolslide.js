@@ -1,45 +1,5 @@
 // METADATA
-// name: foolslide
-// match: ^https?://(" + [
-    "manga.redhawkscans.com/reader/read/.+",
-    "reader.s2smanga.com/read/.+",
-    "casanovascans.com/read/.+",
-    "reader.vortex-scans.com/read/.+",
-    "reader.roseliascans.com/read/.+",
-    "mangatopia.net/slide/read/.+",
-    "www.twistedhelscans.com/read/.+",
-    "sensescans.com/reader/read/.+",
-    "reader.kireicake.com/read/.+",
-    "substitutescans.com/reader/read/.+",
-    "mangaichiscans.mokkori.fr/fs/read/.+",
-    "reader.shoujosense.com/read/.+",
-    "www.friendshipscans.com/slide/read/.+",
-    "manga.famatg.com/read/.+",
-    "www.demonicscans.com/FoOlSlide/read/.+",
-    "necron99scans.com/reader/read/.+",
-    "www.demonicscans.com/FoOlSlide/read/.+",
-    "reader.psscans.info/read/.+",
-    "otscans.com/foolslide/read/.+",
-    "necron99scans.com/reader/read/.+",
-    "manga.inpowerz.com/read/.+",
-    "reader.evilflowers.com/read/.+",
-    "reader.cafeconirst.com/read/.+",
-    "kobato.hologfx.com/reader/read/.+",
-    "jaiminisbox.com/reader/read/.+",
-    "abandonedkittenscans.mokkori.fr/reader/read/.+",
-    "gomanga.co/reader/read/.+",
-    "reader\.manga-download\.org/read/.+",
-    "(www\.)?manga-ar\.net/manga/.+/.+/.+",
-    "helveticascans.com/r/read/.+",
-    "reader.thecatscans.com/read/.+",
-    "yonkouprod.com/reader/read/.+",
-    "reader.championscans.com/read/.+",
-    "reader.whiteoutscans.com/read/.+",
-    "hatigarmscans.eu/hs/read/.+",
-    "lector.kirishimafansub.com/lector/read/.+",
-    "hotchocolatescans.com/fs/read/.+",
-    "www.slide.world-three.org/read/.+",
-  ].join('|') + ")
+// match: META
 
 var impl_src = {
   img: function() {

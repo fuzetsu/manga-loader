@@ -1,5 +1,4 @@
 // METADATA
-// name: manga.ae
 // match: https?://www.manga.ae/[^/]+/[^/]+/
 
 var impl_src = {
