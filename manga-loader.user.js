@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name       Manga Loader
+// @name       Manga Loader ALL
 // @namespace  https://github.com/fuzetsu/manga-loader
 // @version    1.11.29
 // @description  Support for over 70 sites! Loads manga chapter into one page in a long strip format, supports switching chapters, minimal script with no dependencies, easy to implement new sites, loads quickly and works on mobile devices through bookmarklet
@@ -8,125 +8,9 @@
 // @grant GM_getValue
 // @grant GM_setValue
 // @grant GM_deleteValue
-// @match *://bato.to/reader*
-// @match *://mangafox.me/manga/*/*/*
-// @match *://mangafox.la/manga/*/*/*
-// @match *://fanfox.net/manga/*/*/*
-// @match *://readms.net/r/*/*
-// @match *://readms.net/read/*/*
-// @match *://mangastream.com/r/*/*/*/*
-// @match *://mangastream.com/read/*/*/*/*
-// @match *://www.mangareader.net/*/*
-// @match *://*.mangahere.co/manga/*/*
-// @match *://*.mangahere.cc/manga/*/*
-// @match *://www.mangapanda.com/*/*
-// @match *://mangapark.me/manga/*/*/*
-// @match *://mngcow.co/*/*
-// @match *://centraldemangas.org/online/*/*
-// @match *://*.com.br/leitura/online/capitulo/*
-// @match *://www.mangatown.com/manga/*/*
-// @match *://manga-joy.com/*/*
-// @match *://*.dm5.com/m*
-// @match *://*.senmanga.com/*/*
-// @match *://www.japscan.com/lecture-en-ligne/*
-// @match *://www.pecintakomik.com/manga/*/*
-// @match *://mangawall.com/manga/*/*
-// @match *://manga.animea.net/*
-// @match *://kissmanga.com/Manga/*/*
-// @match *://view.thespectrum.net/series/*
-// @match *://manhua.dmzj.com/*/*
-// @match *://hqbr.com.br/hqs/*/capitulo/*/leitor/0
-// @match *://www.dmzj.com/view/*/*
-// @match *://mangaindo.id/*/*
-// @match *://mangadoom.co/*/*
-// @match *://*.mangago.me/read-manga/*/*
-// @match *://mangalator.ch/show.php?gallery=*
-// @match *://eatmanga.com/Manga-Scan/*/*
-// @match *://www.mangacat.me/*/*/*
-// @match *://www.mangahen.com/*/*
-// @match *://www.readmng.com/*/*
-// @match *://mangatraders.biz/read-online/*
-// @match *://www.mangainn.net/manga/chapter/*
-// @match *://*.kukudm.com/comiclist/*/*
-// @match *://www.mangamap.com/*/*
-// @match *://www.mangachapter.me/*/*/*.html
-// @match *://kawaii.ca/reader/*
-// @match *://lonemanga.com/manga/*/*
-// @match *://read.egscans.com/om/manga/*/*
-// @match *://manga.madokami.al/reader/*
-// @match *://read.egscans.com/*
-// @match *://imperialscans.com/read/*
-// @match *://www.chuixue.com/manhua/*/*
-// @match *://www.sh-arab.com/manga/*
-// @match *://spinybackmanga.com/*
-// @match *://br.mangahost.com/manga/*/*
-// @match *://www.manga.ae/*/*/*
-// @match *://mangaforall.com/manga/*/*/*
-// @match *://hellocomic.com/*/*/*
-// @match *://www.3asq.info/*/*
-// @match *://*.readcomiconline.to/Comic/*
-// @match *://*.moonbunnycafe.com/*
-// @match *://*.mangaeden.com/*
-// @match *://*.comicastle.org/read-*
-// @match *://*.mymh8.com/chapter/*
-// @match *://*.unionmangas.net/leitor/*
-// @match *://*.otakusmash.com/*/*
-// @match *://*.mangahome.com/manga/*/*
-// @match *://*.readcomics.tv/*/chapter*
-// @match *://*.cartoonmad.com/comic/*
-// @match *://*.comicnad.com/comic/*
-// @match *://*.ikanman.com/comic/*/*
-// @match *://*.manhuagui.com/comic/*/*
-// @match *://*.mangasail.com/*
-// @match *://*.mangatail.com/*
-// @match *://*.titaniascans.com/reader/*/*
-// @match *://*.komikstation.com/*/*/*
-// @match *://*.gmanga.me/mangas/*/*/*
-// @match *://mangadex.org/chapter/*
-// @match *://merakiscans.com/*/*
-// @match *://biamamscans.com/read/*
-// @match *://read.lhtranslation.com/*.html
-// @match *://www.930mh.com/manhua/*/*.html*
-// @match *://www.mangabox.me/reader/*/episodes/*/
-// @match *://twocomic.com/view/comic_*.html?ch=*
-// -- FOOLSLIDE START
-// @match *://manga.redhawkscans.com/reader/read/*
-// @match *://reader.s2smanga.com/read/*
-// @match *://casanovascans.com/read/*
-// @match *://reader.vortex-scans.com/read/*
-// @match *://reader.roseliascans.com/read/*
-// @match *://mangatopia.net/slide/read/*
-// @match *://www.twistedhelscans.com/read/*
-// @match *://sensescans.com/reader/read/*
-// @match *://reader.kireicake.com/read/*
-// @match *://substitutescans.com/reader/read/*
-// @match *://mangaichiscans.mokkori.fr/fs/read/*
-// @match *://reader.shoujosense.com/read/*
-// @match *://www.friendshipscans.com/slide/read/*
-// @match *://manga.famatg.com/read/*
-// @match *://www.demonicscans.com/FoOlSlide/read/*
-// @match *://reader.psscans.info/read/*
-// @match *://otscans.com/foolslide/read/*
-// @match *://necron99scans.com/reader/read/*
-// @match *://manga.inpowerz.com/read/*
-// @match *://reader.evilflowers.com/read/*
-// @match *://reader.cafeconirst.com/read/*
-// @match *://kobato.hologfx.com/reader/read/*
-// @match *://abandonedkittenscans.mokkori.fr/reader/read/*
-// @match *://jaiminisbox.com/reader/read/*
-// @match *://*.gomanga.co/reader/read/*
-// @match *://reader.manga-download.org/read/*/*
-// @match *://*.manga-ar.net/manga/*/*/*
-// @match *://*.helveticascans.com/r/read/*
-// @match *://reader.thecatscans.com/read/*
-// @match *://yonkouprod.com/reader/read/*
-// @match *://reader.championscans.com/read/*
-// @match *://reader.whiteoutscans.com/read/*
-// @match *://hatigarmscans.eu/hs/read/*
-// @match *://lector.kirishimafansub.com/lector/read/*
-// @match *://hotchocolatescans.com/fs/read/*
-// @match *://*.slide.world-three.org/read/*
-// -- FOOLSLIDE END
+// @grant GM_listValues
+// @connect *
+// @match  *://*/*
 // ==/UserScript==
 
 // short reference to unsafeWindow (or window if unsafeWindow is unavailable e.g. bookmarklet)
@@ -149,1280 +33,19 @@ var reuse = {
   }
 };
 
-/**
-Sample Implementation:
-{
-    name: 'something' // name of the implementation
-  , match: "^https?://domain.com/.*" // the url to react to for manga loading
-  , img: '#image' // css selector to get the page's manga image
-  , next: '#next_page' // css selector to get the link to the next page
-  , numpages: '#page_select' // css selector to get the number of pages. elements like (select, span, etc)
-  , curpage: '#page_select' // css selector to get the current page. usually the same as numPages if it's a select element
-  , numchaps: '#chapters' // css selector to get the number of chapters in manga
-  , curchap: '#chapters' // css selector to get the number of the current chapter
-  , nextchap: '#next_chap' // css selector to get the link to the next chapter
-  , prevchap: '#prev_chap' // same as above except for previous
-  , wait: 3000 // how many ms to wait before auto loading (to wait for elements to load), or a css selector to keep trying until it returns an elem
-  , pages: function(next_url, current_page_number, callback, extract_function) {
-    // gets called requesting a certain page number (current_page_number)
-    // to continue loading execute callback with img to append as first parameter and next url as second parameter
-    // only really needs to be used on sites that have really unusual ways of loading images or depend on javascript
+var exUtil = {
+  clearAllTimeouts: function() {
+    var id = window.setTimeout(function() {}, 0);
+    while (id--) {
+      window.clearTimeout(id);
+    }
   }
+};
 
-  Any of the CSS selectors can be functions instead that return the desired value.
-}
-*/
+var default_repo_url = 'https://raw.githubusercontent.com/fuzetsu/manga-loader/master/impls/'
 
-var implementations = [{
-  name: 'batoto',
-  match: "^https?://bato.to/reader.*",
-  img: function(ctx) {
-    var img = getEl('#comic_page', ctx);
-    if(img) {
-      return img.src;
-    } else {
-      var imgs = getEls('#content > div:nth-child(8) > img', ctx).map(function(page) {
-        return page.src;
-      });
-      if(imgs.length > 0) {
-        this.next = function() { return imgs[0]; };
-        this.numpages = function() { return imgs.length; };
-        this.pages = function(url, num, cb, ex) {
-          cb(imgs[num - 1], num);
-        };
-        return imgs[0];
-      }
-    }
-  },
-  next: function() {
-    if(!this._numpage) {
-      this._numpage = extractInfo(this.curpage, {type: 'index'});
-      this._id = location.hash.split('_')[0].slice(1);
-    }
-    return '/areader?id=' + this._id + '&p=' + (++this._numpage);
-  },
-  numpages: '#page_select',
-  curpage: '#page_select',
-  curchap: 'select[name=chapter_select]',
-  numchaps: 'select[name=chapter_select]',
-  nextchap: function(prev) {
-    //var link = extractInfo('select[name=chapter_select]', {type: 'value', val: prev ? 1 : -1});
-    //return link && link.replace(/https?/, document.location.href.split(':')[0]); // fix for batotos broken https pages
-    var menu = getEls('div.moderation_bar > ul > li', getEl('#reader'));
-    for (var i = 0; i != menu.length; i += 1) {
-      var img = getEl('img', menu[i]);
-      if (img && img.title == (prev ? "Previous Chapter" : "Next Chapter")) {
-        return img.parentNode.href.replace(/https?/, document.location.href.split(':')[0]);
-      }
-    }
-    return null;
-  },
-  prevchap: function() {
-    return this.nextchap(true);
-  },
-  wait: '#comic_page'
-}, {
-  name: 'manga-panda',
-  match: "^https?://www.mangapanda.com/.*/[0-9]*",
-  img: '#img',
-  next: '.next a',
-  numpages: '#pageMenu',
-  curpage: '#pageMenu',
-  nextchap: '#mangainfofooter > #mangainfo_bas table tr:first-child a',
-  prevchap: '#mangainfofooter > #mangainfo_bas table tr:last-child a'
-}, {
-  name: 'mangafox',
-  match: "^https?://(fan|manga)fox.(me|la|net)/manga/[^/]*/[^/]*/[^/]*",
-  img: '.reader-main img',
-  next: '.pager-list-left > span > a:last-child',
-  numpages: function() { return W.imagecount; },
-  curpage: function () { return W.imagepage; },
-  nextchap: '.pager-list-left > a:last-child',
-  prevchap: '.pager-list-left > a:first-child',
-  imgURLs: [],
-  pages: function(url, num, cb, ex) {
-    var imp = this;    
-    if (this.imgURLs[num])
-      cb(this.imgURLs[num], num);
-    else
-      ajax({
-        url: 'chapterfun.ashx?cid=' + W.chapterid + '&page=' + num,
-        onload: function(e) {
-          eval(e.target.responseText);
-          for (var i = 0; i < d.length; i++) {
-            imp.imgURLs[num + i] = d[i];
-          }
-          cb(d[0], num);
-        }
-      });
-  },
-  wait: function () {
-    el = getEl('.reader-main img');
-    
-    return el && el.getAttribute('src') != el.getAttribute('data-loading-img');
-  }
-}, {
-  name: 'manga-stream',
-  match: "^https?://(readms|mangastream).(net|com)/(r|read)/[^/]*/[^/]*",
-  img: '#manga-page',
-  next: '.next a',
-  numpages: function() {
-    var lastPage = getEl('.subnav-wrapper .controls .btn-group:last-child ul li:last-child');
-    return parseInt(lastPage.textContent.match(/[0-9]/g).join(''), 10);
-  },
-  nextchap: function(prev) {
-    var found;
-    var chapters = [].slice.call(document.querySelectorAll('.controls > div:first-child > .dropdown-menu > li a'));
-    chapters.pop();
-    for (var i = 0; i < chapters.length; i++) {
-      if (window.location.href.indexOf(chapters[i].href) !== -1) {
-        found = chapters[i + (prev ? 1 : -1)];
-        if (found) return found.href;
-      }
-    }
-  },
-  prevchap: function() {
-    return this.nextchap(true);
-  }
-}, {
-  name: 'manga-reader',
-  match: "^https?://www.mangareader.net/.*/.*",
-  img: '#img',
-  next: '.next a',
-  numpages: '#pageMenu',
-  curpage: '#pageMenu',
-  nextchap: '#chapterMenu',
-  prevchap: '#chapterMenu',
-  wait: '#chapterMenu option'
-}, {
-  name: 'manga-town',
-  match: "^https?://www.mangatown.com/manga/[^/]+/[^/]+",
-  img: '#image',
-  next: '#viewer a',
-  numpages: '.page_select select',
-  curpage: '.page_select select',
-  nextchap: '#top_chapter_list',
-  prevchap: '#top_chapter_list',
-  wait: 1000
-}, {
-  name: 'manga-cow, manga-doom, manga-indo, 3asq.info, moonbunnnycafe',
-  match: "^https?://(mngcow|mangadoom|mangaindo|merakiscans|www\\.3asq|moonbunnycafe)\\.(co|id|info|com)/[^/]+/[0-9.]+",
-  img: '.prw a > img',
-  next: '.prw a',
-  numpages: 'select.cbo_wpm_pag',
-  curpage: 'select.cbo_wpm_pag',
-  nextchap: function(prev) {
-    var next = extractInfo('select.cbo_wpm_chp', {type: 'value', val: (prev ? 1 : -1)});
-    if(next) return window.location.href.replace(/\/[0-9.]+\/?([0-9]+\/?)?[^/]*$/, '/' + next);
-  },
-  prevchap: function() {
-    return this.nextchap(true);
-  }
-}, {
-  name: 'manga-here',
-  match: "^https?://www.mangahere.c[oc]/manga/[^/]+/[^/]+",
-  img: '#viewer img:last-child',
-  next: '#viewer a',
-  numpages: 'select.wid60',
-  curpage: 'select.wid60',
-  numchaps: '#top_chapter_list',
-  curchap: '#top_chapter_list',
-  nextchap: function(prev) {
-    var chapter = W.chapter_list[W.current_chapter_index + (prev ? -1 : 1)];
-    return chapter && chapter[1];
-  },
-  prevchap: function() {
-    return this.nextchap(true);
-  },
-  wait: function() {
-    return areDefined(W.current_chapter_index, W.chapter_list, getEl('#top_chapter_list'));
-  }
-}, {
-  name: 'manga-here mobile',
-  match: "^https?://m.mangahere.c[oc]/manga/[^/]+/[^/]+",
-  img: '#image',
-  next: '#viewer a',
-  numpages: '.mangaread-page',
-  curpage: '.mangaread-page'
-}, {
-  name: 'manga-park',
-  match: "^https?://mangapark\\.me/manga/[^/]+/[^/]+/[^/]+",
-  img: '.img-link > img',
-  next: '.page > span:last-child > a',
-  numpages: function() {
-    if(W.sel_load && W.sel_load.options[W.sel_load.selectedIndex].value) {
-      return extractInfo('#sel_page_1');
-    } else {
-      var links = getEls('.img-link > img').map(function(img) { return img.src; });
-      this.pages = function(url, num, cb, ex) {
-        cb(links[num - 1], num);
-      };
-      return links.length;
-    }
-  },
-  curpage: '#sel_page_1',
-  nextchap: function(prev) {
-    var next = extractInfo('#sel_book_1', {type: 'value', val: (prev ? -1 : 1)});
-    if(next) return window.location.href.replace(/(\/manga\/[^\/]+).+$/, '$1' + next + '/1');
-  },
-  prevchap: function() {
-    return this.nextchap(true);
-  },
-  wait: '#sel_book_1 option'
-}, {
-  name: 'central-de-mangas',
-  match: "^https?://(centraldemangas\\.org|[^\\.]+\\.com\\.br/leitura)/online/[^/]*/[0-9]*",
-  img: '#manga-page',
-  next: '#manga-page',
-  numpages: '#manga_pages',
-  curpage: '#manga_pages',
-  nextchap: function(prev) {
-    var next = extractInfo('#manga_caps', {type: 'value', val: (prev ? -1 : 1)});
-    if(next) return window.location.href.replace(/[^\/]+$/, next);
-  },
-  prevchap: function() {
-    return this.nextchap(true);
-  },
-  pages: function(url, num, cb, ex) {
-    url = url.slice(0, url.lastIndexOf('-') + 1) + ("0" + num).slice(-2) + url.slice(url.lastIndexOf('.'));
-    cb(url, url);
-  }
-}, {
-  name: 'manga-joy',
-  match: "^https?://manga-joy.com/[^/]*/[0-9]*",
-  img: '.prw img',
-  next: '.nxt',
-  numpages: '.wpm_nav_rdr li:nth-child(3) > select',
-  curpage: '.wpm_nav_rdr li:nth-child(3) > select',
-  nextchap: function(prev) {
-    var next = extractInfo('.wpm_nav_rdr li:nth-child(2) > select', {type: 'value', val: prev ? 1 : -1});
-    if(next) return window.location.href.replace(/\/[0-9.]+\/?([0-9]+(\/.*)?)?$/, '/' + next);
-  },
-  prevchap: function() {
-    return this.nextchap(true);
-  }
-}, {
-  name: 'dm5',
-  match: "^https?://[^\\.]*\\.dm5\\.com/m[0-9]*",
-  img: function (){
-    return getEl('img.load-src').getAttribute('data-src');
-  },
-  next: function(){
-    return '#';
-  },
-  numpages: function () {
-    return W.pages.length;
-  },
-  pages: function(url, num, cb, ex) {
-    cb(W.pages[num - 1].getAttribute('data-src'), num - 1);
-  },
-  nextchap: 'a.logo_2',
-  prevchap: 'a.logo_1',
-  wait: function (){
-    W.pages = getEls('img.load-src');
-    return true;
-  }
-}, {
-  name: 'senmanga',
-  match: "^https?://[^\\.]+\\.senmanga\\.com/[^/]*/.+",
-  img: '#picture',
-  next: '#reader > a',
-  numpages: 'select[name=page]',
-  curpage: 'select[name=page]',
-  numchaps: 'select[name=chapter]',
-  curchap: 'select[name=chapter]',
-  nextchap: function(prev) {
-    var next = extractInfo('select[name=chapter]', {type: 'value', val: (prev ? 1 : -1)});
-    if(next) {
-      var manga = window.location.pathname.slice(1).split('/')[0];
-      return window.location.origin + '/' + manga + '/' + next + '/1';
-    }
-  },
-  prevchap: function() {
-    return this.nextchap(true);
-  }
-}, {
-  name: 'japscan',
-  match: "^https?://www\\.japscan\\.com/lecture-en-ligne/[^/]*/[0-9]*",
-  img: '#image',
-  next: '#img_link',
-  numpages: '#pages',
-  curpage: '#pages',
-  nextchap: '#next_chapter',
-  prevchap: '#back_chapter'
-}, {
-  name: 'pecintakomik',
-  match: "^https?://www\\.pecintakomik\\.com/manga/[^/]*/[^/]*",
-  img: '.picture',
-  next: '.pager a:nth-child(3)',
-  numpages: 'select[name=page]',
-  curpage: 'select[name=page]',
-  nextchap: function(prev) {
-    var next = extractInfo('select[name=chapter]', {type: 'value', val: (prev ? 1 : -1)});
-    if(next) return window.location.href.replace(/\/([^\/]+)\/[0-9]+\/?$/, '/$1/' + next);
-  },
-  prevchap: function() {
-    return this.nextchap(true);
-  }
-}, {
-  name: 'manga-kaka',
-  match: "^https?://www\\.(mangahen|mangamap)\\.com/[^/]+/[0-9]+",
-  img: 'img.manga-page',
-  next: '.nav_pag > li:nth-child(1) > a',
-  numpages: 'select.cbo_wpm_pag',
-  curpage: 'select.cbo_wpm_pag',
-  nextchap: function(prev) {
-    var chapter = extractInfo('select.cbo_wpm_chp', { type: 'value', val: (prev ? 1 : -1) });
-    if(chapter) return window.location.href.replace(/\/[0-9\.]+\/?([0-9]+\/?)?$/, '/' + chapter);
-  },
-  prevchap: function() {
-    return this.nextchap(true);
-  }
-}, {
-  name: 'manga-wall',
-  _page: null,
-  match: "^https?://mangawall\\.com/manga/[^/]*/[0-9]*",
-  img: 'img.scan',
-  next: function() {
-    if(this._page === null) this._page = W.page;
-    return W.series_url + '/' + W.chapter + '/' + (this._page += 1);
-  },
-  numpages: '.pageselect',
-  curpage: '.pageselect',
-  nextchap: function(prev) {
-    return W.series_url + '/' + (parseInt(W.chapter.slice(1)) + (prev ? -1 : 1)) + '/1';
-  },
-  prevchap: function() {
-    return this.nextchap(true);
-  }
-}, {
-  name: 'anime-a',
-  _page: null,
-  match: "^https?://manga\\.animea.net/.+chapter-[0-9]+(-page-[0-9]+)?.html",
-  img: '#scanmr',
-  next: function() {
-    if(this._page === null) this._page = W.page;
-    return W.series_url + W.chapter + '-page-' + (this._page += 1) + '.html';
-  },
-  numpages: '.pageselect',
-  curpage: '.pageselect',
-  nextchap: function(prev) {
-    return W.series_url + 'chapter-' + (parseInt(W.chapter.match(/[0-9]+/)[0]) + (prev ? -1 : 1)) + '-page-1.html';
-  },
-  prevchap: function() {
-    return this.nextchap(true);
-  }
-}, {
-  name: 'kiss-manga',
-  match: "^https?://kissmanga\\.com/Manga/[^/]+/.+",
-  img: '#divImage img',
-  next: '#divImage img',
-  numpages: function() {
-    return (W.lstOLA || W.lstImages).length;
-  },
-  curpage: function() {
-    if(getEls('#divImage img').length > 1) {
-      return 1;
-    } else {
-      return W.currImage + 1;
-    }
-  },
-  nextchap: '#selectChapter, .selectChapter',
-  prevchap: '#selectChapter, .selectChapter',
-  pages: function(url, num, cb, ex) {
-    cb((W.lstOLA || W.lstImages)[num - 1], num);
-  }
-}, {
-  name: 'the-spectrum-scans',
-  match: "^https?://view\\.thespectrum\\.net/series/[^\\.]+\\.html",
-  img: '#mainimage',
-  next: function() {
-    if (++this._page < this._pages.length) {
-      return this._pages[this._page];
-    }
-  },
-  numpages: '.selectpage',
-  curpage: '.selectpage',
-  nextchap: function(prev) {
-    var ps = document.pageSelector1;
-    var chnum = ps.ch.selectedIndex + (prev ? -1 : 1);
-    if (chnum < ps.ch.length && chnum > -1) {
-      return ps.action.split('?')[0] + '?ch=' + ps.ch[chnum].value + '&page=1';
-    } else {
-      return false;
-    }
-  },
-  prevchap: function() {
-    return this.nextchap(true);
-  },
-  wait: function() {
-    var ps = document.pageSelector1;
-    this._pages = [];
-    var base = ps.action.split('?')[0];
-    for (var i = 0; i < ps.page.length; i++) {
-      this._pages.push(base + '?ch=' + ps.ch.value + '&page=' + ps.page[i].value);
-    }
-    this._page = ps.page[ps.page.selectedIndex].value - 1;
-    return true;
-  }
-}, {
-  name: 'manhua-dmzj',
-  match: "^https?://manhua.dmzj.com/[^/]*/[0-9]+(-[0-9]+)?\\.shtml",
-  img: '#center_box > img',
-  next: '#center_box > img',
-  numpages: function() {
-    return W.arr_pages.length;
-  },
-  curpage: function() {
-    var match = location.href.match(/page=([0-9]+)/);
-    return match ? parseInt(match[1]) : 1;
-  },
-  nextchap: '#next_chapter',
-  prevchap: '#prev_chapter',
-  pages: function(url, num, cb, ex) {
-    cb(W.img_prefix + W.arr_pages[num - 1], num);
-  },
-  wait: '#center_box > img'
-}, {
-  name: 'hqbr',
-  match: "^https?://hqbr.com.br/hqs/[^/]+/capitulo/[0-9]+/leitor/0",
-  img: '#hq-page',
-  next: '#hq-page',
-  numpages: function() {
-    return W.pages.length;
-  },
-  curpage: function() {
-    return W.paginaAtual + 1;
-  },
-  nextchap: function(prev) {
-    var chapters = getEls('#chapter-dropdown a'),
-        current = parseInt(W.capituloIndex),
-        chapter = chapters[current + (prev ? -1 : 1)];
-    return chapter && chapter.href;
-  },
-  prevchap: function() {
-    return this.nextchap(true);
-  },
-  pages: function(url, num, cb, ex) {
-    cb(W.pages[num - 1], num);
-  }
-}, {
-  name: 'dmzj',
-  match: "^https?://www.dmzj.com/view/[^/]+/.+\\.html",
-  img: '.comic_wraCon > img',
-  next: '.comic_wraCon > img',
-  numpages: function() {
-    return parseInt(W.pic_total);
-  },
-  curpage: function() {
-    var match = location.href.match(/page=([0-9])/);
-    return match ? parseInt(match[1]) : 1;
-  },
-  nextchap: '.next > a',
-  prevchap: '.pre > a',
-  pages: function(url, num, cb, ex) {
-    cb(W.img_prefix + W.picArry[num - 1], num);
-  },
-  wait: '.comic_wraCon > img'
-}, {
-  name: 'mangago',
-  match: "^https?://(www.)?mangago.me/read-manga/[^/]+/[^/]+/[^/]+",
-  img: '#page1',
-  next: '#pic_container',
-  numpages: '#dropdown-menu-page',
-  curpage: function() {
-    return parseInt(getEls('#page-mainer a.btn.dropdown-toggle')[1].textContent.match(/[0-9]+/)[0]);
-  },
-  nextchap: function(prev) {
-    var chapters = getEls('ul.dropdown-menu.chapter a'),
-        curName = getEls('#page-mainer a.btn.dropdown-toggle')[0].textContent,
-        curIdx;
-    chapters.some(function(chap, idx) {
-      if(chap.textContent.indexOf(curName) === 0) {
-        curIdx = idx;
-        return true;
-      }
-    });
-    var chapter = chapters[curIdx + (prev ? 1 : -1)];
-    return chapter && chapter.href;
-  },
-  prevchap: function() {
-    return this.nextchap(true);
-  }
-}, {
-  name: 'mangalator',
-  match: "^https?://mangalator.ch/show.php\\?gallery=[0-9]+",
-  img: '.image img',
-  next: '#next',
-  numpages: 'select[name=image]',
-  curpage: 'select[name=image]',
-  nextchap: function(prev) {
-    var next = extractInfo('select[name=gallery]', {type: 'value', val: (prev ? 1 : -1)});
-    if(next) return location.href.replace(/\?gallery=[0-9]+/, '?gallery=' + next);
-  },
-  prevchap: function() {
-    return this.nextchap(true);
-  }
-}, {
-  name: 'eatmanga',
-  match: "^https?://eatmanga.com/Manga-Scan/[^/]+/.+",
-  img: '#eatmanga_image, #eatmanga_image_big',
-  next: '#page_next',
-  numpages: '#pages',
-  curpage: '#pages',
-  nextchap: '#bottom_chapter_list',
-  prevchap: '#bottom_chapter_list',
-  invchap: true
-}, {
-  name: 'manga-cat',
-  match: "^https?://www.mangacat.me/[^/]+/[^/]+/[^\\.]+.html",
-  img: '.img',
-  next: '.img-link',
-  numpages: '#page',
-  curpage: '#page',
-  nextchap: '#chapter',
-  prevchap: '#chapter',
-  invchap: true,
-  wait: '#chapter option'
-}, {
-  name: 'readmng.com',
-  match: "^https?://www\\.readmng\\.com/[^/]+/.+",
-  img: '.page_chapter-2 img',
-  next: '.list-switcher-2 > li:nth-child(3) > a, .list-switcher-2 > li:nth-child(2) > a',
-  numpages: '.list-switcher-2 select[name=category_type]',
-  curpage: '.list-switcher-2 select[name=category_type]',
-  nextchap: '.jump-menu[name=chapter_list]',
-  prevchap: '.jump-menu[name=chapter_list]',
-  invchap: true
-}, {
-  name: 'mangadex.org',
-  match: "^https?://mangadex\\.org/chapter/[0-9]+/[0-9]+",
-  img: '#current_page',
-  next: function() {
-    return this._base + ++this._page;
-  },
-  numpages: '#jump_page',
-  curpage: '#jump_page',
-  nextchap: function() {
-    var chapter = document.querySelector('#jump_chapter').selectedOptions[0].previousElementSibling;
-     return (chapter === null) ? false : (this._base.replace(/[0-9]+\/$/, chapter.value));
-  },
-  prevchap: function() {
-    var chapter = document.querySelector('#jump_chapter').selectedOptions[0].nextElementSibling;
-     return (chapter === null) ? false : (this._base.replace(/[0-9]+\/$/, chapter.value));
-  },
-
-  wait: function() {
-    var loc = document.location.toString();
-    var num = loc.match(/[0-9]+$/);
-    this._base = loc.slice(0, -num.length);
-    this._page = parseInt(num);
-    return true;
-  }
-}, {
-  name: 'biamamscans.com',
-  match: "^https?://biamamscans\\.com/read/.+", //nextchap and prevchap broken
-  img: '.manga-image',
-  next: 'span.float-right:nth-child(2) > div:nth-child(2) > a:nth-child(1)',
-  numpages: '#page-select',
-  curpage: '#page-select',
-  nextchap: '#chapter-select',
-  prevchap: '#chapter-select'
-}, {
-  name: 'lhtranslation',
-  match: "^https?://read.lhtranslation\\.com/read-.+",
-  img: 'img.chapter-img',
-  next: '.chapter-content > select + a.label',
-  numpages: '.chapter-content > select',
-  curpage: '.chapter-content > select',
-  numchaps: '.form-control',
-  curchap: '.form-control',
-  nextchap: '.form-control',
-  prevchap: '.form-control',
-  invchap: true
-}, {
-  name: 'foolslide',
-  match: "^https?://(" + [
-    "manga.redhawkscans.com/reader/read/.+",
-    "reader.s2smanga.com/read/.+",
-    "casanovascans.com/read/.+",
-    "reader.vortex-scans.com/read/.+",
-    "reader.roseliascans.com/read/.+",
-    "mangatopia.net/slide/read/.+",
-    "www.twistedhelscans.com/read/.+",
-    "sensescans.com/reader/read/.+",
-    "reader.kireicake.com/read/.+",
-    "substitutescans.com/reader/read/.+",
-    "mangaichiscans.mokkori.fr/fs/read/.+",
-    "reader.shoujosense.com/read/.+",
-    "www.friendshipscans.com/slide/read/.+",
-    "manga.famatg.com/read/.+",
-    "www.demonicscans.com/FoOlSlide/read/.+",
-    "necron99scans.com/reader/read/.+",
-    "www.demonicscans.com/FoOlSlide/read/.+",
-    "reader.psscans.info/read/.+",
-    "otscans.com/foolslide/read/.+",
-    "necron99scans.com/reader/read/.+",
-    "manga.inpowerz.com/read/.+",
-    "reader.evilflowers.com/read/.+",
-    "reader.cafeconirst.com/read/.+",
-    "kobato.hologfx.com/reader/read/.+",
-    "jaiminisbox.com/reader/read/.+",
-    "abandonedkittenscans.mokkori.fr/reader/read/.+",
-    "gomanga.co/reader/read/.+",
-    "reader\.manga-download\.org/read/.+",
-    "(www\.)?manga-ar\.net/manga/.+/.+/.+",
-    "helveticascans.com/r/read/.+",
-    "reader.thecatscans.com/read/.+",
-    "yonkouprod.com/reader/read/.+",
-    "reader.championscans.com/read/.+",
-    "reader.whiteoutscans.com/read/.+",
-    "hatigarmscans.eu/hs/read/.+",
-    "lector.kirishimafansub.com/lector/read/.+",
-    "hotchocolatescans.com/fs/read/.+",
-    "www.slide.world-three.org/read/.+",
-  ].join('|') + ")",
-  img: function() {
-    return W.pages[W.current_page].url;
-  },
-  next: function() {
-    return 'N/A';
-  },
-  numpages: function() {
-    return W.pages.length;
-  },
-  curpage: function() {
-    return W.current_page + 1;
-  },
-  nextchap: function(prev) {
-    var desired;
-    var dropdown = getEls('ul.dropdown')[1] || getEls('ul.uk-nav')[1] || getEls('ul.dropdown-menu')[3];
-    if(!dropdown) return;
-    getEls('a', dropdown).forEach(function(chap, idx, arr) {
-      if(location.href.indexOf(chap.href) === 0) desired = arr[idx + (prev ? 1 : -1)];
-    });
-    return desired && desired.href;
-  },
-  prevchap: function() {
-    return this.nextchap(true);
-  },
-  pages: function(url, num, cb, ex) {
-    cb(W.pages[num - 1].url, num);
-  },
-  wait: function() {
-    if(W.location.href.indexOf('gomanga.co') !== -1) {
-      var match = document.body.innerHTML.match(/(\w+)\[id\]\.url/);
-      W.pages = match && match[1] && W[match[1]];
-    }
-    return W.pages;
-  }
-}, {
-  name: 'mangatraders',
-  match: "^https?://mangatraders\\.biz/read-online/.+",
-  img: 'img.CurImage',
-  next: '.image-container a',
-  numpages: '.PageSelect',
-  curpage: '.PageSelect',
-  nextchap: function(prev) {
-    var next = extractInfo('.ChapterSelect', {type:'text', val: (prev ? -1 : 1)});
-    if(next) {
-      var chapter = next.match(/[0-9.]+/)[0];
-      return location.href.replace(/chapter-[0-9.]+/, 'chapter-' + chapter).replace(/page-[0-9]+/, 'page-1');
-    }
-  },
-  prevchap: function() {
-    return this.nextchap(true);
-  }
-}, {
-  name: 'mangainn',
-  match: "^https?://www.mangainn.net/manga/chapter/.+",
-  img: '#imgPage',
-  next: function() {
-    if(!this._count) this._count = extractInfo(this.curpage, {type: 'value'});
-    var url = location.href;
-    if(!/page_[0-9]+/.test(url)) url += '/page_1';
-    return url.replace(/page_[0-9]+/, 'page_' + (++this._count));
-  },
-  numpages: '#cmbpages',
-  curpage: '#cmbpages',
-  nextchap: function(prev) {
-    var next = extractInfo('#chapters', {type:'value', val: (prev ? -1 : 1)});
-    if(next) return location.href.replace(/\/chapter\/.+$/, '/chapter/' + next + '/page_1');
-  },
-  prevchap: function() {
-    return this.nextchap(true);
-  }
-}, {
-  name: 'kukudm',
-  match: "^https?://(www|comic|comic2|comic3).kukudm.com/comiclist/[0-9]+/[0-9]+/[0-9]+.htm",
-  img: function(ctx) {
-    var script = getEl('td > script[language=javascript]', ctx);
-    if(script) {
-      return 'http://n.kukudm.com/' + script.textContent.match(/\+"([^']+)/)[1];
-    }
-  },
-  next: function(ctx) {
-    var links = getEls('td > a', ctx);
-    return links[links.length - 1].getAttribute('href');
-  },
-  numpages: function(cur) {
-    return parseInt(document.body.textContent.match(/共([0-9]+)页/)[1]);
-  },
-  curpage: function() {
-    return parseInt(document.body.textContent.match(/第([0-9]+)页/)[1]);
-  },
-  beforexhr: reuse.encodeChinese
-}, {
-  name: 'mangachapter',
-  match: "^https?://www\\.mangachapter\\.me/[^/]+/[^/]+/[^/]+.html",
-  img: '#mangaImg, #viewer > table > tbody > tr > td:nth-child(1) > a:nth-child(2) > img',
-  next: '.page-select + a.button-page',
-  numpages: '.page-select select',
-  curpage: '.page-select select',
-  invchap: true,
-  nextchap: '#top_chapter_list',
-  prevchap: '#top_chapter_list',
-  wait: '#top_chapter_list'
-}, {
-  name: 'kawaii',
-  match: "^https://kawaii.ca/reader/.+",
-  img: '.picture',
-  next: 'select[name=page] + a',
-  numpages: 'select[name=page]',
-  curpage: 'select[name=page]',
-  nextchap: function(prev) {
-    var next = extractInfo('select[name=chapter]', {type:'value', val: (prev ? -1 : 1)});
-    if(next) return location.href.replace(/\/reader\/([^/]+)(\/.+)?$/, '/reader/$1/' + next);
-  },
-  prevchap: function() {
-    return this.nextchap(true);
-  }
-}, {
-  name: 'lonemanga',
-  match: "^https?://lonemanga.com/manga/[^/]+/[^/]+",
-  img: '#imageWrapper img',
-  next: '#imageWrapper a',
-  numpages: '.viewerPage',
-  curpage: '.viewerPage',
-  nextchap: function(prev) {
-    var next = extractInfo('.viewerChapter', {type:'value', val: (prev ? 1 : -1)});
-    if(next) return location.href.replace(/\/manga\/([^/]+)\/.+$/, '/manga/$1/' + next);
-  },
-  prevchap: function() {
-    return this.nextchap(true);
-  }
-}, {
-  name: 'madokami',
-  match: "^https?://manga\\.madokami\\.al/reader/.+",
-  img: 'img',
-  next: 'img',
-  curpage: function() {
-    return parseInt(query().index) + 1;
-  },
-  numpages: function() {
-    if(!this._pages) {
-      this._pages = JSON.parse(getEl('#reader').dataset.files);
-    }
-    return this._pages.length;
-  },
-  pages: function(url, num, cb, ex) {
-    url = url.replace(/file=.+$/, 'file=' + this._pages[num - 1]);
-    cb(url, url);
-  },
-  wait: '#reader'
-}, {
-  name: 'egscans',
-  match: '^https?://read.egscans.com/.+',
-  img: '#image_frame img',
-  next: '#image_frame img',
-  curpage: 'select[name=page]',
-  numpages: 'select[name=page]',
-  nextchap: function(prev) {
-    var data = getEl(this.curchap).getAttribute('onchange').match(/'[^']+'/g);
-    var next = extractInfo(this.curchap, { type: 'value', val: (prev ? -1 : 1) });
-    if(next) return location.origin + '/' + data[0].slice(1, -1) + '/' + next;
-  },
-  prevchap: function() {
-    return this.nextchap(true);
-  },
-  curchap: 'select[name=chapter]',
-  numchaps: 'select[name=chapter]',
-  pages: function(url, num, cb, ex) {
-    cb('/' + W.img_url[num], num);
-  }
-}, {
-  name: 'imperialscans',
-  match: '^https?://imperialscans.com/read/.+',
-  img: '#page-img',
-  next: '#page-url',
-  curpage: function() {
-    return extractInfo('#page-select', { type: 'index', val: -1 });
-  },
-  numpages: function() {
-    return extractInfo('#page-select') - 1;
-  },
-  curchap: function() {
-    var options = getEls('#chapter-select option:not([disabled])');
-    var chapter = 1;
-    options.some(function(value, index) {
-      if (location.pathname === value.value) {
-        chapter = options.length - index;
-        return true;
-      }
-    });
-    return chapter;
-  },
-  numchaps: function() {
-    return extractInfo('#chapter-select');
-  },
-  nextchap: '#page-control > li:nth-child(5) > a',
-  prevchap: '#page-control > li:nth-child(1) > a'
-}, {
-  name: 'chuixue',
-  match: "^https?://www.chuixue.com/manhua/[0-9]+/[0-9]+.html",
-  img: '#qTcms_pic',
-  next: '#qTcms_pic',
-  curpage: '#qTcms_select_i',
-  numpages: '#qTcms_select_i',
-  pages: function(url, num, cb, ex) {
-    if(!this._pages) {
-      this._pages = W.qTcms_S_m_murl.split('$qingtiandy$');
-    }
-    cb(this._pages[num - 1], num);
-  },
-  nextchap: function() {
-    return W.qTcms_Pic_nextArr;
-  },
-  wait: '#qTcms_pic'
-}, {
-  name: 'sh-arab',
-  match: '^https?://www.sh-arab.com/manga/.+',
-  img: 'img.picture',
-  next: '#omv td > a',
-  curpage: 'select[name=page]',
-  numpages: 'select[name=page]',
-  curchap: 'select[name=chapter]',
-  numchaps: 'select[name=chapter]',
-  nextchap: function(prev) {
-    var next = extractInfo('select[name=chapter]', {type:'value', val: (prev ? -1 : 1)});
-    if (next) return location.href.replace(/[^\/]+$/, next);
-  },
-  prevchap: function() {
-    return this.nextchap(true);
-  }
-}, {
-  name: 'br.mangahost.com',
-  match: "^http(s)?://br.mangahost.com/manga/[^/]+/.+",
-  img: 'img.open',
-  next: '.image-content > a',
-  curpage: '.viewerPage',
-  numpages: '.viewerPage'
-}, {
-  name: 'spinybackmanga and titaniascans',
-  match: '^https?://(spinybackmanga.com/\\?manga=[^&]+&chapter=.+|www\.titaniascans\.com/reader/.+/.+)',
-  img: '#thePicLink img',
-  next: '#thePicLink',
-  curpage: function() {
-    return W.current;
-  },
-  numpages: function() {
-    return getEl('#loadingbar tr').children.length;
-  },
-  curchap: function() {
-    return parseInt(getEls('.selector')[1].firstChild.textContent.match(/[0-9]+/)[0]);
-  },
-  numchaps: function() {
-    return getEls('.selector .options')[1].children.length;
-  },
-  nextchap: function(prev) {
-    var nextChap = document.scripts[2].textContent.match(/location.href = "([^"]+)"/)[1];
-    if(prev) {
-      [].some.call(getEls('.selector .options')[1].children, function(child, index, children) {
-        if(child.href === nextChap) {
-          nextChap = children[index - 2] && children[index - 2].href;
-          return true;
-        }
-      });
-    }
-    return nextChap;
-  },
-  prevchap: function() {
-    return this.nextchap(true);
-  },
-  pages: function(url, num, cb, ex) {
-    var next = url.replace(/(?:(\/)2\/|[0-9]*)$/, '$1' + (num + 1));
-    cb(W.imageArray[num - 1], next);
-  }
-}, {
-  name: 'manga.ae',
-  match: "https?://www.manga.ae/[^/]+/[^/]+/",
-  img: '#showchaptercontainer img',
-  next: '#showchaptercontainer a',
-  curpage: 'a.chpage',
-  nextchap: '.chapter:last-child',
-  prevchap: '.chapter:first-child'
-}, {
-  name: 'mangaforall',
-  match: "https?://mangaforall.com/manga/[^/]+/[^/]+/",
-  img: '#page > img',
-  next: '#page > img',
-  numpages: '#chapter > div:nth-child(1) > div > div.uk-width-large-1-3.uk-width-medium-1-3.uk-width-small-1-1.uk-text-left.uk-text-center-small > div > div > div > ul',
-  curpage: '#chapter > div:nth-child(1) > div > div.uk-width-large-1-3.uk-width-medium-1-3.uk-width-small-1-1.uk-text-left.uk-text-center-small > div > a.uk-button.uk-button-primary.number.uk-button-danger',
-  nextchap: '#chapter > div:nth-child(5) > div.uk-grid.uk-grid-collapse.uk-margin-top > div.uk-width-large-1-3.uk-width-medium-1-3.uk-width-small-1-1.uk-text-left.uk-text-center-small > a',
-  prevchap: '#chapter > div:nth-child(5) > div.uk-grid.uk-grid-collapse.uk-margin-top > div.uk-width-large-1-3.uk-width-medium-1-3.uk-width-small-1-1.uk-text-right.uk-text-center-small > a',
-  pages: function(url, num, cb, ex) {
-    cb(W.pages[num - 1].url, num);
-  }
-}, {
-  name: 'hellocomic',
-  match: "https?://hellocomic.com/[^/]+/[^/]+/p[0-9]+",
-  img: '.coverIssue img',
-  next: '.coverIssue a',
-  numpages: '#e1',
-  curpage: '#e1',
-  nextchap: '#e2',
-  prevchap: '#e2',
-  curchap: '#e2',
-  numchaps: '#e2'
-}, {
-  name: 'read-comic-online',
-  match: "^https?://readcomiconline\\.to/Comic/[^/]+/.+",
-  img: '#divImage img',
-  next: '#divImage img',
-  numpages: function() {
-    return W.lstImages.length;
-  },
-  curpage: function() {
-    return getEls('#divImage img').length > 1 ? 1 : W.currImage + 1;
-  },
-  nextchap: '#selectEpisode, .selectEpisode',
-  prevchap: '#selectEpisode, .selectEpisode',
-  pages: function(url, num, cb, ex) {
-    cb(W.lstImages[num - 1], num);
-  }
-}, {
-  name: 'mangaeden',
-  match: "^https?://(www\\.)?mangaeden\\.com/(en|it)/(en|it)-manga/.+",
-  img: '#mainImg',
-  next: '#nextA',
-  numpages: '#pageSelect',
-  curpage: '#pageSelect',
-  numchaps: '#combobox',
-  curchap: '#combobox',
-  invchap: true,
-  nextchap: function (prev) {
-    var cbox = getEl('#combobox');
-    var opt = cbox[prev ? cbox.selectedIndex + 1 : cbox.selectedIndex - 1];
-    var span = getEl('span.hideM0 a');
-    return opt && span && span.href + parseInt(opt.value) + '/1/';
-  },
-  prevchap: function () {
-    return this.nextchap(true);
-  }
-}, {
-  name: 'comicastle',
-  match: "^https?://comicastle\\.org/read-.+",
-  img: '.chapter-img',
-  next: '.chapter-content > select + a.label',
-  numpages: '.chapter-content > select',
-  curpage: '.chapter-content > select',
-  numchaps: '.form-control',
-  curchap: '.form-control',
-  nextchap: '.form-control',
-  prevchap: '.form-control',
-  invchap: true
-}, {
-  name: 'mymh8',
-  match: "^https?://(www\\.)?mymh8\\.com/chapter/.+",
-  img: '#viewimg',
-  next: reuse.na,
-  numpages: function() {
-    return W.maxpages;
-  },
-  curpage: '#J_showpage > span',
-  nextchap: function(prev) {
-    var button = prev ? getEl('div.m3p > input:first-of-type') : getEl('div.m3p > input:last-of-type');
-    return button && button.attributes.onclick.value.match(/\.href='([^']+)'/)[1];
-  },
-  prevchap: function() {
-    return this.nextchap(true);
-  },
-  pages: function(url, num, cb, ex) {
-    cb(W.WebimgServerURL[0] + W.imageslist[num], num);
-  },
-  wait: function() {
-    return W.imageslist.length > 0;
-  }
-}, {
-  name: 'unionmangas',
-  match: "https?://(www\\.)?unionmangas\\.net/leitor/.+",
-  img: '.slick-active img.real',
-  next: reuse.na,
-  numpages: '.selectPage',
-  curpage: '.selectPage',
-  numchaps: '#cap_manga1',
-  curchap: '#cap_manga1',
-  nextchap: '#cap_manga1',
-  prevchap: '#cap_manga1',
-  pages: function(url, num, cb, ex) {
-    cb(W.pages[num - 1], num);
-  },
-  wait: function() {
-    W.pages = getEls('img.real').map(function(el) {
-      return el.src || el.dataset.lazy;
-    });
-    return W.pages && W.pages.length > 0;
-  }
-}, {
-  name: 'otakusmash',
-  match: "https?://www\\.otakusmash\\.com/(read-comics|read-manga)/.+",
-  img: 'img.picture',
-  next: 'select[name=page] + a',
-  curpage: 'select[name=page]',
-  numpages: 'select[name=page]',
-  nextchap: function(prev) {
-    var nextChap = extractInfo('select[name=chapter]', {type: 'value', val: prev ? 1 : -1});
-    return nextChap ? location.href.replace(/(read-(comics|manga)\/[^\/]+).*/, '$1/' + nextChap) : null;
-  },
-  prevchap: function() {
-    return this.nextchap(true);
-  },
-  numchaps: 'select[name=chapter]',
-  curchap: 'select[name=chapter]',
-  invchap: true
-}, {
-  name: 'mangahome',
-  match: "https?://www\\.mangahome\\.com/manga/.+/.+",
-  img: '#image',
-  next: '#viewer > a',
-  curpage: '.mangaread-page select',
-  numpages: '.mangaread-page select',
-  nextchap: function(prev) {
-    var buttons = getEls('.mangaread-footer .left > .btn-three');
-    for (var i = 0; i < buttons.length; i++) {
-      if (buttons[i].textContent.indexOf(prev ? 'Prev Chapter' : 'Next Chapter') > - 1) {
-        return buttons[i].href;
-      }
-    }
-  },
-  prevchap: function() {
-    return this.nextchap(true);
-  },
-  wait: '#image'
-}, {
-  name: 'readcomics',
-  match: "https?://(www\\.)?readcomics\\.tv/.+/chapter-[0-9]+(/[0-9]+|$)",
-  img: '#main_img',
-  next: '.nav.next',
-  curpage: 'select[name=page_select]',
-  numpages: 'select[name=page_select]',
-  nextchap: 'select[name=chapter_select]',
-  prevchap: 'select[name=chapter_select]',
-  curchap: 'select[name=chapter_select]',
-  numchaps: 'select[name=chapter_select]',
-  wait: 'select[name=page_select]'
-}, {
-  name: 'cartoonmad',
-  match: "https?://(www\\.)?(cartoonmad|comicnad)\.com/comic/[0-9]+\.html",
-  img: 'tr:nth-child(5) > td > table > tbody > tr:nth-child(1) > td > a > img',
-  next: 'a.onpage+a',
-  curpage: 'a.onpage',
-  numpages: function() {
-    return extractInfo('select[name=jump]') - 1;
-  },
-  nextchap: function() {
-    let filter = getEls('.pages').filter(function(i) {
-      return i.textContent.match('下一話');
-    });
-    return filter.length ? filter[0].href : null;
-  },
-  prevchap: function() {
-    let filter = getEls('.pages').filter(function(i) {
-        return i.textContent.match('上一話');
-    });
-    return filter.length ? filter[0].href : null;
-  },
-}, {
-  name: 'ikanman',
-  match: "https?://(www|tw)\.(ikanman|manhuagui)\.com/comic/[0-9]+/[0-9]+\.html",
-  img: '#mangaFile',
-  next: function() {
-      return W._next;
-  },
-  curpage: '#page',
-  numpages: '#pageSelect',
-  nextchap: function(prev) {
-    var chap = prev ? W._prevchap : W._nextchap;
-    if (chap > 0) {
-      return location.href.replace(/(\/comic\/[0-9]+\/)[0-9]+\.html.*/, "$1" + chap + ".html");
-    } else {
-      return false;
-    }
-  },
-  prevchap: function() {
-    return this.nextchap(true);
-  },
-  wait: function() {
-    if (getEl('#mangaFile')) {
-      W._nextchap = W.cInfo.nextId;
-      W._prevchap = W.cInfo.prevId;
-      var ex = extractInfo.bind(this);
-      W._next = location.href.replace(/(_p[0-9]+)?\.html.*/, '_p' + (ex('curpage') + 1) + '.html');
-      W._base = ex('img').replace(/[^\/]+$/, '');
-      return true;
-    }
-  },
-  pages: function(url, num, cb, ex) {
-    var nexturl =  url.replace(/(_p[0-9]+)?\.html.*/, '_p' + (num + 1) + '.html');
-    var imgurl = W._base + W.cInfo.files[num - 1];
-    cb(imgurl, nexturl);
-  }
-}, {
-  name: 'mangasail and mangatail',
-  match: 'https?://www\.manga(sail|tail)\.com/[^/]+',
-  img: '#images img',
-  next: '#images a',
-  curpage: '#edit-select-page',
-  numpages: '#edit-select-page',
-  nextchap: function(prev) {
-    return location.origin + '/node/' + extractInfo('#edit-select-node', {type: 'value', val: prev ? -1 : 1});
-  },
-  prevchap: function() {
-    return this.nextchap(true);
-  },
-  curchap: '#select_node',
-  numchaps: '#select_node'
-}, {
-  name: 'komikstation',
-  match: "^https?://www\.komikstation\.com/.+/.+/.+",
-  img: '#mainpage',
-  next: function() {
-    return W._base + '?page=' + (W.glbCurrentpage + 1);
-  },
-  numpages: '#index select',
-  curpage: '#index select',
-  pages: function(url, num, cb, ex) {
-    next = W._base + '?page=' + (num + 1);
-    cb(W.pages[num - 1], next);
-  },
-  wait: function() {
-    W._base = location.href.replace(/[?#].+$/, '');
-    return W.pages;
-  }
-}, {
-  name: 'gmanga',
-  match: "^https?://gmanga.me/mangas/",
-  img: function() {
-    return W.pages[W.firstImg - 1];
-  },
-  next: function() {
-    return location.href + '#' + (W.firstImg + 1);
-  },
-  numpages: function() {
-    return W.totalImgs;
-  },
-  curpage: function() {
-    return W.firstImg;
-  },
-  nextchap: function(prev) {
-    var num = parseInt(extractInfo('#chapter', {type: 'value', val: prev ? 1 : -1}));
-    return num && location.href.replace(/(\/mangas\/[^\/]+\/)[0-9]+(\/[^\/]+)/, '$1' + num + '$2');
-  },
-  prevchap: function() {
-    return this.nextchap(true);
-  },
-  numchaps: '#chapter',
-  curchap: '#chapter',
-  invchap: true,
-  pages: function(url, num, cb, ex) {
-    var nexturl = location.href + '#' + (num + 1);
-    cb(W.pages[num - 1], nexturl);
-  },
-  wait: function() {
-    W.pages = W.release_pages && W.release_pages[1];
-    return W.pages;
-  }
-}, {
-  name: '930mh',
-  match: "http://www\.930mh\.com/manhua/\\d+/\\d+.html",
-  img: '#images > img',
-  next: function() {
-    return location.origin + location.pathname + '?p=' + (W.SinTheme.getPage() + 1);
-  },
-  pages: function(url, num, cb, ex) {
-    cb(new URL(W.pageImage).origin + '/' + W.chapterPath + W.chapterImages[num - 1], num - 1);
-  },
-  curpage: function() {
-    return W.SinTheme.getPage();
-  },
-  numpages: function() {
-    return W.chapterImages.length;
-  },
-  nextchap: function(){
-    return W.nextChapterData.id && W.nextChapterData.id > 0 ? W.comicUrl + W.nextChapterData.id + '.html' : null;
-  },
-  prevchap: function(){
-    return W.prevChapterData.id && W.prevChapterData.id > 0 ? W.comicUrl + W.prevChapterData.id + '.html' : null;
-  },
-  wait: '#images > img'
-}, {
-  name: '漫畫王',
-  match: "https://www\.mangabox\.me/reader/\\d+/episodes/\\d+/",
-  img: 'img.jsNext',
-  next: function() {
-    return '#';
-  },
-  pages: function(url, num, cb, ex) {
-    cb(W.pages[num - 1].src, num - 1);
-  },
-  numpages: function() {
-    return W.pages.length;
-  },
-  nextchap: '.lastSlider_nextButton',
-  wait: function (){
-    W.pages = getEls('img.jsNext');
-    return true;
-  }
-}, {
-  name: '2comic.com 動漫易',
-  match: "http://twocomic.com/view/comic_\\d+.html",
-  img: '#TheImg',
-  next: function() {
-    return '#';
-  },
-  pages: function(url, num, cb, ex) {
-    W.p++;
-    var ss = W.ss;
-    var c = W.c;
-    var ti = W.ti;
-    var nn = W.nn;
-    var p = W.p;
-    var mm = W.mm;
-    var f = W.f;
-    var img = 'http://img' + ss(c, 4, 2) + '.8comic.com/' + ss(c, 6, 1) + '/' + ti + '/' + ss(c, 0, 4) + '/' + nn(p) + '_' + ss(c, mm(p) + 10, 3, f) + '.jpg';
-    cb(img, num - 1);
-  },
-  numpages: function() {
-    return W.ps * 1;
-  },
-  curpage: function() {
-    return W.p;
-  },
-  numchaps: function() {
-    return W.chs;
-  },
-  curchap: function() {
-    return W.ch;
-  },
-  nextchap: function() {
-    return W.ch < W.chs ? W.replaceurl('ch', W.ni) : false;
-  },
-  prevchap: function() {
-    return W.ch > 1 ? W.replaceurl('ch', W.pi) : false;
-  },
-  wait:'#TheImg'
-}];
-// END OF IMPL
+// Change this variable to control if you want to load NSFW implementations.
+var repo_enabled = ["nsfw", "normal"];
 
 var log = function(msg, type) {
   type = type || 'log';
@@ -1477,11 +100,24 @@ var storeSet = function(key, value) {
   return GM_setValue(key, value);
 };
 
+var storeList = function() {
+  if (typeof GM_listValues === "undefined") {
+    var klist = [];
+    for (var i = 0; i < localStorage.length; i++) {
+      klist.append(localStorage.key(i));
+    }
+    return klist;
+  }
+  //return GM_listValues();
+  // workaround
+  return GM_listValues().filter(function(v) {return GM_getValue(v) ? true : false});
+};
+
 var storeDel = function(key) {
   if (typeof GM_deleteValue === "undefined") {
-    return localStorage.removeItem(key);
+    localStorage.removeItem(key);
   }
-  return GM_deleteValue(key);
+  GM_deleteValue(key);
 };
 
 var areDefined = function() {
@@ -1688,7 +324,16 @@ var getViewer = function(prevChapter, nextChapter) {
       }, '.ml-setting-key input'),
       autoloadSettingCss = toStyleStr({
         'vertical-align': 'middle'
-      }, '.ml-setting-autoload');
+      }, '.ml-setting-autoload'),
+      flexContainerCss = toStyleStr({
+        'display': 'inline-flex',
+        'align-content': 'flex-start',
+        'flex-flow': 'row wrap'
+      }, '.ml-images'),
+      flexElementCss = toStyleStr({
+        'box-sizing': 'border-box',
+        'flex': '0 0 ' + 100 / (storeGet('mColNum') || 1) + '%'
+      }, '.ml-images>div');
   // clear all styles and scripts
   var title = document.title;
   document.head.innerHTML = '<meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">';
@@ -1710,7 +355,7 @@ var getViewer = function(prevChapter, nextChapter) {
   // combine ui elements
   document.body.innerHTML = nav + '<div class="ml-images"></div>' + nav + floatingMsg + stats;
   // add main styles
-  addStyle('main', true, viewerCss, imagesCss, imageCss, counterCss, navCss, navHoverCss, statsCss, statsCollapseCss, statsHoverCss, boxCss, floatingMsgCss, buttonCss, keySettingCss, autoloadSettingCss, floatingMsgAnchorCss);
+  addStyle('main', true, viewerCss, imagesCss, imageCss, counterCss, navCss, navHoverCss, statsCss, statsCollapseCss, statsHoverCss, boxCss, floatingMsgCss, buttonCss, keySettingCss, autoloadSettingCss, floatingMsgAnchorCss, flexContainerCss, flexElementCss);
   // add user styles
   var userCss = storeGet('ml-setting-css-profiles');
   var curProf = storeGet('ml-setting-css-current') || 'Default';
@@ -1802,12 +447,21 @@ var getViewer = function(prevChapter, nextChapter) {
       var target = e.target;
       UI.images.removeEventListener('click', imgClick, false);
       UI.images.style.cursor = '';
-      if(target.nodeName === 'IMG' && target.parentNode.className === 'ml-images') {
+      if(target.nodeName === 'IMG') {
         showFloatingMsg('');
         if(!target.title) {
-          showFloatingMsg('Reloading "' + target.src + '"', 3000);
-          if(target.complete) target.onload = null;
-          target.src = target.src + (target.src.indexOf('?') !== -1 ? '&' : '?') + new Date().getTime();
+          var pgnum = target.id.substr(10)
+          showFloatingMsg('Fetching URL of picture of page ' + pgnum, 3000);
+          sessionStorage.setItem("RimgUrl", 'notyet');
+          window.reload = function() {
+            var pgsrc = sessionStorage.getItem("RimgUrl");
+            log('pagenum : ' + pgnum + ', pagesrc : ' + pgsrc);
+            showFloatingMsg('Reloading "' + pgsrc + '"', 3000);
+            if(target.complete) target.onload = null;
+            target.src = pgsrc + (pgsrc.indexOf('?') !== -1 ? '&' : '?') + new Date().getTime();
+          }
+          //the function reload was inserted into the function dummy_addAndLoad inside the function getUrl to make sure reload was done after URL of the picture is fetched
+           getUrl(pgnum)
         }
       } else {
         showFloatingMsg('Cancelled manual reload...', 3000);
@@ -1884,9 +538,9 @@ var getViewer = function(prevChapter, nextChapter) {
         '<select class="ml-setting-css-profile">' +
         cssProfiles.map(function(profile) { return '<option ' + (profile.name === prof.name ? 'selected' : '') + '>' + profile.name + '</option>'; }).join('') +
         '</select><button class="ml-setting-delete-profile">x</button><br>' +
-        '<textarea style="width: 300px; height: 300px;" type="text" class="ml-setting-css">' + prof.css + '</textarea><br><br>';
+        '<textarea style="width: 500px; height: 150px;" type="text" class="ml-setting-css">' + prof.css + '</textarea><br><br>';
       // start new column
-      settings += '</td><td>';
+      settings += '</td><td rowspan="2">';
       // Keybindings
       var keyTableHtml = Object.keys(UI.keys).map(function(action) {
         return '<tr><td>' + action + '</td><td><input data-ignore="true" data-key="' + action + '" type="text" value="' + UI.keys[action] + '"></td></tr>';
@@ -1898,6 +552,39 @@ var getViewer = function(prevChapter, nextChapter) {
       settings += "# of pages to load:<br>" +
         'Type "all" to load all<br>default is 10<br>' +
         '<input class="ml-setting-loadnum" size="3" type="text" value="' + (storeGet('mLoadNum') || 10) + '" /><br><br>';
+      // Display pages in N columns
+      settings += "# columns of pages:<br>" +
+        'default is 1, you may set to 2 for PCs<br>' +
+        '<input class="ml-setting-colnum" size="3" type="text" value="' + (storeGet('mColNum') || 1) + '" /><br><br>';
+      // start new grid
+      settings += '</td></tr><tr><td>';
+      // repo settings
+      var repo_version, repo_url;
+      [repo_version, repo_url] = MLoaderGetLocalRepoInfo();
+      settings += "Implementation Repository Settings<br><br>";
+      settings += 'Repo URL: (current repo version: ' + repo_version + ')<br>' +
+        '<input class="ml-setting-repo_url" size="50" type="text" value="' + repo_url + '" /><br><br>';
+      settings += 'Manual repo update: ' +
+        '<button class="ml-setting-updrepo">Fetch update from repo</button> ' +
+        '<button class="ml-setting-forceupdrepo">Force update</button><br>' +
+        'Note: Force update is for debugging. It will update local repo info without considering version and will erase version info of all implementations so that they will be reloaded.<br><br>';
+      var imp_code, override;
+      [imp_code, override] = MLoaderGetImpCode(window.impInfo[0], window.impInfo[1]);
+      settings += 'Edit Implementations: <br>' +
+        'Category: <select class="ml-setting-impl_filter">\
+          <option value="Current">Impl being used</option>\
+          <option value="RepoLocal">Impls downloaded from repo</option>\
+          <option value="RepoAll">All impls available from repo</option>\
+          <option value="UserOverride">Impls created or edited by user</option>\
+        </select><br>' +
+        'Implementation: ' + constructImplHTMLSelect(getTargetImplInfo('Current'), 'ml-setting-target_impls') +
+        ' <button class="ml-setting-del_impl">Delete Impl</button><br>' +
+        '<span class="ml-setting-impl_is_override">User Override: ' + (override ? 'YES' : 'NO') + ' </span>' +
+        '<button class="ml-setting-new_ovrd">New User Override</button> ' +
+        '<button class="ml-setting-del_ovrd">Discard User Override</button> <br>' +
+        '<textarea data-modified="" data-impName="' + window.impInfo[1] + '" style="width: 500px; height: 150px;" type="text" class="ml-setting-edited_impl">' +
+          imp_code +
+        '</textarea><br>';
       // close grid and column
       settings += '</td></tr></table>';
       // Save button
@@ -1957,6 +644,100 @@ var getViewer = function(prevChapter, nextChapter) {
         UI.currentProfile = prof.name;
         addStyle('user', true, prof.css);
       };
+      // handle repo settings button
+      getEl('.ml-setting-updrepo', UI.floatingMsg).onclick = MLoaderUpdateImpls;
+      getEl('.ml-setting-forceupdrepo', UI.floatingMsg).onclick = MLoaderForceUpdateImpls;
+      // handle repo editing
+      // "Category" select
+      getEl('.ml-setting-impl_filter', UI.floatingMsg).onchange = function(e) {
+        var editBox = getEl('.ml-setting-edited_impl', UI.floatingMsg);
+        editBox.value = '';
+        var select_obj = e.target;
+        var filter_name = select_obj.options[select_obj.selectedIndex].value;
+        var impl_select_obj = getEl('.ml-setting-target_impls', UI.floatingMsg);
+        impl_select_obj.innerHTML = constructImplHTMLSelect(getTargetImplInfo(filter_name), '', true);
+        if (filter_name == 'RepoAll') {
+          impl_select_obj.selectedIndex = impl_select_obj.options.length;
+        }
+        impl_select_obj.dispatchEvent(new Event('change'))
+      };
+      // impl select
+      getEl('.ml-setting-target_impls', UI.floatingMsg).onchange = function(e) {
+        var select_obj = e.target;
+        var editBox = getEl('.ml-setting-edited_impl', UI.floatingMsg);
+        if (editBox.dataset.modified) {
+          if (confirm('This impl is modified, save?')) {
+            saveUserOverride(editBox.dataset.impName, editBox.value);
+          }
+        }
+        var isOverrideText = getEl('.ml-setting-impl_is_override', UI.floatingMsg);
+        var imp_info = select_obj.options[select_obj.selectedIndex].value.split(',');
+        var imp_code, override;
+        [imp_code, override] = MLoaderGetImpCode(imp_info[0], imp_info[1]);
+        editBox.value = imp_code;
+        editBox.dataset.impName = imp_info[1];
+        editBox.dataset.modified = '';
+        isOverrideText.innerHTML = 'User Override: ' + (override ? 'YES' : 'NO');
+      };
+      // monitor editbox change
+      getEl('.ml-setting-edited_impl', UI.floatingMsg).onchange = function(e) {e.target.dataset.modified = 'Y';};
+      // delete impl
+      getEl('.ml-setting-del_impl', UI.floatingMsg).onclick = function() {
+        var select_obj = getEl('.ml-setting-target_impls', UI.floatingMsg);
+        var selidx = select_obj.selectedIndex;
+        var imp_info = select_obj.options[select_obj.selectedIndex].value.split(',');
+        var imp_name = imp_info[1];
+        storeDel('MLoaderImp_' + imp_name);
+        storeDel('MLoaderImpVer_' + imp_name);
+        // trigger refresh
+        var filter_select_obj = getEl('.ml-setting-impl_filter', UI.floatingMsg);
+        var filter_name = filter_select_obj.options[filter_select_obj.selectedIndex].value;
+        filter_select_obj.dispatchEvent(new Event('change'));
+        if (filter_name == 'RepoAll') {
+          select_obj.selectedIndex = select_obj.options.length;
+        } else {
+          select_obj.selectedIndex = selidx;
+        }
+        select_obj.dispatchEvent(new Event('change'));
+      };
+      // discard override
+      getEl('.ml-setting-del_ovrd', UI.floatingMsg).onclick = function() {
+        var select_obj = getEl('.ml-setting-target_impls', UI.floatingMsg);
+        var selidx = select_obj.selectedIndex;
+        var imp_info = select_obj.options[select_obj.selectedIndex].value.split(',');
+        var imp_name = imp_info[1];
+        deleteUserOverride(imp_name);
+        deleteUserMatch(imp_name);
+        var editBox = getEl('.ml-setting-edited_impl', UI.floatingMsg);
+        editBox.value = '';
+        // trigger refresh
+        var filter_select_obj = getEl('.ml-setting-impl_filter', UI.floatingMsg);
+        filter_select_obj.dispatchEvent(new Event('change'));
+        select_obj.selectedIndex = selidx;
+        select_obj.dispatchEvent(new Event('change'));
+      };
+      // new override for new site
+      getEl('.ml-setting-new_ovrd', UI.floatingMsg).onclick = function() {
+        var imp_name = prompt('Name this impl: ');
+        if (!imp_name) {alert('illegal name'); return;}
+        var all_ovrd_name = getTargetImplInfo('UserOverride').map(function(i) {return i[1]});
+        if (imp_name in all_ovrd_name) {alert('name is already used'); return;}
+        var imp_regex = prompt('Give a regex that can match the target of this impl: ');
+        try {new RegExp(imp_regex);} catch (e) {alert('invalid regex'); return;}
+        saveUserOverride(imp_name, '// METADATA\n' + 
+          '// name: ' + imp_name + '\n' +
+          '// match: ' + imp_regex + '\n' +
+          '// Your code here ...\n'
+        );
+        saveUserMatch(imp_name, imp_regex);
+        // trigger refresh
+        var select_obj = getEl('.ml-setting-target_impls', UI.floatingMsg);
+        var filter_select_obj = getEl('.ml-setting-impl_filter', UI.floatingMsg);
+        filter_select_obj.selectedIndex = filter_select_obj.options.length-1;
+        filter_select_obj.dispatchEvent(new Event('change'));
+        select_obj.selectedIndex = select_obj.options.length-1;
+        select_obj.dispatchEvent(new Event('change'));
+      };
       // handle save button
       getEl('.ml-setting-save', UI.floatingMsg).onclick = function() {
         // persist css
@@ -1978,6 +759,19 @@ var getViewer = function(prevChapter, nextChapter) {
         var loadnum = getEl('.ml-setting-loadnum').value;
         mLoadNum = getEl('.ml-setting-loadnum').value = loadnum.toLowerCase() === 'all' ? 'all' : (parseInt(loadnum) || 10);
         storeSet('mLoadNum', mLoadNum);
+        // colnum
+        var colnum = getEl('.ml-setting-colnum').value;
+        mColNum = getEl('.ml-setting-colnum').value = (parseInt(colnum) || 1);
+        storeSet('mColNum', mColNum);
+        // repo settings
+        var input_url = getEl('.ml-setting-repo_url').value;
+        storeSet('repo_url', input_url);
+        // edited impl
+        var editBox = getEl('.ml-setting-edited_impl', UI.floatingMsg);
+        if (editBox.dataset.modified) {
+            saveUserOverride(editBox.dataset.impName, editBox.value);
+            getEl('.ml-setting-edited_impl', UI.floatingMsg).dataset.modified = '';
+        }
         // flash notify
         var flash = getEl('.ml-setting-save-flash');
         flash.textContent = 'Saved!';
@@ -2142,10 +936,107 @@ var addImage = function(src, loc, imgNum, callback) {
   image.id = 'ml-pageid-' + imgNum;
   image.onload = callback;
   image.src = src;
-  loc.appendChild(image);
-  loc.appendChild(counter);
+  var imgwithcounter = document.createElement('div');
+  imgwithcounter.id = 'page-' + imgNum;
+  loc.appendChild(imgwithcounter);
+  imgwithcounter.appendChild(image);
+  imgwithcounter.appendChild(counter);
 };
 
+window.UrlList = new Array();
+window.PageList = new Array();
+window.firstpage = 1
+//this function re-requests image url from page number
+var getUrl = function(pagenum) {
+  pagenum = Number(pagenum)
+  //get page url from pre-saved array
+  var arrnum = pagenum - window.firstpage
+  //sometimes the url of a page is not included in the UrlList so we need to do a lookup in the PageList ;)
+  var Rpageurl
+  if (window.PageList[arrnum] == pagenum) {
+    Rpageurl = window.UrlList[arrnum]
+  } else if (window.PageList.includes(pagenum)) {
+    log('urllist error, but found in the pagelist')
+    Rpageurl = window.UrlList[window.PageList.indexOf(pagenum)]
+    log('Found '+Rpageurl)
+  } else {
+    //in some very rare situation, the page and its url is missing, so we need to ... REDO ;)
+    log('urllist error, not found in the pagelist, re-fetching')
+    var findlast = function(num) {
+      var last
+      for (var i in window.PageList) {
+        if (i < pagenum) {
+          last = pagenum
+        } else {
+          return last
+        }
+      }
+    }
+    var lastavail = findlast(pagenum)
+    log('Last available page is ' + lastavail + ', loading from it')
+    //to be done. too complicated :(
+    log('This feature is not implemented, nothing is done, including refreshing. :(')
+  }
+  //reuse function loadNextPage and getPageInfo
+  //imp all replaced with window.imp which is defined globally in function MLoaderLoadImps
+  //import needed functions
+  var xhr = new XMLHttpRequest();
+  var ex = extractInfo.bind(window.imp)
+  var retries = 5
+  var d = document.implementation.createHTMLDocument()
+  //getPageInfo start
+  var RgetPageInfo = function() {
+    var page = d.body;
+    d.body.innerHTML = xhr.response;
+    try {
+      dummy_addAndLoad(ex('img', window.imp.imgmod, page), ex('next', null, page));
+    } catch (e) {
+      if (xhr.status == 503 && retries > 0) {
+        log('xhr status ' + xhr.status + ' retrieving ' + xhr.responseURL + ', ' + retries-- + ' retries remaining');
+        window.setTimeout(function() {
+          xhr.open('get', xhr.responseURL);
+          xhr.send();
+        }, 500);
+      } else {
+        log(e);
+        log('error getting details from page' + pagenum + '.');
+        sessionStorage.setItem("RimgUrl", 'err');
+        window.reload();
+      }
+    }
+  }
+  //getPageInfo end
+  //loadNextPage start
+  var RloadNextPage = function(url) {
+    if (window.imp.pages) {
+      window.imp.pages(url, pagenum, dummy_addAndLoad, ex, RgetPageInfo);
+    } else {
+      var colonIdx = url.indexOf(':');
+      if(colonIdx > -1) {
+        url = location.protocol + url.slice(colonIdx + 1);
+      }
+      xhr.open('get', url);
+      window.imp.beforexhr && window.imp.beforexhr(xhr);
+      xhr.onload = RgetPageInfo;
+      xhr.onerror = function() {
+        log('failed to load page, aborting', 'error');
+        sessionStorage.setItem("RimgUrl", 'err');
+        window.reload();
+      };
+      xhr.send();
+    }
+  }
+  //loadNextPage end
+  //dummy function used to collect url from imp.pages
+  //now it also does reload. not really dummy anymore. XD
+  var dummy_addAndLoad = function(img, next) {
+    if (sessionStorage.getItem("RimgUrl") != 'err') {
+      sessionStorage.setItem("RimgUrl", img);
+      window.reload();
+    }
+  }
+  RloadNextPage(Rpageurl)
+}
 var loadManga = function(imp) {
   var ex = extractInfo.bind(imp),
       imgUrl = ex('img', imp.imgmod),
@@ -2205,6 +1096,8 @@ var loadManga = function(imp) {
         }
       },
       loadNextPage = function(url) {
+        window.PageList.push(curPage+1)
+        window.UrlList.push(url)
         if (mLoadNum !== 'all' && count % mLoadNum === 0) {
           if (resumeUrl) {
             resumeUrl = null;
@@ -2245,6 +1138,15 @@ var loadManga = function(imp) {
       count = 1,
       pagesLoaded = curPage - 1,
       lastUrl, UI, resumeUrl, retries;
+  //this log shows that variable imgUrl is the URL of image, not the URL of the page
+  //and in fact this log only show up ONCE
+  log ("imgUrl : " + imgUrl + ", curPage : " + curPage)
+  //this indicates that function loadManga ONLY RUN ONCE
+  //in fact, following changes on variable curPage is done in function loadNextPage
+  //so here we can get the first page
+  window.firstpage = curPage
+  window.PageList.push(curPage)
+  window.UrlList.push(window.location.href)
   if (!imgUrl || (!nextUrl && curPage < numPages)) {
     log('failed to retrieve ' + (!imgUrl ? 'image url' : 'next page url'), 'exit');
   }
@@ -2305,38 +1207,227 @@ var waitAndLoad = function(imp) {
   }
 };
 
-var MLoaderLoadImps = function(imps) {
-  var success = imps.some(function(imp) {
-    if (imp.match && (new RegExp(imp.match, 'i')).test(pageUrl)) {
-      currentImpName = imp.name;
-      if (W.BM_MODE || (autoload !== 'no' && (mAutoload || autoload))) {
-        log('autoloading...');
-        waitAndLoad(imp);
-        return true;
-      }
-      // setup load hotkey
-      var loadHotKey = function(e) {
-        if(e.ctrlKey && e.keyCode == 188) { // ctrl + , (comma)
-          e.preventDefault();
-          btnLoad.click();
-          window.removeEventListener('keydown', loadHotKey);
-        }
-      };
-      window.addEventListener('keydown', loadHotKey);
-      // append button to dom that will trigger the page load
-      btnLoad = createButton('Load Manga', function(evt) {
-        waitAndLoad(imp);
-        this.remove();
-      }, btnLoadCss);
-      document.body.appendChild(btnLoad);
-      return true;
-    }
-  });
-
-  if (!success) {
-    log('no implementation for ' + pageUrl, 'error');
+var version2num = function(verstr) {
+  var vernum = 0;
+  var verarr = verstr.split(".").reverse();
+  for (var i = 0; i < verarr.length; i++) { 
+    vernum += verarr[i] * Math.pow(100, i);
   }
+  return vernum
+}
+
+var MLoaderGetLocalRepoInfo = function() {
+  var repo_version = storeGet("repo_version");
+  repo_version = repo_version ? repo_version : 0;
+  repo_url = storeGet("repo_url");
+  repo_url = repo_url ? repo_url : default_repo_url;
+  return [repo_version, repo_url];
+}
+
+var MLoaderCheckoutImpRepo = function(force=false) {
+  var repo_version, repo_url;
+  [repo_version, repo_url] = MLoaderGetLocalRepoInfo();
+  
+  var request;
+  
+  request = new XMLHttpRequest();
+  request.open("GET", repo_url+"version", false);
+  request.send(null);
+  var remote_version = request.responseText;
+  remote_version = remote_version ? version2num(remote_version) : 0;
+  
+  if (remote_version > repo_version || !storeGet("repo_info") || force) {
+    request = new XMLHttpRequest();
+    request.open("GET", repo_url+"repo.json", false);
+    request.send(null);
+    storeSet("repo_info", request.responseText);
+    storeSet("repo_version", remote_version);
+    //console.log(request);
+  }
+}
+
+var MLoaderGetImpName = function() {
+  MLoaderCheckoutImpRepo()
+  //console.log(storeGet("repo_info"));
+  window.repo_info = JSON.parse(storeGet("repo_info"));
+  var sreponame; var subrepo; var matchregex;
+
+  var um = storeGet("user_match");
+  for (var key in um) {
+    matchregex = um[key];
+    if ((new RegExp(matchregex, 'i')).test(pageUrl)) { return ['local', key]; }
+  }
+
+  var i; var j;
+  for (i = 0; i < repo_enabled.length; i++) {
+    sreponame = repo_enabled[i];
+    subrepo = window.repo_info[sreponame];
+    for (var key in subrepo["direct_match"]) {
+      if (pageUrl.search(key) != -1) {
+        matchregex = subrepo["direct_match"][key];
+        if (!(new RegExp(matchregex, 'i')).test(pageUrl)) { return [null, null]; }
+        return [sreponame, key];
+      }
+    }
+    for (var key in subrepo["regex"]) {
+      matchregex = subrepo["regex"][key];
+      if (matchregex == 'META') { continue; }
+      if ((new RegExp(matchregex, 'i')).test(pageUrl)) { return [sreponame, key]; }
+    }
+  }
+
+  return [null, null];
+}
+
+var MLoaderMapImpName = function(srepo_name, imp_name) {
+  var imp_name_map = window.repo_info[srepo_name]['mapto'][imp_name];
+  if (imp_name_map) {
+    imp_name = imp_name_map;
+  } else {
+    console.log('no mapping for ' + srepo_name + '->' + imp_name);
+  }
+  return [srepo_name, imp_name];
+}
+
+var MLoaderGetImpCode = function(srepo_name, imp_name) {
+  var imp_code;
+
+  // seek in User Override
+  var user_override = storeGet("UserOverrideImp_" + imp_name);
+  var override = false;
+  if (user_override) {
+    console.log('Using user override for '+ srepo_name + '->' + imp_name);
+    override = true;
+    imp_code = user_override;
+    return [imp_code, override];
+  }
+
+  // handle name mapping
+  [srepo_name, imp_name] = MLoaderMapImpName(srepo_name, imp_name);
+
+  // seek in local storage
+  imp_code = storeGet("MLoaderImp_" + imp_name);
+  var imp_ver = storeGet("MLoaderImpVer_" + imp_name);
+  imp_ver = imp_ver ? imp_ver : 0;
+  var repo_version, repo_url;
+  [repo_version, repo_url] = MLoaderGetLocalRepoInfo();
+
+  // seek online (disabled if subrepo name is "local")
+  if ((!imp_code || imp_ver < repo_version) && srepo_name != "local") {
+    var request = new XMLHttpRequest();
+    request.open("GET", repo_url + srepo_name + "/" + imp_name + ".js", false);
+    request.send(null);
+    //console.log(request.status);
+    imp_code = request.status == 200 ? request.responseText : '';
+    //console.log(imp_code);
+    storeSet("MLoaderImp_" + imp_name, imp_code);
+    storeSet("MLoaderImpVer_" + imp_name, repo_version)
+  }
+  
+  return [imp_code, override];
+}
+
+var MLoaderGetImpObj = function(srepo_name, imp_name) {
+  var imp_code = MLoaderGetImpCode(srepo_name, imp_name)[0];
+  eval(imp_code); return impl_src;
+}
+
+var MLoaderLoadImps = function() {
+  [currentSubRepo, currentImpName] = MLoaderGetImpName();
+  if (!currentImpName) { log('no implementation for ' + pageUrl, 'error'); return; }
+
+  //make current implementation public for other use
+  window.impInfo = [currentSubRepo, currentImpName];
+  window.imp = MLoaderGetImpObj(currentSubRepo, currentImpName);
+  if (W.BM_MODE || (autoload !== 'no' && (mAutoload || autoload))) {
+    log('autoloading...');
+    waitAndLoad(imp);
+  }
+  // setup load hotkey
+  var loadHotKey = function(e) {
+    if(e.ctrlKey && e.keyCode == 188) { // ctrl + , (comma)
+      e.preventDefault();
+      btnLoad.click();
+      window.removeEventListener('keydown', loadHotKey);
+    }
+  };
+  window.addEventListener('keydown', loadHotKey);
+  // append button to dom that will trigger the page load
+  btnLoad = createButton('Load Manga', function(evt) {
+    waitAndLoad(imp);
+    this.remove();
+  }, btnLoadCss);
+  document.body.appendChild(btnLoad);
 };
+
+var MLoaderUpdateImpls = function() {
+  MLoaderCheckoutImpRepo(false);
+}
+
+var filterStoreKeyPrefix = function(prefix) {
+  var ikeys = storeList();
+  var prefix_len = prefix.length;
+  return ikeys.filter(function(ikey) { return ikey.substr(0, prefix_len) == prefix });
+}
+
+var MLoaderForceUpdateImpls = function() {
+  MLoaderCheckoutImpRepo(true);
+  // flush version of all imps
+  var verkeys = filterStoreKeyPrefix("MLoaderImpVer_")
+  verkeys.map(function(ikey) { storeDel(ikey) });
+}
+
+var getTargetImplInfo = function(flag) {
+  switch (flag) {
+    case 'Current':
+      return [window.impInfo];
+    case 'RepoLocal':
+      return filterStoreKeyPrefix("MLoaderImp_")
+        .map(function(k) { return ["local", k.substr("MLoaderImp_".length)] });
+    case 'RepoAll':
+      var repo_info = JSON.parse(storeGet("repo_info"));
+      var srepos = Object.keys(repo_info);
+      return srepos
+        .map(function(srname) {return [srname, [].concat(Object.keys(repo_info[srname]["direct_match"]),
+                                                         Object.keys(repo_info[srname]["regex"]       ))]})
+        .map(function(srlist) {return srlist[1].map(function(implname) {return [srlist[0], implname]})})
+        .reduce(function(total, currentValue) {return total.concat(currentValue)}, []);
+    case 'UserOverride':
+      return filterStoreKeyPrefix("UserOverrideImp_")
+        .map(function(k) { return ["local", k.substr("UserOverrideImp_".length)] });
+    default:
+      return [null];
+  }
+}
+
+var constructImplHTMLSelect = function(imp_infos, classname='', inner=false) {
+  var items = imp_infos
+    .map(function(imp_info) {return '<option value ="'+imp_info+ '">'+imp_info[1]+' ('+imp_info[0]+')</option>'})
+    .reduce(function(total, currentValue) {return total + currentValue}, '');
+  return inner ? items : '<select class="' + classname + '">' + items + '</select>'
+}
+
+var saveUserOverride = function(imp_name, code) {
+  storeSet("UserOverrideImp_" + imp_name, code);
+}
+
+var deleteUserOverride = function(imp_name) {
+  storeDel("UserOverrideImp_" + imp_name);
+}
+
+var saveUserMatch = function(imp_name, regex) {
+  var um_info = storeGet("user_match");
+  um_info = um_info ? um_info : {};
+  um_info[imp_name] = regex;
+  storeSet("user_match", um_info);
+}
+
+var deleteUserMatch = function(imp_name) {
+  var um_info = storeGet("user_match");
+  um_info = um_info ? um_info : {};
+  delete um_info[imp_name];
+  storeSet("user_match", um_info);
+}
 
 var pageUrl = window.location.href,
     btnLoadCss = toStyleStr({
@@ -2357,6 +1448,8 @@ var autoload = storeGet('autoload');
 var mAutoload = storeGet('mAutoload') || false;
 // should we load less pages at a time?
 var mLoadNum = storeGet('mLoadNum') || 10;
+// should we show pages in multi columns?
+var mColNum = storeGet('mColNum') || 1;
 // holder for statistics
 var pageStats = {
   numPages: null, numLoaded: null, loadLimit: null, curChap: null, numChaps: null
@@ -2367,7 +1460,7 @@ storeDel('autoload');
 
 log('starting...');
 
-// extra check for settings (hack) on dumb firefox/scriptish, settings aren't udpated until document end
+// extra check for settings (hack) on dumb firefox/scriptish, settings aren't updated until document end
 W.document.addEventListener('DOMContentLoaded', function(e) {
   if(!isLoaded) return;
   // used when switching chapters
@@ -2380,4 +1473,6 @@ W.document.addEventListener('DOMContentLoaded', function(e) {
     btnLoad.click();
   }
 });
-MLoaderLoadImps(implementations);
+
+
+MLoaderLoadImps();
