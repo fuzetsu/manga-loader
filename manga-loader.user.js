@@ -1252,6 +1252,12 @@ var MLoaderGetImpName = function() {
   window.repo_info = JSON.parse(storeGet("repo_info"));
   var sreponame; var subrepo; var matchregex;
 
+  var um = storeGet("user_match");
+  for (var key in um) {
+    matchregex = um[key];
+    if ((new RegExp(matchregex, 'i')).test(pageUrl)) { return ['local', key]; }
+  }
+
   var i; var j;
   for (i = 0; i < repo_enabled.length; i++) {
     sreponame = repo_enabled[i];
@@ -1269,11 +1275,7 @@ var MLoaderGetImpName = function() {
       if ((new RegExp(matchregex, 'i')).test(pageUrl)) { return [sreponame, key]; }
     }
   }
-  var um = storeGet("user_match");
-  for (var key in um) {
-    matchregex = um[key];
-    if ((new RegExp(matchregex, 'i')).test(pageUrl)) { return ['local', key]; }
-  }
+
   return [null, null];
 }
 
